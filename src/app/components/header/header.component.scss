@@ -1,0 +1,11 @@
+@import "../../scss/app.colors.scss";
+
+.app-header {
+    width: 100%;
+    height: 120px;
+    box-shadow: $light-shadow;
+
+    section {
+        height: 40%;
+    }
+}

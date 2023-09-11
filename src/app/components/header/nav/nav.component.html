@@ -1,1 +1,9 @@
-<nav>This is a nav, Pidgeotto</nav>
+<nav class={{classPrefix}}>
+    <div class={{classPrefix}}__brand ></div>
+    <ul class={{classPrefix}}__links >
+        <li *ngFor="let link of navLinks">
+            <a href={{link?.link}}>{{link?.title}}</a>
+        </li>
+    </ul>
+    <!-- <button (click)="searchPokemon()">Search</button> -->
+</nav>
