@@ -8,6 +8,14 @@
     justify-content: space-between;
     background-color: $light-color-bg;
 
+    &.light {
+        background-color: $light-color-bg;
+    }
+
+    &.dark {
+        background-color: $dark-color-bg;
+    }
+
     &__brand {
         width: 144px;
         height: 100%;

@@ -1,0 +1,20 @@
+<section>
+    <div class={{classPrefix}}>
+        <div class={{classPrefix}}__intro>
+            <div [ngClass]="[classPrefix + '__intro-version', theme]"></div>
+            <div [ngClass]="[classPrefix + '__intro-welcome-ctr', theme]">
+                <div [ngClass]="[classPrefix + '__intro-welcome', theme]">
+                    <h1>{{landingHeader}}</h1>
+                    <span>{{landingInfo}}</span>
+                    <span>{{landingNews}}</span>
+                    <span>{{landingUpcoming}}</span>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="[classPrefix + '__train-' + transition]">
+        </div>
+    </div>
+    <div [ngClass]="[classPrefix + '__outro', theme]">
+
+    </div>
+</section>

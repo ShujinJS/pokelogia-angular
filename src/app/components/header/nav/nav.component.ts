@@ -8,7 +8,9 @@ import { PokemonModel } from 'src/app/models/pokemon.model';
 
 export class NavComponent implements OnInit {
     classPrefix = 'app-nav'
-
+    isDark = true;
+    theme: string = this.isDark ? 'dark' : 'light'
+    
     ngOnInit(): void {
         console.log('hello')
     }
@@ -20,7 +22,7 @@ export class NavComponent implements OnInit {
     }
 
     navLinks = [
-        {title: "Home", link: "/"},
-        {title: "Coming Soon", link: "/"}
+        {title: "Home", link: "/home"},
+        {title: "Coming Soon", link: "/comingsoon"}
     ]
 }
