@@ -1,0 +1,11 @@
+<div [ngClass]="[classPrefix]">
+    <form [formGroup]="isLogin ? loginForm : registerForm" (ngSubmit)="onSubmit()" [ngClass]="[classPrefix + '__form']">
+        <div [ngClass]="[classPrefix + '__input-ctr']">
+            <div [ngClass]="[classPrefix + '__input-grp']" *ngFor="let input of inputsToUse">
+                <label for="">{{input?.title}}</label>
+                <input type={{input?.type}} required={{input?.isRequired}}>
+            </div>
+        </div>
+        <button type="submit">{{isLogin ? 'Login' : 'Register'}}</button>
+    </form>
+</div>

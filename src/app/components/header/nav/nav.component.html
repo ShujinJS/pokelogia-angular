@@ -1,1 +1,10 @@
-<nav>This is a nav</nav>
+<nav [ngClass]="[classPrefix, theme]">
+    <div [ngClass]="[classPrefix + '__brand']"></div>
+    <ul [ngClass]="[classPrefix + '__links']">
+        <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', theme]">
+            <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
+            <a [routerLink]="[link?.link]">{{link?.title}}</a>
+        </li>
+    </ul>
+    <!-- <button (click)="searchPokemon()">Search</button> -->
+</nav>

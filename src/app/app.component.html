@@ -1,19 +1,13 @@
 <!-- Toolbar -->
-<div role="banner">
-  <header>Generations {{title}}</header>
-</div>
+<header>
+  <app-header></app-header>
+</header>
 
-<div class="content" role="main">
-  
-  <main>
-    <input type="text" [(ngModel)]="title">
-    <app-server></app-server>
-  </main> 
-  <!-- Footer -->
-  <footer>
-      Love Angular?&nbsp;
-  </footer>
+<main>
+  <router-outlet></router-outlet>
+</main>
 
-</div>
+<footer>Footer</footer>
 
-<router-outlet></router-outlet>
+<div [ngClass]="[classPrefix]"></div>
+
