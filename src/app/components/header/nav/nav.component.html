@@ -1,7 +1,7 @@
 <nav [ngClass]="[classPrefix, theme]">
-    <div class={{classPrefix}}__brand ></div>
-    <ul class={{classPrefix}}__links >
-        <li *ngFor="let link of navLinks">
+    <div [ngClass]="[classPrefix + '__brand']"></div>
+    <ul [ngClass]="[classPrefix + '__links']">
+        <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', theme]">
             <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
             <a [routerLink]="[link?.link]">{{link?.title}}</a>
         </li>

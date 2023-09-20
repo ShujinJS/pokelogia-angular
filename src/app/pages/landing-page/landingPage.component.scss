@@ -22,7 +22,7 @@ section {
             z-index: 1;
     
             &-version {
-                width: 50%;
+                width: 30rem;
                 height: 50%;
     
                 &.light {
@@ -56,6 +56,8 @@ section {
             &-welcome {
                 width: 50%;
                 padding: 1em;
+                display: inherit;
+                flex-direction: column;
                 text-align: center;
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
                 color: $light-color-tx;
@@ -126,18 +128,110 @@ section {
         }
     }
 
-    .app-landing__outro{
+    .app-landing__outro {
         width: 100%;
         height: 3rem;
         box-shadow: $light-shadow;
 
+        &.light {
+            background-color: $light-color-bg;
+        }
+
+        &.dark {
+            background-color: $dark-color-bg;
+        }
+    }
+
+    .app-landing__search {
+        width: 100%;
+        height: 32rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &.light {
+            background-color: $light-color-bg-plain;
+        }
+
+        &.dark {
+            background-color: $dark-color-bg-plain;
+        }
+
+        &-ctr {
+            width: 50%;
+            border-radius: 20px;
+        }
+
+        &-input-grp {
+            width: 100%;
+            height: 2rem;
+            display: flex;
+            background-color: $light-color-bg-plain;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
             &.light {
-                background-color: $light-color-bg;
+                border-bottom: 1px solid $light-color-bg;
+            }
+    
+            &.dark {
+                border-bottom: 2px solid $dark-color-bg;
             }
 
-            &.dark {
-                background-color: $dark-color-bg;
+            input {
+                width: 95%;
+                height: inherit;
+                padding: 0 20px;
+                outline: none;
+                border: none;
+                background: none;
+
+                &::placeholder {
+                    opacity: 0.5;
+                }
             }
+        }
+
+        &-input-icon {
+            width: 5%;
+            height: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.3;
+
+            div {
+                width: 20px;
+                height: 20px;
+                background-image: url('../../../assets/search-icon.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        }
+
+        &-results {
+            width: 100%;
+            height: 9rem;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            &.light {
+                background-color: $dark-color-bg-plain;
+            }
+    
+            &.dark {
+                background-color: $light-color-bg-plain;
+            }
+        }
+
+        &-img {
+            width: 30rem;
+            height: 17rem;
+            background: url('../../../assets/gen1squad.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
     }
 }
 

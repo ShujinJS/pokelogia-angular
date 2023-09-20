@@ -23,6 +23,7 @@ export class NavComponent implements OnInit {
 
     navLinks = [
         {title: "Home", link: "/home"},
+        {title: "Login | Register", link: "/auth"},
         {title: "Coming Soon", link: "/comingsoon"}
     ]
 }
