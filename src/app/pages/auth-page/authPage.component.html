@@ -1,11 +1,33 @@
 <div [ngClass]="[classPrefix]">
-    <form [formGroup]="isLogin ? loginForm : registerForm" (ngSubmit)="onSubmit()" [ngClass]="[classPrefix + '__form']">
+    <form 
+        [formGroup]="isLogin ? loginForm : registerForm" 
+        [ngClass]="[classPrefix + '__form']"
+        (ngSubmit)="onSubmit()"
+    >
         <div [ngClass]="[classPrefix + '__input-ctr']">
-            <div [ngClass]="[classPrefix + '__input-grp']" *ngFor="let input of inputsToUse">
-                <label for="">{{input?.title}}</label>
-                <input type={{input?.type}} required={{input?.isRequired}}>
+            <div 
+                [ngClass]="[classPrefix + '__input-grp', input?.type === 'checkbox' ? 'check' : '']" 
+                *ngFor="let input of inputsToUse"
+            >
+                <label>{{input?.title}}</label>
+                <input 
+                    type={{input?.type}} 
+                    formControlName="{{input?.formControlName}}" 
+                    required={{input?.isRequired}}
+                >
+                <span *ngIf="loginForm.get(input.formControlName)?.invalid">
+                    *{{input?.message}}
+                </span>
             </div>
         </div>
-        <button type="submit">{{isLogin ? 'Login' : 'Register'}}</button>
+
+        <div [ngClass]="[classPrefix + '__btn-ctr']">
+            <button type="submit" [disabled]="loginForm.invalid">
+                {{isLogin ? 'Login' : 'Register'}}
+            </button>
+            <span>
+                {{isLogin ? 'Register' : 'Login'}}
+            </span>
+        </div>
     </form>
 </div>

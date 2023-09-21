@@ -1,4 +1,4 @@
-import { BuilderHelperModel } from './../models/builder.models';
+import { BuilderHelperModel } from '../models/builder.models';
 export class BuilderHelper {
     public objectBuilder (keys: string[], values: []): object {
         let returnData = {}

@@ -1,5 +1,3 @@
-import { BuilderHelper } from './../../helper/builder';
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,17 +15,33 @@ export class AuthPageComponent implements OnInit {
     mockData = true 
     isLogin: boolean = this.mockData
 
-    loginInputs = [ { title: "username", type: "text", isRequired: true, }, { title: "password", type: "password", isRequired: true, } ]
+    constructor ( private formBuilder: FormBuilder ) {
 
-    registerInputs = [ { title: "username", type: "text", isRequired: true }, { title: "password", type: "password", isRequired: true }, { title: "password match", type: "password", isRequired: true }, { title: "Remember me?", type: "checkbox", isRequired: false } ]
+    }
+
+    loginInputs = [ 
+        { title: "Username", type: "text", isRequired: true, formControlName: "usernameInput", message: "Min. length: 4"},
+        { title: "Password", type: "password", isRequired: true, formControlName: "passwordInput", message: "Min. length: 4"}, 
+        { title: "Remember me?", type: "checkbox", isRequired: false, formControlName: "checkboxInput", message: "None"}, 
+    ]
+
+    registerInputs = [ 
+        { title: "Username", type: "text", isRequired: true, formControlName: "usernameInput", message: "Min. length: 4"}, 
+        { title: "Password", type: "password", isRequired: true, formControlName: "passwordInput", message: "Min. length: 4"}, 
+        { title: "Password match", type: "password", isRequired: true, formControlName: "paswordMatchInput", message: "Passwords must be matched"}, 
+    ]
 
     inputsToUse = this.isLogin ? this.loginInputs : this.registerInputs
 
     ngOnInit(): void {
-        
+        this.loginForm = this.formBuilder.group({
+            usernameInput: ['', [Validators.minLength(4),Validators.required]],
+            passwordInput: ['', [Validators.minLength(4),Validators.required]],
+            checkboxInput: [''],
+        })  
     }
 
     onSubmit(): void {
-
+        
     }
 }
