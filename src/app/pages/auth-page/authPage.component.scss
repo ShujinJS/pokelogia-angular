@@ -4,15 +4,14 @@
 .app-formInputs {
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 0;
+    margin: 10% 0 10% 0;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &__form {
         width: 35%;
-        height: 23rem;
+        height: 25rem;
         padding: 3em 3em 1em 3em;
         display: flex;
         flex-direction: column;

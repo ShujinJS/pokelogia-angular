@@ -1,6 +1,6 @@
 <div [ngClass]="[classPrefix]">
     <form 
-        [formGroup]="isLogin ? loginForm : registerForm" 
+        [formGroup]="useForm" 
         [ngClass]="[classPrefix + '__form']"
         (ngSubmit)="onSubmit()"
     >
@@ -15,17 +15,17 @@
                     formControlName="{{input?.formControlName}}" 
                     required={{input?.isRequired}}
                 >
-                <span *ngIf="loginForm.get(input.formControlName)?.invalid">
+                <span *ngIf="useForm.get(input.formControlName)?.invalid">
                     *{{input?.message}}
                 </span>
             </div>
         </div>
 
         <div [ngClass]="[classPrefix + '__btn-ctr']">
-            <button type="submit" [disabled]="loginForm.invalid">
-                {{isLogin ? 'Login' : 'Register'}}
+            <button type="submit" [disabled]="useForm.invalid">
+                {{isLogin ? 'LOG-IN' : 'REGISTER'}}
             </button>
-            <span>
+            <span (click)="isLogin = !isLogin">
                 {{isLogin ? 'Register' : 'Login'}}
             </span>
         </div>
