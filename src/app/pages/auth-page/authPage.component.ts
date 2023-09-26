@@ -47,6 +47,7 @@ export class AuthPageComponent implements OnInit {
             } else {
                 this.authPageService.addUser(user)
             }
+            this.useForm.reset()
         }
     }
 
