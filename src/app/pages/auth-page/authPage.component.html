@@ -7,7 +7,7 @@
         <div [ngClass]="[classPrefix + '__input-ctr']">
             <div 
                 [ngClass]="[classPrefix + '__input-grp', input?.type === 'checkbox' ? 'check' : '']" 
-                *ngFor="let input of inputsToUse"
+                *ngFor="let input of formInputs"
             >
                 <label>{{input?.title}}</label>
                 <input 

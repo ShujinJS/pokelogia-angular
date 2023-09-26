@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
     theme: string = this.isDark ? 'dark' : 'light'
     
     ngOnInit(): void {
-        console.log('hello')
+
     }
 
     defaultPokemon: PokemonModel = {

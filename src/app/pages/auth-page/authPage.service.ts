@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { UserModel } from "src/app/models/user.model";
+import { addToStore, getFromStore } from "src/app/helper/storage.helper";
+import { UserModel } from "src/app/models/auth.model";
 
 @Injectable({
     providedIn: 'root'
@@ -8,15 +9,21 @@ import { UserModel } from "src/app/models/user.model";
 export class AuthPageService {
     private users: UserModel[] = []
 
+    constructor() {
+        const usersStore = getFromStore('users')
+        this.users = usersStore ?  usersStore : []
+    }
+
     getUsers(): UserModel[] {
         return this.users;
     }
 
-    getUser(id: string): UserModel | undefined {
-        return this.users.find(res => res.id === id);
+    getUser(username: string, password: string): UserModel | undefined {
+        return this.users.find(res => res.username === username && res.password === password);
     }
 
     addUser(user: UserModel): void {
         this.users.push(user);
+        addToStore('users', this.users)
     }
 }

@@ -1,6 +1,21 @@
+export interface UserModel {
+    id?: string,
+    username: string,
+    password: string,
+}
+
 export interface FormModel {
-    usernameInput: [string, Function[]],
-    passwordInput: [string, Function[]],
-    passwordConfirmInput?: [string, Function[]],
-    checkboxInput?: [string, Function[]],
+    id?: [string,  Function[]]
+    username: [string, Function[]],
+    password: [string, Function[]],
+    passwordConfirm?: [string, Function[]],
+    checkbox?: [string, Function[]],
+}
+
+export interface InputModel {
+    title: string,
+    type: string,
+    isRequired: boolean,
+    formControlName: string,
+    message: string,
 }
