@@ -1,4 +1,4 @@
-export function addToStore(storeName: string, storeData: object){
+export function addToStore(storeName: string, storeData: object | undefined){
     localStorage.setItem(storeName, JSON.stringify(storeData))
 }
 

@@ -21,7 +21,7 @@ export class AuthPageComponent implements OnInit {
 
     classPrefix = 'app-formInputs'
     useForm: FormGroup = new FormGroup({})
-    showLogin = false 
+    showLogin = true 
     isLogin: boolean = this.showLogin
 
     formInputs = [
@@ -43,9 +43,9 @@ export class AuthPageComponent implements OnInit {
             const user: UserModel = this.useForm.value;
 
             if(this.isLogin) {
-                // this.authPageService.getUser()
+               this.authPageService.logUserIn(user)
             } else {
-                this.authPageService.addUser(user)
+                this.authPageService.signUserIn(user)
             }
             this.useForm.reset()
         }
@@ -53,8 +53,16 @@ export class AuthPageComponent implements OnInit {
 
     createForm(): FormModel {
         let formToUse: FormModel = {
-            username: ['', [Validators.minLength(4),Validators.required, this.usernameValidator()]],
-            password: ['', [Validators.minLength(4),Validators.required]],
+            username: ['', [
+                Validators.minLength(4),
+                this.usernameValidator(),
+                Validators.required,
+            ]],
+            password: ['', [
+                Validators.minLength(4),
+                this.passwordValidator(),
+                Validators.required,
+            ]],
         }
 
         if(this.isLogin) {
@@ -65,7 +73,11 @@ export class AuthPageComponent implements OnInit {
         } else {
             formToUse = {
                 ...formToUse,
-                passwordConfirm: ['', [Validators.minLength(4), Validators.required, this.passwordValidator()]],
+                passwordConfirm: ['', [
+                    Validators.minLength(4), 
+                    this.passwordValidator(),
+                    Validators.required, 
+                ]],
                 id: [(Math.random() * Math.floor(Math.random() * Date.now())).toString(), []],
             }
         }
@@ -75,15 +87,27 @@ export class AuthPageComponent implements OnInit {
     passwordValidator(): ValidatorFn {
         return (control: AbstractControl) : ValidationErrors | null => {
             const value = control.value
+            const username = this.useForm.get('username')?.value
             const password = this.useForm.get('password')?.value
             const passwordConfirm = this.useForm.get('passwordConfirm')?.value
-            const isValid = password === passwordConfirm
+            const passwordInput = this.formInputs.find((input: InputModel) => input?.title === 'Password')
+            const users = this.authPageService.getUsers()
+            const isMatched = users.find(usr => usr.username === username && usr.password === password)
+            const isLoginValid = password === passwordConfirm || isMatched 
 
             if(!value) {
                 return null;
             }
 
-            return !isValid ? {passwordMissmatch: true} : null;
+            if(passwordInput?.message !== undefined) {
+                if(this.isLogin) {
+                    passwordInput.message = 'Password is incorrect!';
+                } else {
+                    passwordInput.message = 'Min. length: 4';
+                }
+            }
+
+            return !isLoginValid ? {passwordMissmatch: true} : null;
         }
     }
 
@@ -101,9 +125,13 @@ export class AuthPageComponent implements OnInit {
                 return null;
             }
 
+            if(this.isLogin) {
+                return null;
+            }
+
             if(usernameInput?.message !== undefined) {
                 if(isTaken) {
-                    usernameInput.message = 'Username is taken';
+                    usernameInput.message = 'Username is taken!';
                 } else {
                     usernameInput.message = 'Min. length: 4';
                 }
