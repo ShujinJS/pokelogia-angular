@@ -2,6 +2,7 @@ export interface UserModel {
     id?: string,
     username: string,
     password: string,
+    checkbox?: boolean,
 }
 
 export interface FormModel {

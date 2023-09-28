@@ -1,6 +1,7 @@
 import { AuthPageService } from './authPage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn, } from '@angular/forms';
+import { Router } from '@angular/router';
 import { getFromStore } from 'src/app/helper/storage.helper';
 import { FormModel, InputModel, UserModel } from 'src/app/models/auth.model';
 
@@ -15,26 +16,34 @@ export class AuthPageComponent implements OnInit {
     constructor ( 
         private formBuilder: FormBuilder,
         private authPageService: AuthPageService,
+        private router: Router,
         ) {
-
     }
 
     classPrefix = 'app-formInputs'
     useForm: FormGroup = new FormGroup({})
-    showLogin = true 
-    isLogin: boolean = this.showLogin
+    showLogin = true
+    signInInput = { title: "Confirm password", type: "password", isRequired: true, formControlName: "passwordConfirm", message: "Passwords must be matched"}
 
     formInputs = [
         { title: "Username", type: "text", isRequired: true, formControlName: "username", message: "Min. length: 4"},
         { title: "Password", type: "password", isRequired: true, formControlName: "password", message: "Min. length: 4"},
-        this.isLogin ? 
-            { title: "Remember me?", type: "checkbox", isRequired: false, formControlName: "checkbox", message: ""}
-        : 
-            { title: "Confirm password", type: "password", isRequired: true, formControlName: "passwordConfirm", message: "Passwords must be matched"}
-    ]
 
+        // INFO: This approach couldn't be used of unavailability of dynmaic usage of "input.type" in "input type="input.type" in case of "input.type" equals to "checkbox", checkbox should be specificly set
+
+        // this.showLogin ? 
+        //     { title: "Remember me?", type: "checkbox", isRequired: false, formControlName: "checkbox", message: ""}
+        // : 
+        //     { title: "Confirm password", type: "password", isRequired: true, formControlName: "passwordConfirm", message: "Passwords must be matched"}
+    ]
+    
     ngOnInit(): void {
         const formToUse = this.createForm()
+        if(this.showLogin) {
+            //this.formInputs.pop()
+        } else {
+            this.formInputs.push(this.signInInput)
+        }
         this.useForm = this.formBuilder.group(formToUse)
     }
 
@@ -42,30 +51,34 @@ export class AuthPageComponent implements OnInit {
         if(this.useForm.valid) {
             const user: UserModel = this.useForm.value;
 
-            if(this.isLogin) {
+            if(this.showLogin) {
                this.authPageService.logUserIn(user)
             } else {
                 this.authPageService.signUserIn(user)
             }
             this.useForm.reset()
+            this.router.navigate(['/'])
         }
     }
 
     createForm(): FormModel {
+        const passwordValidators = [
+            Validators.minLength(4),
+            Validators.required,
+        ]
+        if(this.showLogin) {
+            passwordValidators.push(this.passwordValidator())
+        }
         let formToUse: FormModel = {
             username: ['', [
                 Validators.minLength(4),
                 this.usernameValidator(),
                 Validators.required,
             ]],
-            password: ['', [
-                Validators.minLength(4),
-                this.passwordValidator(),
-                Validators.required,
-            ]],
+            password: ['', passwordValidators],
         }
 
-        if(this.isLogin) {
+        if(this.showLogin) {
             formToUse = {
                 ...formToUse,
                 checkbox: ['', []], 
@@ -84,33 +97,6 @@ export class AuthPageComponent implements OnInit {
         return formToUse;
     }
 
-    passwordValidator(): ValidatorFn {
-        return (control: AbstractControl) : ValidationErrors | null => {
-            const value = control.value
-            const username = this.useForm.get('username')?.value
-            const password = this.useForm.get('password')?.value
-            const passwordConfirm = this.useForm.get('passwordConfirm')?.value
-            const passwordInput = this.formInputs.find((input: InputModel) => input?.title === 'Password')
-            const users = this.authPageService.getUsers()
-            const isMatched = users.find(usr => usr.username === username && usr.password === password)
-            const isLoginValid = password === passwordConfirm || isMatched 
-
-            if(!value) {
-                return null;
-            }
-
-            if(passwordInput?.message !== undefined) {
-                if(this.isLogin) {
-                    passwordInput.message = 'Password is incorrect!';
-                } else {
-                    passwordInput.message = 'Min. length: 4';
-                }
-            }
-
-            return !isLoginValid ? {passwordMissmatch: true} : null;
-        }
-    }
-
     usernameValidator(): ValidatorFn {
         return (control: AbstractControl) : ValidationErrors | null => {
             const value = control.value
@@ -125,7 +111,7 @@ export class AuthPageComponent implements OnInit {
                 return null;
             }
 
-            if(this.isLogin) {
+            if(this.showLogin) {
                 return null;
             }
 
@@ -138,6 +124,35 @@ export class AuthPageComponent implements OnInit {
             } 
 
             return isTaken ? {usernameTaken : true} : null;
+        }
+    }
+
+    passwordValidator(): ValidatorFn {
+        return (control: AbstractControl) : ValidationErrors | null => {
+            const value = control.value
+            const username = this.useForm.get('username')?.value
+            const password = this.useForm.get('password')?.value
+            const passwordConfirm = this.useForm.get('passwordConfirm')?.value
+            const passwordInput = this.formInputs.find((input: InputModel) => input?.title === 'Password')
+            const users = this.authPageService.getUsers()
+            let isLoginValid
+            const isMatched = users.find(usr => usr.username === username && usr.password === password)
+
+            if(!value) {
+                return null;
+            }
+
+            if(passwordInput?.message !== undefined) {
+                if(this.showLogin) {
+                    passwordInput.message = 'Password is incorrect!';
+                    isLoginValid = isMatched
+                } else {
+                    passwordInput.message = 'Min. length: 4';
+                    isLoginValid = password === passwordConfirm
+                }
+            }
+
+            return isLoginValid ? null : {passwordMissmatch: true} ;
         }
     }
 }

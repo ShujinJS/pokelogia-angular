@@ -6,7 +6,7 @@
     >
         <div [ngClass]="[classPrefix + '__input-ctr']">
             <div 
-                [ngClass]="[classPrefix + '__input-grp', input?.type === 'checkbox' ? 'check' : '']" 
+                [ngClass]="[classPrefix + '__input-grp']" 
                 *ngFor="let input of formInputs"
             >
                 <label>{{input?.title}}</label>
@@ -19,14 +19,23 @@
                     *{{input?.message}}
                 </span>
             </div>
+            <div *ngIf="showLogin" ngClass="inp-check">
+                <label for="input">
+                    Remember me?
+                </label>
+                <input type="checkbox" formControlName="checkbox">
+            </div>
         </div>
 
         <div [ngClass]="[classPrefix + '__btn-ctr']">
-            <button type="submit" [disabled]="useForm.invalid">
-                {{isLogin ? 'LOG-IN' : 'REGISTER'}}
+            <button 
+                type="submit"
+                [disabled]="useForm.invalid"
+            >
+                {{showLogin ? 'LOG-IN' : 'SIGN-IN'}}
             </button>
-            <span (click)="isLogin = !isLogin">
-                {{isLogin ? 'Register' : 'Login'}}
+            <span (click)="showLogin = !showLogin">
+                {{showLogin ? 'Signin' : 'Login'}}
             </span>
         </div>
     </form>
