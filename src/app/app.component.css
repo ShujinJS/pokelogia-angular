@@ -4,5 +4,6 @@
     position: absolute;
     top: 0;
     z-index: -1;
-    background: url('../assets/pokeballs.png')
+    background: url('../assets/pokeballs.png');
+    background-size: cover;
 }

@@ -1,11 +1,42 @@
 <div [ngClass]="[classPrefix]">
-    <form [formGroup]="isLogin ? loginForm : registerForm" (ngSubmit)="onSubmit()" [ngClass]="[classPrefix + '__form']">
+    <form 
+        [formGroup]="useForm" 
+        [ngClass]="[classPrefix + '__form']"
+        (ngSubmit)="onSubmit()"
+    >
         <div [ngClass]="[classPrefix + '__input-ctr']">
-            <div [ngClass]="[classPrefix + '__input-grp']" *ngFor="let input of inputsToUse">
-                <label for="">{{input?.title}}</label>
-                <input type={{input?.type}} required={{input?.isRequired}}>
+            <div 
+                [ngClass]="[classPrefix + '__input-grp']" 
+                *ngFor="let input of formInputs"
+            >
+                <label>{{input?.title}}</label>
+                <input 
+                    type={{input?.type}} 
+                    formControlName="{{input?.formControlName}}" 
+                    required={{input?.isRequired}}
+                >
+                <span *ngIf="useForm.get(input.formControlName)?.invalid">
+                    *{{input?.message}}
+                </span>
+            </div>
+            <div *ngIf="showLogin" ngClass="inp-check">
+                <label for="input">
+                    Remember me?
+                </label>
+                <input type="checkbox" formControlName="checkbox">
             </div>
         </div>
-        <button type="submit">{{isLogin ? 'Login' : 'Register'}}</button>
+
+        <div [ngClass]="[classPrefix + '__btn-ctr']">
+            <button 
+                type="submit"
+                [disabled]="useForm.invalid"
+            >
+                {{showLogin ? 'LOG-IN' : 'SIGN-IN'}}
+            </button>
+            <span (click)="showLogin = !showLogin">
+                {{showLogin ? 'Signin' : 'Login'}}
+            </span>
+        </div>
     </form>
 </div>

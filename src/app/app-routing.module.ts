@@ -7,7 +7,7 @@ import { AuthPageComponent } from './pages/auth-page/authPage.component';
 import { AuthPageModule } from './pages/auth-page/authPage.module';
 
 const routes: Routes = [
-  { path: "home", component: LandingPageComponent },
+  { path: "", component: LandingPageComponent },
   { path: "auth", component: AuthPageComponent },
 ];
 
