@@ -2,10 +2,11 @@ $light-color-bg: #ef5350;
 $light-color-bg-hover: #bc403e;
 $light-color-bg-plain: #f7f7f7;
 $light-color-tx: #fff;
-$light-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+$light-shadow: 0 1px 0 rgba(17,17,26,.1), 0 8px 24px rgba(17,17,26,.1), 0 16px 48px rgba(17,17,26,.1);
 
 $dark-color-bg: #51A0D5;
 $dark-color-bg-hover: #2b86c3;
 $dark-color-bg-plain: #272727;
+$dark-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 $outline-color: #ffe200;

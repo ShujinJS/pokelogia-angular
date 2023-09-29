@@ -32,6 +32,9 @@ export class NavComponent implements OnInit {
     navLinks = [
         {title: "Home", link: "/"},
         {title: "Coming Soon", link: "/"},
-        {title: this.authData.isLoggedIn ? this.authData.username : 'Log In', link: this.authData.isLoggedIn ? "" : "/auth"},
+        {
+            title: this.authData.isLoggedIn ? this.authData.username : 'Log In', 
+            link: this.authData.isLoggedIn ? "" : "/auth"
+        },
     ]
 }

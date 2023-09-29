@@ -1,56 +1,72 @@
 @import '../../scss/app.colors.scss';
+@import '../../scss/app.common.scss';
 
 section {
     width: 100%;
+    position: relative;
+    top: $header-height;
+
     .app-landing {
         width: 100%;
-        height: 31.25rem;
+        height: 22rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
+        position: inherit;
+
+        &.light {
+            background-color: $light-color-bg;
+            box-shadow: $light-shadow;
+        }
+
+        &.dark {
+            background-color: $dark-color-bg-plain;
+            box-shadow: $dark-shadow;
+        }
     
         &__intro {
             width: 100%;
-            height: 80%;
+            height: 90%;
             margin: 0 auto;
             display: inherit;
-            justify-content: inherit;
+            justify-content: space-around;
             align-items: inherit;
             flex-direction: column;
-            position: absolute;
-            z-index: 1;
+            // position: absolute;
+            // z-index: 1;
     
             &-version {
                 width: 30rem;
-                height: 50%;
+                height: 10rem;
+                background: url('../../../assets/landing-title.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+
+                // &.light {
+                //     background: url('../../../assets/red-version.png');
+                //     background-repeat: no-repeat;
+                //     background-size: contain;
+                // }
     
-                &.light {
-                    background: url('../../../assets/red-version.png');
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
-    
-                &.dark {
-                    background: url('../../../assets/blue-version.png');
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
+                // &.dark {
+                //     background: url('../../../assets/blue-version.png');
+                //     background-repeat: no-repeat;
+                //     background-size: contain;
+                // }
             }
     
             &-welcome-ctr {
                 width: 100%;
                 display: inherit;
                 justify-content: center;
-                background-color: $light-color-bg;
 
-                &.light {
-                    background-color: $light-color-bg;
-                }
+                // &.light {
+                //     background-color: $light-color-bg;
+                // }
 
-                &.dark {
-                    background-color: $dark-color-bg;
-                }
+                // &.dark {
+                //     background-color: $dark-color-bg;
+                // }
             }
     
             &-welcome {
@@ -72,65 +88,65 @@ section {
             }
         }
     
-        &__train-paused::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 31.25rem;
-            opacity: 0.7;
-            z-index: 0;
-            left: 0;
-            top: 0;
-            background: url('../../../assets/pokemon-city.jpeg') repeat;
-            background-size: cover;
-            -webkit-animation: train 100000s linear infinite;
-                    animation: train 100000s linear infinite;
-            -webkit-animation-play-state: paused;
-                    animation-play-state: paused;
-        }
+        // &__train-paused::before {
+        //     content: "";
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 31.25rem;
+        //     opacity: 0.7;
+        //     z-index: 0;
+        //     left: 0;
+        //     top: 0;
+        //     background: url('../../../assets/pokemon-city.jpeg') repeat;
+        //     background-size: cover;
+        //     -webkit-animation: train 100000s linear infinite;
+        //             animation: train 100000s linear infinite;
+        //     -webkit-animation-play-state: paused;
+        //             animation-play-state: paused;
+        // }
     
-        &__train-playing::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 31.25rem;
-            z-index: 0;
-            left: 0;
-            top: 0;
-            background: url('../../../assets/pokemon-city.jpeg') repeat;
-            background-size: cover;
-            -webkit-animation: train 100000s linear infinite;
-                    animation: train 100000s linear infinite;
-            -webkit-animation-play-state: playing;
-                    animation-play-state: playing;
+        // &__train-playing::before {
+        //     content: "";
+        //     position: absolute;
+        //     width: 100%;
+        //     height: 31.25rem;
+        //     z-index: 0;
+        //     left: 0;
+        //     top: 0;
+        //     background: url('../../../assets/pokemon-city.jpeg') repeat;
+        //     background-size: cover;
+        //     -webkit-animation: train 100000s linear infinite;
+        //             animation: train 100000s linear infinite;
+        //     -webkit-animation-play-state: playing;
+        //             animation-play-state: playing;
 
-            &.dark {
-                opacity: 0.7;
-            }
-          }
+        //     &.dark {
+        //         opacity: 0.7;
+        //     }
+        // }
     
-        @keyframes train {
-            0% {
-              background-position: 0 0;
-            }
-            100% {
-              background-position: 10000000px 0;
-            }
-        }
+        // @keyframes train {
+        //     0% {
+        //       background-position: 0 0;
+        //     }
+        //     100% {
+        //       background-position: 10000000px 0;
+        //     }
+        // }
     
-        @-webkit-keyframes train {
-            0% {
-              background-position: 0 0;
-            }
-            100% {
-              background-position: 10000000px 0;
-            }
-        }
+        // @-webkit-keyframes train {
+        //     0% {
+        //       background-position: 0 0;
+        //     }
+        //     100% {
+        //       background-position: 10000000px 0;
+        //     }
+        // }
     }
 
     .app-landing__outro {
         width: 100%;
-        height: 3rem;
+        height: 2rem;
         box-shadow: $light-shadow;
 
         &.light {
@@ -155,7 +171,7 @@ section {
         }
 
         &.dark {
-            background-color: $dark-color-bg-plain;
+            background-color: #fff;
         }
 
         &-ctr {
