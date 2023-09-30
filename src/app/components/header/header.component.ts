@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
     classPrefix = 'app-header'
-}
+    isDark = true;
+    theme: string = this.isDark ? 'dark' : 'light';
+} 

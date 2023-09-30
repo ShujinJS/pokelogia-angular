@@ -1,11 +1,17 @@
 @import "../../scss/app.colors.scss";
+@import "../../scss/app.common.scss";
 
 .app-header {
     width: 100%;
-    height: 120px;
-    box-shadow: $light-shadow;
+    height: $header-height;
+    position: absolute;
+    z-index: 1;
 
-    section {
-        height: 40%;
+    &.light {
+        box-shadow: $light-shadow;
+    }
+
+    &.dark {
+        box-shadow: $dark-shadow;
     }
 }

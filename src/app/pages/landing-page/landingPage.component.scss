@@ -1,0 +1,204 @@
+@import '../../scss/app.colors.scss';
+@import '../../scss/app.common.scss';
+
+section {
+    width: 100%;
+    position: relative;
+    top: $header-height;
+
+    .app-landing {
+        width: 100%;
+        height: 22rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: inherit;
+
+        &.light {
+            background-color: $light-color-bg;
+            box-shadow: $light-shadow;
+        }
+
+        &.dark {
+            background-color: $dark-color-bg-plain;
+            box-shadow: $dark-shadow;
+        }
+    
+        &__intro {
+            width: 100%;
+            height: 90%;
+            margin: 0 auto;
+            display: inherit;
+            justify-content: space-around;
+            align-items: inherit;
+            flex-direction: column;
+    
+            &-version {
+                width: 27rem;
+                height: 10rem;
+                background: url('../../../assets/landing-title.png');
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+    
+            &-welcome-ctr {
+                width: 100%;
+                display: inherit;
+                justify-content: center;
+            }
+    
+            &-welcome {
+                width: 50%;
+                padding: 1em;
+                display: inherit;
+                flex-direction: column;
+                text-align: center;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                color: $light-color-tx;
+    
+                h1 {
+                    font-weight: bold;
+                }
+    
+                span {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .app-landing__outro {
+        width: 100%;
+        height: 2rem;
+        box-shadow: $light-shadow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.light {
+            background-color: $light-color-bg;
+        }
+
+        &.dark {
+            background-color: $dark-color-bg;
+        }
+
+        &__announce {
+            width: 85%;
+            display: flex;
+            justify-content: space-around;
+            color: $light-color-tx;
+        }
+    }
+
+    .app-landing__search {
+        width: 100%;
+        height: 65vh;
+        display: flex;
+        justify-content: center;
+
+        &.light {
+            background-color: $light-color-bg-plain;
+        }
+
+        &.dark {
+            background-color: $dark-color-bg-cover;
+        }
+
+        &-ctr {
+            width: 50%;
+            height: 100%;
+            display: inherit;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        &-input-ctr {
+            width: 85%;
+            border-radius: 20px;
+            box-shadow: $focus-shadow;
+        }
+
+        &-input-grp {
+            width: 100%;
+            height: 4rem;
+            display: flex;
+            background-color: $dark-color-bg-cover;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
+            &.light {
+                border-bottom: 1px solid $light-color-bg;
+            }
+    
+            &.dark {
+                border-bottom: 2px solid $dark-color-bg;
+            }
+
+            input {
+                width: 90%;
+                height: inherit;
+                padding: 0 20px;
+                outline: none;
+                border: none;
+                background: none;
+
+                &.light {
+                    color: $light-color-tx;
+                }
+        
+                &.dark {
+                    color: $light-color-tx;
+                }
+
+                &::placeholder {
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        &-input-icon {
+            width: 10%;
+            height: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.3;
+
+            svg path {
+                &.light {
+                    fill: $dark-color-bg-plain;
+                }
+        
+                &.dark {
+                    fill: $light-color-tx;
+                }
+            }
+        }
+
+        &-results {
+            width: 100%;
+            height: 14rem;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            &.light {
+                background-color: $dark-color-bg-plain;
+            }
+    
+            &.dark {
+                background-color: $dark-color-bg-cover;
+            }
+        }
+
+        &-img {
+            width: 21rem;
+            height: 12rem;
+            background: url('../../../assets/gen1squad.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+}
+

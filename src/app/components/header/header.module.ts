@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header.component';
 import { NgModule } from '@angular/core';
 import { NavComponent } from './nav/nav.component';
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms'
     imports: [
       CommonModule,
       FormsModule,
+      RouterModule
     ],
     exports: [ 
       HeaderComponent 
@@ -18,4 +20,4 @@ import { FormsModule } from '@angular/forms'
     providers: [],
   })
   
-  export class HeaderModule { }
+export class HeaderModule { }
