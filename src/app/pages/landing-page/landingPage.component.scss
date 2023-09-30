@@ -32,41 +32,19 @@ section {
             justify-content: space-around;
             align-items: inherit;
             flex-direction: column;
-            // position: absolute;
-            // z-index: 1;
     
             &-version {
-                width: 30rem;
+                width: 27rem;
                 height: 10rem;
                 background: url('../../../assets/landing-title.png');
                 background-repeat: no-repeat;
                 background-size: contain;
-
-                // &.light {
-                //     background: url('../../../assets/red-version.png');
-                //     background-repeat: no-repeat;
-                //     background-size: contain;
-                // }
-    
-                // &.dark {
-                //     background: url('../../../assets/blue-version.png');
-                //     background-repeat: no-repeat;
-                //     background-size: contain;
-                // }
             }
     
             &-welcome-ctr {
                 width: 100%;
                 display: inherit;
                 justify-content: center;
-
-                // &.light {
-                //     background-color: $light-color-bg;
-                // }
-
-                // &.dark {
-                //     background-color: $dark-color-bg;
-                // }
             }
     
             &-welcome {
@@ -87,67 +65,15 @@ section {
                 }
             }
         }
-    
-        // &__train-paused::before {
-        //     content: "";
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 31.25rem;
-        //     opacity: 0.7;
-        //     z-index: 0;
-        //     left: 0;
-        //     top: 0;
-        //     background: url('../../../assets/pokemon-city.jpeg') repeat;
-        //     background-size: cover;
-        //     -webkit-animation: train 100000s linear infinite;
-        //             animation: train 100000s linear infinite;
-        //     -webkit-animation-play-state: paused;
-        //             animation-play-state: paused;
-        // }
-    
-        // &__train-playing::before {
-        //     content: "";
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 31.25rem;
-        //     z-index: 0;
-        //     left: 0;
-        //     top: 0;
-        //     background: url('../../../assets/pokemon-city.jpeg') repeat;
-        //     background-size: cover;
-        //     -webkit-animation: train 100000s linear infinite;
-        //             animation: train 100000s linear infinite;
-        //     -webkit-animation-play-state: playing;
-        //             animation-play-state: playing;
-
-        //     &.dark {
-        //         opacity: 0.7;
-        //     }
-        // }
-    
-        // @keyframes train {
-        //     0% {
-        //       background-position: 0 0;
-        //     }
-        //     100% {
-        //       background-position: 10000000px 0;
-        //     }
-        // }
-    
-        // @-webkit-keyframes train {
-        //     0% {
-        //       background-position: 0 0;
-        //     }
-        //     100% {
-        //       background-position: 10000000px 0;
-        //     }
-        // }
     }
 
     .app-landing__outro {
         width: 100%;
         height: 2rem;
         box-shadow: $light-shadow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         &.light {
             background-color: $light-color-bg;
@@ -156,34 +82,49 @@ section {
         &.dark {
             background-color: $dark-color-bg;
         }
+
+        &__announce {
+            width: 85%;
+            display: flex;
+            justify-content: space-around;
+            color: $light-color-tx;
+        }
     }
 
     .app-landing__search {
         width: 100%;
-        height: 32rem;
+        height: 65vh;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
 
         &.light {
             background-color: $light-color-bg-plain;
         }
 
         &.dark {
-            background-color: #fff;
+            background-color: $dark-color-bg-cover;
         }
 
         &-ctr {
             width: 50%;
+            height: 100%;
+            display: inherit;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        &-input-ctr {
+            width: 85%;
             border-radius: 20px;
+            box-shadow: $focus-shadow;
         }
 
         &-input-grp {
             width: 100%;
-            height: 2rem;
+            height: 4rem;
             display: flex;
-            background-color: $light-color-bg-plain;
+            background-color: $dark-color-bg-cover;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
 
@@ -196,12 +137,20 @@ section {
             }
 
             input {
-                width: 95%;
+                width: 90%;
                 height: inherit;
                 padding: 0 20px;
                 outline: none;
                 border: none;
                 background: none;
+
+                &.light {
+                    color: $light-color-tx;
+                }
+        
+                &.dark {
+                    color: $light-color-tx;
+                }
 
                 &::placeholder {
                     opacity: 0.5;
@@ -210,25 +159,27 @@ section {
         }
 
         &-input-icon {
-            width: 5%;
+            width: 10%;
             height: inherit;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0.3;
 
-            div {
-                width: 20px;
-                height: 20px;
-                background-image: url('../../../assets/search-icon.png');
-                background-size: contain;
-                background-repeat: no-repeat;
+            svg path {
+                &.light {
+                    fill: $dark-color-bg-plain;
+                }
+        
+                &.dark {
+                    fill: $light-color-tx;
+                }
             }
         }
 
         &-results {
             width: 100%;
-            height: 9rem;
+            height: 14rem;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
 
@@ -237,13 +188,13 @@ section {
             }
     
             &.dark {
-                background-color: $light-color-bg-plain;
+                background-color: $dark-color-bg-cover;
             }
         }
 
         &-img {
-            width: 30rem;
-            height: 17rem;
+            width: 21rem;
+            height: 12rem;
             background: url('../../../assets/gen1squad.png');
             background-size: contain;
             background-repeat: no-repeat;
