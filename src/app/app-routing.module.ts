@@ -1,3 +1,4 @@
+import { PokemonDetailComponent } from './pages/pokemonDetail-page/pokemonDetail.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,6 +10,7 @@ import { AuthPageModule } from './pages/auth-page/authPage.module';
 const routes: Routes = [
   { path: "", component: LandingPageComponent },
   { path: "auth", component: AuthPageComponent },
+  { path: "pokemon:name", component: PokemonDetailComponent },
 ];
 
 @NgModule({
