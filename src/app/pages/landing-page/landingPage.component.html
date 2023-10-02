@@ -26,7 +26,17 @@
                     </div>
                 </div>
                 <div [ngClass]="[classPrefix + '__search-results', theme]">
-    
+                    <ul>
+                        <li *ngFor="let pokemon of pokemons?.results; index as i"
+                            [ngClass]="[classPrefix + '__search-results__item', theme]"
+                        >
+                            {{pokemon?.name}}
+                        </li>
+                        <button 
+                            (click)="getMorePokemons(20)"
+                            [ngClass]="[classPrefix + '__search-results__more', theme]"
+                        >Show More</button>
+                    </ul>
                 </div>
             </div>
             <div [ngClass]="[classPrefix + '__search-img', theme]">
