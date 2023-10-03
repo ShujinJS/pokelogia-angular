@@ -1,0 +1,70 @@
+@import '../../scss/app.colors.scss';
+@import '../../scss/app.common.scss';
+@import '../../scss/app.pokemon-type-colors.scss';
+@import '../../scss/app.font.scss';
+
+.app-pokemonDetail {
+    width: 80%;
+    height: 100vh;
+    padding-top: $header-height;
+    margin: 0 auto;
+
+    &.light {
+        color: $dark-color-bg-plain;
+        background-color: $light-color-bg-plain;
+    }
+
+    &.dark {
+        color: $light-color-tx;
+        background-color: $dark-color-bg-plain;
+    }
+
+    &__ctr {
+        width: 100%;
+        height: 100%;
+
+        &__title-grp {
+            padding: 2em;
+            height: 9em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            div {
+                font-size: $detail-title-fs;
+
+                .title {
+                    margin-right: 8px;
+                    &.light {
+                        color: $dark-color-bg-plain;
+                    }
+                
+                    &.dark {
+                        color: $light-color-tx;
+                    }
+                }
+
+                .id {
+                    &.light {
+                        color: $dark-color-bg-plain;
+                    }
+                
+                    &.dark {
+                        color: $outline-color;
+                    }
+                }
+            }
+
+            ul {
+                li {
+                    margin-right: 1em;
+                    display: inline;
+                    font-size: $detail-type-fs;
+                    padding: 4px 15px;
+                    border: 1px solid none;
+                    border-radius: 10px;
+                }
+            }
+        }
+    }
+}

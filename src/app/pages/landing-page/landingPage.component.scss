@@ -4,7 +4,7 @@
 section {
     width: 100%;
     position: relative;
-    top: $header-height;
+    padding-top: $header-height;
 
     .app-landing {
         width: 100%;
@@ -233,7 +233,7 @@ section {
                     border-top: 1px solid $dark-color-bg-plain;
                     background-color: $light-btn-bg;
                     &:hover {
-                        background-color:$light-btn-bg-hover;
+                        background-color: $light-btn-bg-hover;
                     }
                 }
         

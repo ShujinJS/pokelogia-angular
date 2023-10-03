@@ -1,6 +1,6 @@
-import { GetPokemonsModel, Result } from './../../models/request.model';
+import { Router } from '@angular/router';
+import { GetPokemonsModel } from './../../models/request.model';
 import { RequestHelper } from './../../helper/request.helper';
-import { Pokemon } from './../../models/pokemon.model';
 import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-landingPage',
@@ -18,7 +18,7 @@ export class LandingPageComponent implements OnInit {
     landingInfo = 'You can search for your favourite Pokémons and train their abilities now! Pick your 6 Pokémons and become the very best!';
     landingNews = 'Version 1.0 includes searching your Pokémons and studying them.';
     landingUpcoming = 'Coming Soon: Pick your Pokémons.';
-    pokemons : GetPokemonsModel = {
+    pokemons: GetPokemonsModel = {
         count: 0,
         next: '',
         previous: '',
@@ -28,6 +28,7 @@ export class LandingPageComponent implements OnInit {
 
     constructor(
         private requestHelper: RequestHelper,
+        private router: Router,
     ){
 
     }
@@ -36,12 +37,16 @@ export class LandingPageComponent implements OnInit {
         this.requestPokemons();
     }
 
-    getMorePokemons(many: number): void{
+    getMorePokemons(many: number): void {
         this.showPokemons += many;
         this.requestPokemons();
     }
 
-    requestPokemons(){
+    getDetailPage(name: string): void {
+        this.router.navigate([`pokemon/${name}`])
+    }
+
+    requestPokemons(): void {
         const showAmount = this.showPokemons.toString();
         this.requestHelper.getPokemons('00', showAmount).subscribe( pokemons => {
             this.pokemons = pokemons

@@ -28,6 +28,7 @@
                 <div [ngClass]="[classPrefix + '__search-results', theme]">
                     <ul>
                         <li *ngFor="let pokemon of pokemons?.results; index as i"
+                            (click)="getDetailPage(pokemon.name)"
                             [ngClass]="[classPrefix + '__search-results__item', theme]"
                         >
                             {{pokemon?.name}}

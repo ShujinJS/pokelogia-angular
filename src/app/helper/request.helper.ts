@@ -21,10 +21,15 @@ export class RequestHelper {
 
     }
 
-    getPokemons(offset?: string, limit?: string): Observable<GetPokemonsModel> {
+    getPokemons(offset: string = '00', limit?: string): Observable<GetPokemonsModel> {
         let requestUrl = `${this.baseUrl}`
         if(offset || limit) requestUrl = `${this.baseUrl}?offset=${offset}&limit=${limit}`
         
         return this.http.get<GetPokemonsModel>(requestUrl)
+    }
+
+    getPokemonDetail(name: string): Observable<Pokemon> {
+        const requestUrl = `${this.baseUrl}/${name}`
+        return this.http.get<Pokemon>(requestUrl)
     }
 }

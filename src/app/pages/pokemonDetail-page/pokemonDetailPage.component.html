@@ -1,0 +1,49 @@
+<section [ngClass]="[classPrefix, theme]">
+    <div [ngClass]="[classPrefix + '__ctr', theme]">
+        <div [ngClass]="[classPrefix + '__ctr__title-grp', theme]">
+            <div>
+                <span [ngClass]="['title', theme]">
+                    {{pokemon.name}}
+                </span>
+                <span [ngClass]="['id', theme]">
+                    #{{pokemon.id}}
+                </span>
+            </div>
+            <ul>
+                <li *ngFor="let type of pokemon.types"
+                    [ngClass]="[type.type.name + '-bg']"
+                >
+                    {{type.type.name}}
+                </li>
+            </ul>
+            <ul>
+                Abilities:
+                <li *ngFor="let ability of pokemon.abilities">
+                    {{ability.ability.name}}
+                </li>
+            </ul>
+        </div>
+        <div [ngClass]="[classPrefix + '__details-ctr', theme]">
+            <div [ngClass]="[classPrefix + '__details-ctr__thmb-grp', theme]">
+                <img src="{{pokemon.sprites?.front_default}}" alt="">
+                <ul>
+                    <li>
+                        <img src="{{pokemon.sprites?.front_default}}" alt="">
+                    </li>
+                    <li>
+                        <img src="{{pokemon.sprites?.back_default}}" alt="">
+                    </li>
+                    <li>
+                        <img src="{{pokemon.sprites?.front_shiny}}" alt="">
+                    </li>
+                    <li>
+                        <img src="{{pokemon.sprites?.back_shiny}}" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div [ngClass]="[classPrefix + '__details-ctr__info-grp', theme]">
+    
+            </div>
+        </div>
+    </div>
+</section>

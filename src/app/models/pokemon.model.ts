@@ -18,8 +18,8 @@ export interface Pokemon {
     name:                     string;
     order:                    number;
     past_types:               any[];
-    species:                  Species;
-    sprites:                  Sprites;
+    species?:                  Species;
+    sprites?:                  Sprites;
     stats:                    Stat[];
     types:                    Type[];
     weight:                   number;
