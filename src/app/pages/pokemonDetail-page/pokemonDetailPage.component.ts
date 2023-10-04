@@ -31,6 +31,8 @@ export class PokemonDetailPageComponent implements OnInit {
         types: [],
         weight: 0,
     };
+    thumbnail = this.pokemon.sprites?.other?.['official-artwork']?.front_default
+
     // sprites = [ 
     //     this.pokemon.sprites?.front_default,
     //     this.pokemon?.sprites?.back_default,
@@ -54,5 +56,9 @@ export class PokemonDetailPageComponent implements OnInit {
         this.requestHelper.getPokemonDetail(nameParam).subscribe( pokemon => {
             this.pokemon = pokemon;
         })
+    }
+
+    setThumbnail(thumb?: string): void {
+        this.thumbnail = thumb;
     }
 }

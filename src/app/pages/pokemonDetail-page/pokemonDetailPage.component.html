@@ -23,25 +23,28 @@
                 </li>
             </ul>
         </div>
-        <div [ngClass]="[classPrefix + '__details-ctr', theme]">
-            <div [ngClass]="[classPrefix + '__details-ctr__thmb-grp', theme]">
-                <img src="{{pokemon.sprites?.front_default}}" alt="">
+        <div [ngClass]="[classPrefix + '__ctr__details-ctr', theme]">
+            <div [ngClass]="[classPrefix + '__ctr__details-ctr__thmb-grp', theme]">
+                <img 
+                    src="{{thumbnail || pokemon.sprites?.front_default}}" alt="pokemon being displayed"
+                    class="thumbnail"
+                >
                 <ul>
-                    <li>
+                    <li (click)="setThumbnail(pokemon.sprites?.front_default)">
                         <img src="{{pokemon.sprites?.front_default}}" alt="">
                     </li>
-                    <li>
-                        <img src="{{pokemon.sprites?.back_default}}" alt="">
-                    </li>
-                    <li>
+                    <li (click)="setThumbnail(pokemon.sprites?.front_shiny)">
                         <img src="{{pokemon.sprites?.front_shiny}}" alt="">
                     </li>
-                    <li>
-                        <img src="{{pokemon.sprites?.back_shiny}}" alt="">
+                    <li (click)="setThumbnail(pokemon.sprites?.other?.['official-artwork']?.front_default)">
+                        <img src="{{pokemon.sprites?.other?.['official-artwork']?.front_default}}" alt="">
+                    </li>
+                    <li (click)="setThumbnail(pokemon.sprites?.other?.['official-artwork']?.front_shiny)">
+                        <img src="{{pokemon.sprites?.other?.['official-artwork']?.front_shiny}}" alt="">
                     </li>
                 </ul>
             </div>
-            <div [ngClass]="[classPrefix + '__details-ctr__info-grp', theme]">
+            <div [ngClass]="[classPrefix + '__ctr__details-ctr__info-grp', theme]">
     
             </div>
         </div>
