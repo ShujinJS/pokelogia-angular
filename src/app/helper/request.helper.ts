@@ -1,4 +1,4 @@
-import { GetPokemonsModel } from './../models/request.model';
+import { GetPokemonsModel, PokemonLocations } from './../models/request.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -31,5 +31,10 @@ export class RequestHelper {
     getPokemonDetail(name: string): Observable<Pokemon> {
         const requestUrl = `${this.baseUrl}/${name}`
         return this.http.get<Pokemon>(requestUrl)
+    }
+
+    getPokemonEncounters(name: string): Observable<PokemonLocations[]> {
+        const requestUrl = `${this.baseUrl}/${name}/encounters`
+        return this.http.get<PokemonLocations[]>(requestUrl);
     }
 }
