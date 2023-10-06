@@ -21,4 +21,10 @@ $dark-btn-bg-hover: $dark-color-bg-hover;
 $dark-btn-bg-secondary: $dark-color-bg;
 $dark-btn-bg-secondary-hover: #3f7ea7;
 
+$dark-gradient-in: rgb(20,33,41);
+$dark-gradient-out: linear-gradient(0deg, rgba(20,33,41,1) 30%, rgba(81,160,213,1) 50%, rgba(39,39,39,1) 95%);
+
+$light-gradient-in: rgb(247,247,247);
+$light-gradient-out: linear-gradient(0deg, rgba(247,247,247,1) 30%, rgba(239,83,80,1) 50%, rgba(247,247,247,1) 95%);
+
 $outline-color: #ffe200;

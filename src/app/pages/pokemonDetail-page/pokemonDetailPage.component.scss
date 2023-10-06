@@ -83,7 +83,7 @@
 
                     li {
                         width: 25%;
-                        box-shadow: $focus-shadow;
+                        box-shadow: $light-shadow;
                         cursor: pointer;
 
                         img {
@@ -174,12 +174,14 @@
 
                 .btn-grp {
                     width: 100%;
+
                     .add-btn {
                         width: inherit;
                         padding: 10px;
                         border-radius: 15px;
                         color: $light-color-tx;
                         cursor: pointer;
+                        box-shadow: $dark-shadow;
                         
                         &.light {
                             background-color: $light-btn-bg;
@@ -195,6 +197,45 @@
                             &:hover {
                                 background-color: $dark-btn-bg-secondary-hover;
                             }
+                        }
+                    }
+                }
+            }
+
+            &__seperator {
+                width: 100%;
+                height: 5em;
+
+                &.light {
+                    background: $light-gradient-in;
+                    background: $light-gradient-out;
+                }
+            
+                &.dark {
+                    background: $dark-gradient-in;
+                    background: $dark-gradient-out;
+                }
+            }
+
+            &__moves-grp {
+                width: 100%;
+                height: 500px;
+                background-color: $dark-color-bg-cover;
+
+                span {
+                    margin-left: 1em;
+                }
+
+                ul {
+                    width: inherit;
+                    height: inherit;
+                    overflow-y: auto;
+
+                    .move {
+                        padding: 1em;
+
+                        &.odd {
+                            background-color: $dark-color-bg-hover;
                         }
                     }
                 }

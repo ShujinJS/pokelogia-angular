@@ -21,9 +21,9 @@ export class RequestHelper {
 
     }
 
-    getPokemons(offset: string = '00', limit?: string): Observable<GetPokemonsModel> {
+    getPokemons(limit: string = '100000', offset: string = '00'): Observable<GetPokemonsModel> {
         let requestUrl = `${this.baseUrl}`
-        if(offset || limit) requestUrl = `${this.baseUrl}?offset=${offset}&limit=${limit}`
+        if(offset || limit) requestUrl = `${this.baseUrl}?limit=${limit}&offset=${offset}`
         
         return this.http.get<GetPokemonsModel>(requestUrl)
     }

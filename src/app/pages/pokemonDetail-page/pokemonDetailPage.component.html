@@ -84,8 +84,22 @@
                 </div>
             </div>
         </div>
+
+        <div [ngClass]="[classPrefix + ctrClassPrefix + '__seperator', theme]">
+
+        </div>
+
         <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-ctr']">
-            Moves, coming soon!
+            <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-grp']">
+                <span>Moves</span>
+                <ul>
+                    <li *ngFor="let move of pokemon.moves; index as i"
+                        [ngClass]="['move', (i % 2 == 1) ? 'odd' : '']"
+                    >
+                        {{move.move.name}}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
