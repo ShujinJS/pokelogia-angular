@@ -14,7 +14,7 @@ import { PokemonLocations } from 'src/app/models/request.model';
 export class PokemonDetailPageComponent implements OnInit {
     classPrefix = 'app-pokemonDetail'
     ctrClassPrefix = '__ctr__details-ctr'
-    isDark = true;
+    isDark = false;
     theme = this.isDark ? 'dark' : 'light';
     nameParam = this.route.snapshot.params['name']
     pokemon: Pokemon = {

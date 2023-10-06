@@ -89,12 +89,12 @@
 
         </div>
 
-        <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-ctr']">
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-grp']">
+        <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-ctr', theme]">
+            <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-grp', theme]">
                 <span>Moves</span>
                 <ul>
                     <li *ngFor="let move of pokemon.moves; index as i"
-                        [ngClass]="['move', (i % 2 == 1) ? 'odd' : '']"
+                        [ngClass]="['move', (i % 2 == 1) ? 'odd' : '', theme]"
                     >
                         {{move.move.name}}
                     </li>

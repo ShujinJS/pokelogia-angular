@@ -2,12 +2,16 @@
 @import '../../scss/app.common.scss';
 @import '../../scss/app.pokemon-type-colors.scss';
 @import '../../scss/app.font.scss';
+@import '../../scss/app.breakpoints.scss';
 
 .app-pokemonDetail {
     width: 80%;
-    height: 100vh;
     padding-top: $header-height;
     margin: 0 auto;
+
+    @media only screen and (min-width: $lap) {
+        width: 40rem;
+    }
 
     &.light {
         color: $dark-color-bg-plain;
@@ -57,18 +61,27 @@
 
         &__details-ctr {
             width: 100%;
-            height: 500px;
             padding: 0 2em 2em 2em;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
 
+            @media only screen and (min-width: $lap) {
+                height: 500px;
+                flex-direction: row;
+            }
+
             &__thmb-grp {
-                width: 50%;
+                width: 100%;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
+                @media only screen and (min-width: $lap) {
+                    width: 60%;
+                }
 
                 .thumbnail {
                     width: 100%;
@@ -95,12 +108,16 @@
             }
 
             &__info-ctr {
-                width: 48%;
+                width: 100%;
                 height: 100%;
+                margin-top: 1rem;
+                
+                @media only screen and (min-width: $lap) {
+                    width: 36%;
+                }
 
                 .info-grp {
                     width: 100%;
-                    height: 95%;
                     overflow: hidden;
 
                     .info {
@@ -117,6 +134,11 @@
                     }
     
                     .types {
+
+                        @media only screen and (min-width: $mobile-l) {
+                            color: $light-color-tx;
+                        }
+
                         ul {
                             display: flex;
     
@@ -182,6 +204,7 @@
                         color: $light-color-tx;
                         cursor: pointer;
                         box-shadow: $dark-shadow;
+                        border: none;
                         
                         &.light {
                             background-color: $light-btn-bg;
@@ -198,6 +221,10 @@
                                 background-color: $dark-btn-bg-secondary-hover;
                             }
                         }
+
+                        @media only screen and (min-width: $lap) {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -207,20 +234,26 @@
                 height: 5em;
 
                 &.light {
-                    background: $light-gradient-in;
-                    background: $light-gradient-out;
+                    background: $light-color-bg;
                 }
             
                 &.dark {
-                    background: $dark-gradient-in;
-                    background: $dark-gradient-out;
+                    background: $dark-color-bg;
                 }
             }
 
             &__moves-grp {
                 width: 100%;
                 height: 500px;
-                background-color: $dark-color-bg-cover;
+                color: $light-color-tx;
+
+                &.light {
+                    background-color: $light-color-bg;
+                }
+            
+                &.dark {
+                    background-color: $dark-color-bg-cover;
+                }
 
                 span {
                     margin-left: 1em;
@@ -234,8 +267,33 @@
                     .move {
                         padding: 1em;
 
-                        &.odd {
-                            background-color: $dark-color-bg-hover;
+                        &.light {
+                            background-color: $light-color-bg;
+
+                            &:hover {
+                                background-color: $light-color-bg-hover;
+                            }
+
+                            &.odd {
+                                color: $dark-color-tx;
+                                background-color: $light-color-bg-plain;
+
+                                &:hover {
+                                    background-color: $light-color-bg-plain-hover;
+                                }
+                            }
+                        }
+                    
+                        &.dark {
+                            background-color: $dark-color-bg-cover;
+
+                            &:hover {
+                                background-color: $dark-color-bg-hover;
+                            }
+
+                            &.odd {
+                                background-color: $dark-color-bg-hover;
+                            }
                         }
                     }
                 }

@@ -1,5 +1,6 @@
 @import '../../scss/app.colors.scss';
 @import '../../scss/app.common.scss';
+@import '../../scss/app.breakpoints.scss';
 
 section {
     width: 100%;
@@ -34,11 +35,15 @@ section {
             flex-direction: column;
     
             &-version {
-                width: 27rem;
+                width: 90%;
                 height: 10rem;
                 background: url('../../../assets/landing-title.png');
                 background-repeat: no-repeat;
                 background-size: contain;
+
+                @media only screen and (min-width: $mobile-l) {
+                    width: 27rem;
+                }
             }
     
             &-welcome-ctr {
@@ -48,7 +53,7 @@ section {
             }
     
             &-welcome {
-                width: 50%;
+                width: 100%;
                 padding: 1em;
                 display: inherit;
                 flex-direction: column;
@@ -63,17 +68,25 @@ section {
                 span {
                     display: inline-block;
                 }
+
+                @media only screen and (min-width: $lap) {
+                    width: 50%;
+                }
             }
         }
     }
 
     .app-landing__outro {
         width: 100%;
-        height: 2rem;
+        height: 5rem;
         box-shadow: $light-shadow;
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @media only screen and (min-width: $mobile-l) {
+            height: 2rem;
+        }
 
         &.light {
             background-color: $light-color-bg;
@@ -84,16 +97,20 @@ section {
         }
 
         &__announce {
-            width: 85%;
+            width: 98%;
             display: flex;
             justify-content: space-around;
             color: $light-color-tx;
+
+            @media only screen and (min-width: $mobile-l) {
+                width: 85%;
+            }
         }
     }
 
     .app-landing__search {
         width: 100%;
-        height: 65vh;
+        height: 40rem;
         display: flex;
         justify-content: center;
 
@@ -106,34 +123,46 @@ section {
         }
 
         &-ctr {
-            width: 50%;
+            width: 90%;
             height: 100%;
             display: inherit;
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
+
+            @media only screen and (min-width: $mobile-l) {
+                width: 50%;
+            }
         }
 
         &-input-ctr {
             width: 85%;
-            border-radius: 20px;
-            box-shadow: $focus-shadow;
+            border-radius: 5px;
+
+            &.light {
+                box-shadow: $light-shadow;
+            }
+    
+            &.dark {
+                background-color: $dark-color-bg-cover;
+                box-shadow: $focus-shadow;
+            }
         }
 
         &-input-grp {
             width: 100%;
             height: 4rem;
             display: flex;
-            background-color: $dark-color-bg-cover;
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
 
             &.light {
-                border-bottom: 1px solid $light-color-bg;
+                border-bottom: 2px solid $light-color-bg;
             }
     
             &.dark {
                 border-bottom: 2px solid $dark-color-bg;
+                background-color: $dark-color-bg-cover;
             }
 
             input {
@@ -145,7 +174,7 @@ section {
                 background: none;
 
                 &.light {
-                    color: $light-color-tx;
+                    color: $dark-color-tx;
                 }
         
                 &.dark {
@@ -248,11 +277,15 @@ section {
         }
 
         &-img {
-            width: 21rem;
+            width: 90%;
             height: 12rem;
             background: url('../../../assets/gen1squad.png');
             background-size: contain;
             background-repeat: no-repeat;
+
+            @media only screen and (min-width: $mobile-l) {
+                width: 21rem;
+            }
         }
     }
 }

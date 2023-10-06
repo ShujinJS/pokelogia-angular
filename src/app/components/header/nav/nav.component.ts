@@ -9,7 +9,7 @@ import { PokemonModel } from 'src/app/models/pokemon.model';
 
 export class NavComponent implements OnInit {
     classPrefix = 'app-nav'
-    isDark = true;
+    isDark = false;
     theme: string = this.isDark ? 'dark' : 'light'
     authData = this.authPageService.checkLogIn()
 

@@ -1,4 +1,6 @@
 @import "../../../scss/app.colors.scss";
+@import "../../../scss/app.font.scss";
+@import "../../../scss/app.breakpoints.scss";
 
 .app-nav {
     width: 100%;
@@ -24,11 +26,14 @@
     }
 
     &__links {
-        height: 100%;
+        font-size: $font-size-xs;
         display: inherit;
-        justify-content: space-between;
         list-style: none;
         text-decoration: unset;
+
+        @media only screen and (min-width: $mobile-l) {
+            font-size: $font-size;
+        }
 
         li {
             height: inherit;

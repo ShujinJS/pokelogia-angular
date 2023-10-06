@@ -11,7 +11,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 
 export class LandingPageComponent implements OnInit {
     classPrefix = 'app-landing';
-    isDark = true;
+    isDark = false;
     isPlaying = true;
     theme: string = this.isDark ? 'dark' : 'light';
     transition = this.isPlaying ? 'playing' : 'paused';
