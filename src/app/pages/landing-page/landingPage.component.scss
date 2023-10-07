@@ -122,6 +122,10 @@ section {
             background-color: $dark-color-bg-cover;
         }
 
+        @media only screen and (min-height: $mobile-l) {
+            height: 100vh;
+        }
+
         &-ctr {
             width: 90%;
             height: 100%;

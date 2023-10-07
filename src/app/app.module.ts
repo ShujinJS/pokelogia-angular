@@ -1,3 +1,4 @@
+import { FooterComponentModule } from './components/footer/footer.module';
 import { PokemonDetailPageModule } from './pages/pokemonDetail-page/pokemonDetailPage.module';
 import { HeaderModule } from './components/header/header.module';
 import { NgModule } from '@angular/core';
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     HeaderModule,
     HttpClientModule,
     PokemonDetailPageModule,
+    FooterComponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

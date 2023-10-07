@@ -1,0 +1,21 @@
+@import '../../scss/app.colors.scss';
+@import '../../scss/app.common.scss';
+@import '../../scss/app.breakpoints.scss';
+
+.app-footer {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.light {
+        color: $light-color-tx;
+        background-color: $light-color-bg;
+    }
+
+    &.dark {
+        color: $light-color-tx;
+        background-color: $dark-color-bg;
+    }
+}

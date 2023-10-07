@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { 
     storeConstants, 
     addToStore, 
@@ -10,12 +10,16 @@ import { UserModel } from "src/app/models/auth.model";
     providedIn: 'root'
 })
 
-export class AuthPageService {
+export class AuthPageService implements OnInit {
     private users: UserModel[] = []
 
     constructor() {
         const usersStore = getFromStore(storeConstants.users)
         this.users = usersStore ?  usersStore : []
+    }
+
+    ngOnInit(): void {
+
     }
 
     getUsers(): UserModel[] {
