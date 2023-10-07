@@ -1,0 +1,30 @@
+$mobile-s: 320px;
+$mobile: 375px;
+$mobile-l: 500px;
+$lap: 768px;
+$desk-s: 1024px;
+$desk: 1280px;
+$desk-l: 1420px;
+$desk-xl: 1620px;
+$desk-xxl: 1765p;
+
+@media only screen and (min-width: $mobile-l) {
+    
+}
+// $breakpoints: (
+//     mobile-s: 320px,
+//     mobile: 375px,
+//     mobile-l: 414px,
+//     lap: 768px,
+//     desk-s: 1024px,
+//     desk: 1280px,
+//     desk-l: 1420px,
+//     desk-xl: 1620px,
+//     desk-xxl: 1765px
+// ) !default;
+
+// @each $key, $value in $breakpoints {
+//     :export {
+//         #{$key}: #{$value};
+//     }
+// }

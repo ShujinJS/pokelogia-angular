@@ -2,7 +2,7 @@ import { AuthPageService } from './authPage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn, } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getFromStore } from 'src/app/helper/storage.helper';
+import { addToStore, getFromStore, storeConstants } from 'src/app/helper/storage.helper';
 import { FormModel, InputModel, UserModel } from 'src/app/models/auth.model';
 
 @Component({
@@ -22,8 +22,11 @@ export class AuthPageComponent implements OnInit {
 
     classPrefix = 'app-formInputs'
     useForm: FormGroup = new FormGroup({})
-    showLogin = true
+    showLogin = false
+    isDark = false;
+    theme: string = this.isDark ? 'dark' : 'light';
     signInInput = { title: "Confirm password", type: "password", isRequired: true, formControlName: "passwordConfirm", message: "Passwords must be matched"}
+    users: UserModel[] = []
 
     formInputs = [
         { title: "Username", type: "text", isRequired: true, formControlName: "username", message: "Min. length: 4"},
@@ -38,6 +41,19 @@ export class AuthPageComponent implements OnInit {
     ]
     
     ngOnInit(): void {
+        this.users = getFromStore(storeConstants.users) || []
+
+        if(this.users.length) {
+            return
+        } else {
+            const testData = {
+                username: 'testUser',
+                password: '1234'
+            }
+            this.users.push(testData)
+            addToStore(storeConstants.users, this.users)
+        }
+
         const formToUse = this.createForm()
         if(this.showLogin) {
             //this.formInputs.pop()

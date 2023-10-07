@@ -1,7 +1,7 @@
 <div [ngClass]="[classPrefix]">
     <form 
         [formGroup]="useForm" 
-        [ngClass]="[classPrefix + '__form']"
+        [ngClass]="[classPrefix + '__form', theme]"
         (ngSubmit)="onSubmit()"
     >
         <div [ngClass]="[classPrefix + '__input-ctr']">

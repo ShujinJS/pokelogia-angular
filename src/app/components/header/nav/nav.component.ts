@@ -9,7 +9,7 @@ import { PokemonModel } from 'src/app/models/pokemon.model';
 
 export class NavComponent implements OnInit {
     classPrefix = 'app-nav'
-    isDark = true;
+    isDark = false;
     theme: string = this.isDark ? 'dark' : 'light'
     authData = this.authPageService.checkLogIn()
 
@@ -23,17 +23,11 @@ export class NavComponent implements OnInit {
 
     }
 
-    defaultPokemon: PokemonModel = {
-        id: 3,
-        name: "Charmander",
-        type: 'fire'
-    }
-
     navLinks = [
         {title: "Home", link: "/"},
         {title: "Coming Soon", link: "/"},
         {
-            title: this.authData.isLoggedIn ? this.authData.username : 'Log In', 
+            title: this.authData.isLoggedIn ? this.authData.username : 'Sign In', 
             link: this.authData.isLoggedIn ? "" : "/auth"
         },
     ]

@@ -1,0 +1,83 @@
+// Pokemon Type Colors
+$grass-type: green;
+$fire-type: red;
+$water-type: blue;
+$poison-type: purple;
+$electric-type: #ffcd32;
+$flying-type: #5f77ae;
+$bug-type: #00e626;
+$ice-type: cyan;
+$rock-type: brown;
+$ground-type: #a6643b;
+$steel-type: gray;
+$dragon-type: #1d429a;
+$psychic-type: magenta;
+$ghost-type: #721d9a;
+$dark-type: #141414;
+$normal-type: #4d4d4d;
+
+// Stats
+$low-stat: red;
+$high-stat: green;
+
+
+.element {
+    padding: 5px;
+    border: 1px solid none;
+    border-radius: 20px;
+}
+
+.grass-bg {
+    background-color: $grass-type;
+}
+
+.fire-bg {
+    background-color: $fire-type;
+}
+
+.water-bg {
+    background-color: $water-type;
+}
+
+.poison-bg {
+    background-color: $poison-type;
+}
+
+.electric-bg {
+    background-color: $electric-type;
+}
+
+.flying-bg {
+    background-color: $flying-type;
+}
+
+.ice-bg{
+    background-color: $ice-type;
+}
+.bug-bg{
+    background-color: $bug-type;
+}
+.rock-bg{
+    background-color: $rock-type;
+}
+.ground-bg{
+    background-color: $ground-type;
+}
+.steel-bg{
+    background-color: $steel-type;
+}
+.dragon-bg{
+    background-color: $dragon-type;
+}
+.psychic-bg{
+    background-color: $psychic-type;
+}
+.ghost-bg{
+    background-color: $ghost-type;
+}
+.dark-bg{
+    background-color: $dark-type;
+}
+.normal-bg{
+    background-color: $normal-type;
+}
