@@ -1,4 +1,4 @@
-<div  [ngClass]="[classPrefix, theme]">
-    <!-- <section [ngClass]="[theme]">TopNav</section> -->
+<div  [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
+    <!-- <section [ngClass]="[( isDark$ | async ) ? 'dark' : 'light']">TopNav</section> -->
     <app-nav></app-nav>
 </div>

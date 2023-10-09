@@ -1,12 +1,12 @@
 <div [ngClass]="[classPrefix]">
     <form 
         [formGroup]="useForm" 
-        [ngClass]="[classPrefix + '__form']"
+        [ngClass]="[classPrefix + '__form', ( isDark$ | async ) ? 'dark' : 'light']"
         (ngSubmit)="onSubmit()"
     >
         <div [ngClass]="[classPrefix + '__input-ctr']">
             <div 
-                [ngClass]="[classPrefix + '__input-grp']" 
+                [ngClass]="[classPrefix + '__input-grp', ( isDark$ | async ) ? 'dark' : 'light']" 
                 *ngFor="let input of formInputs"
             >
                 <label>{{input?.title}}</label>

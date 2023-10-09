@@ -1,0 +1,303 @@
+@import '../../scss/app.colors.scss';
+@import '../../scss/app.common.scss';
+@import '../../scss/app.pokemon-type-colors.scss';
+@import '../../scss/app.font.scss';
+@import '../../scss/app.breakpoints.scss';
+
+.app-pokemonDetail {
+    width: 80%;
+    padding-top: $header-height;
+    margin: 0 auto;
+
+    @media only screen and (min-width: $lap) {
+        width: 40rem;
+    }
+
+    &.light {
+        color: $dark-color-bg-plain;
+        background-color: $light-color-bg-plain;
+    }
+
+    &.dark {
+        color: $light-color-tx;
+        background-color: $dark-color-bg-plain;
+    }
+
+    &__ctr {
+        width: 100%;
+        height: 100%;
+
+        &__title-grp {
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            div {
+                font-size: $detail-title-fs;
+
+                .title {
+                    margin-right: 8px;
+                    &.light {
+                        color: $dark-color-bg-plain;
+                    }
+                
+                    &.dark {
+                        color: $light-color-tx;
+                    }
+                }
+
+                .id {
+                    &.light {
+                        color: $dark-color-bg-plain;
+                    }
+                
+                    &.dark {
+                        color: $outline-color;
+                    }
+                }
+            }
+        }
+
+        &__details-ctr {
+            width: 100%;
+            padding: 0 2em 2em 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+
+            @media only screen and (min-width: $lap) {
+                height: 500px;
+                flex-direction: row;
+            }
+
+            &__thmb-grp {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                @media only screen and (min-width: $lap) {
+                    width: 60%;
+                }
+
+                .thumbnail {
+                    width: 100%;
+                    box-shadow: $focus-shadow;
+                    margin-bottom: 1rem;
+                }
+
+                ul {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    li {
+                        width: 25%;
+                        box-shadow: $light-shadow;
+                        cursor: pointer;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+
+            &__info-ctr {
+                width: 100%;
+                height: 100%;
+                margin-top: 1rem;
+                
+                @media only screen and (min-width: $lap) {
+                    width: 36%;
+                }
+
+                .info-grp {
+                    width: 100%;
+                    overflow: hidden;
+
+                    .info {
+                        width: inherit;
+                        display: flex;
+                        margin-bottom: 1em;
+                        font-size: $detail-type-fs;
+    
+                        ul {
+                            li {
+                                margin-right: 1em;
+                            }
+                        }
+                    }
+    
+                    .types {
+
+                        @media only screen and (min-width: $mobile-l) {
+                            color: $light-color-tx;
+                        }
+
+                        ul {
+                            display: flex;
+    
+                            li {
+                                padding: 4px 15px;
+                                border: 1px solid none;
+                                border-radius: 15px;
+                            }
+                        }
+                    }
+    
+                    .abilities {
+                        width: 100%;
+                        height: 55px;
+                        overflow-y: auto;
+
+                        ul {
+                            margin-left: 1em;
+                        }
+                    }
+    
+                    .stats {
+                        &_base-stats {
+                            margin-left: 2.5em;
+    
+                            li {
+                                .stat {
+                                    &-name {
+                                        margin-right: 1em;
+                                    }
+    
+                                    &-value{
+                                        &__low-stat {
+                                            color: $low-stat;
+                                        }
+        
+                                        &__high-stat {
+                                            color: $high-stat;
+                                        }   
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    .areas {
+                        height: 7rem;
+                        overflow-y: auto;
+
+                        ul {
+                            margin-left: 2em;
+                        }
+                    }
+                }
+
+                .btn-grp {
+                    width: 100%;
+
+                    .add-btn {
+                        width: inherit;
+                        padding: 10px;
+                        border-radius: 15px;
+                        color: $light-color-tx;
+                        cursor: pointer;
+                        box-shadow: $dark-shadow;
+                        border: none;
+                        
+                        &.light {
+                            background-color: $light-btn-bg;
+
+                            &:hover {
+                                background-color: $light-btn-bg-hover;
+                            }
+                        }
+                    
+                        &.dark {
+                            background-color: $dark-btn-bg-secondary;
+
+                            &:hover {
+                                background-color: $dark-btn-bg-secondary-hover;
+                            }
+                        }
+
+                        @media only screen and (min-width: $lap) {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            &__seperator {
+                width: 100%;
+                height: 5em;
+
+                &.light {
+                    background: $light-color-bg;
+                }
+            
+                &.dark {
+                    background: $dark-color-bg;
+                }
+            }
+
+            &__moves-grp {
+                width: 100%;
+                height: 500px;
+                color: $light-color-tx;
+
+                &.light {
+                    background-color: $light-color-bg;
+                }
+            
+                &.dark {
+                    background-color: $dark-color-bg-cover;
+                }
+
+                span {
+                    margin-left: 1em;
+                }
+
+                ul {
+                    width: inherit;
+                    height: inherit;
+                    overflow-y: auto;
+
+                    .move {
+                        padding: 1em;
+
+                        &.light {
+                            background-color: $light-color-bg;
+
+                            &:hover {
+                                background-color: $light-color-bg-hover;
+                            }
+
+                            &.odd {
+                                color: $dark-color-tx;
+                                background-color: $light-color-bg-plain;
+
+                                &:hover {
+                                    background-color: $light-color-bg-plain-hover;
+                                }
+                            }
+                        }
+                    
+                        &.dark {
+                            background-color: $dark-color-bg-cover;
+
+                            &:hover {
+                                background-color: $dark-color-bg-hover;
+                            }
+
+                            &.odd {
+                                background-color: $dark-color-bg-hover;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
