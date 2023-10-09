@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 
 export class HeaderComponent {
     classPrefix = 'app-header'
-    isDark = true;
-    theme: string = this.isDark ? 'dark' : 'light';
+    isDark$: Observable<boolean>
+    constructor(
+        private store: Store<{theme: boolean}>
+    ){
+        this.isDark$ = store.select('theme')
+    }
 } 

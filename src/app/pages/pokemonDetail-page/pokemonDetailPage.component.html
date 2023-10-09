@@ -1,17 +1,17 @@
-<section [ngClass]="[classPrefix, theme]">
-    <div [ngClass]="[classPrefix + '__ctr', theme]">
-        <div [ngClass]="[classPrefix + '__ctr__title-grp', theme]">
+<section [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
+    <div [ngClass]="[classPrefix + '__ctr', ( isDark$ | async ) ? 'dark' : 'light']">
+        <div [ngClass]="[classPrefix + '__ctr__title-grp', ( isDark$ | async ) ? 'dark' : 'light']">
             <div>
-                <span [ngClass]="['title', theme]">
+                <span [ngClass]="['title', ( isDark$ | async ) ? 'dark' : 'light']">
                     {{pokemon.name}}
                 </span>
-                <span [ngClass]="['id', theme]">
+                <span [ngClass]="['id', ( isDark$ | async ) ? 'dark' : 'light']">
                     #{{pokemon.id}}
                 </span>
             </div>
         </div>
-        <div [ngClass]="[classPrefix + ctrClassPrefix, theme]">
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__thmb-grp', theme]">
+        <div [ngClass]="[classPrefix + ctrClassPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
+            <div [ngClass]="[classPrefix + ctrClassPrefix + '__thmb-grp', ( isDark$ | async ) ? 'dark' : 'light']">
                 <img 
                     src="{{thumbnail || pokemon.sprites?.front_default}}" alt="pokemon being displayed"
                     class="thumbnail"
@@ -31,7 +31,7 @@
                     </li>
                 </ul>
             </div>
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__info-ctr', theme]">
+            <div [ngClass]="[classPrefix + ctrClassPrefix + '__info-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
                 <div [ngClass]="['info-grp']">
                     <div [ngClass]="['info', 'types']">
                         <ul>
@@ -74,9 +74,9 @@
                     </div>
                 </div>
 
-                <div [ngClass]="['btn-grp', theme]">
+                <div [ngClass]="['btn-grp', ( isDark$ | async ) ? 'dark' : 'light']">
                     <button 
-                        [ngClass]="['add-btn', theme]"
+                        [ngClass]="['add-btn', ( isDark$ | async ) ? 'dark' : 'light']"
                         (click)="addToBelt()"
                     >
                         {{checkIfAddedToBelt() ? 'Already added!' : 'I choose you!'}}
@@ -85,16 +85,16 @@
             </div>
         </div>
 
-        <div [ngClass]="[classPrefix + ctrClassPrefix + '__seperator', theme]">
+        <div [ngClass]="[classPrefix + ctrClassPrefix + '__seperator', ( isDark$ | async ) ? 'dark' : 'light']">
 
         </div>
 
-        <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-ctr', theme]">
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-grp', theme]">
+        <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
+            <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-grp', ( isDark$ | async ) ? 'dark' : 'light']">
                 <span>Moves</span>
                 <ul>
                     <li *ngFor="let move of pokemon.moves; index as i"
-                        [ngClass]="['move', (i % 2 == 1) ? 'odd' : '', theme]"
+                        [ngClass]="['move', (i % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
                     >
                         {{move.move.name}}
                     </li>

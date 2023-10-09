@@ -1,6 +1,8 @@
 import { RequestHelper } from './../../helper/request.helper';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { addToStore, getFromStore, setStore, storeConstants, storeDefault } from 'src/app/helper/storage.helper';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonLocations } from 'src/app/models/request.model';
@@ -14,8 +16,7 @@ import { PokemonLocations } from 'src/app/models/request.model';
 export class PokemonDetailPageComponent implements OnInit {
     classPrefix = 'app-pokemonDetail'
     ctrClassPrefix = '__ctr__details-ctr'
-    isDark = false;
-    theme = this.isDark ? 'dark' : 'light';
+    isDark$: Observable<boolean>;
     nameParam = this.route.snapshot.params['name']
     pokemon: Pokemon = {
         abilities: [],
@@ -49,8 +50,9 @@ export class PokemonDetailPageComponent implements OnInit {
     constructor(
         private requestHelper: RequestHelper,
         private route: ActivatedRoute,
+        private store: Store<{theme: boolean}>,
     ){
-
+        this.isDark$ = store.select('theme')
     }
     
     ngOnInit(): void {

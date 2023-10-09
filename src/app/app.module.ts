@@ -8,6 +8,9 @@ import { HttpClientModule, } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { themeReducer } from './store/theme/theme.reducer';
+import { authReducer } from './store/auth/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,10 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     PokemonDetailPageModule,
     FooterComponentModule,
+    StoreModule.forRoot({ 
+      theme: themeReducer, 
+      auth: authReducer,
+    }, {}),
   ],
   providers: [],
   bootstrap: [AppComponent]

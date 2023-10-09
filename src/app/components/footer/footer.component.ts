@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'app-footer',
@@ -8,6 +10,11 @@ import { Component } from "@angular/core";
 
 export class FooterComponent {
     classPrefix = 'app-footer';
-    isDark = false;
-    theme: string = this.isDark ? 'dark' : 'light';
+    isDark$: Observable<boolean>;
+
+    constructor(
+        private store: Store<{theme: boolean}>
+    ){
+        this.isDark$ = store.select('theme')
+    }
 }

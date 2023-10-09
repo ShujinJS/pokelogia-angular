@@ -2,7 +2,9 @@ import { Router } from '@angular/router';
 import { GetPokemonsModel, Result } from './../../models/request.model';
 import { RequestHelper } from './../../helper/request.helper';
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from 'src/app/models/pokemon.model';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
 @Component({
     selector: 'app-landingPage',
     templateUrl: './landingPage.component.html',
@@ -11,9 +13,8 @@ import { Pokemon } from 'src/app/models/pokemon.model';
 
 export class LandingPageComponent implements OnInit {
     classPrefix = 'app-landing';
-    isDark = false;
     isPlaying = true;
-    theme: string = this.isDark ? 'dark' : 'light';
+    isDark$: Observable<boolean>;
     transition = this.isPlaying ? 'playing' : 'paused';
     landingHeader = 'Welcome fellow trainers!';
     landingInfo = 'You can search for your favourite Pokémons and train their abilities now! Pick your 6 Pokémons and become the very best!';
@@ -32,8 +33,9 @@ export class LandingPageComponent implements OnInit {
     constructor(
         private requestHelper: RequestHelper,
         private router: Router,
+        private store: Store<{theme: boolean}>
     ){
-
+        this.isDark$ = store.select('theme')
     }
 
     ngOnInit(): void {

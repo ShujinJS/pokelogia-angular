@@ -1,10 +1,15 @@
-<nav [ngClass]="[classPrefix, theme]">
+<nav [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
     <div [ngClass]="[classPrefix + '__brand']"></div>
     <ul [ngClass]="[classPrefix + '__links']">
-        <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', theme]">
+        <li [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+            <a (click)="changeTheme()">Change Theme</a>
+        </li>
+        <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
             <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
             <a [routerLink]="[link?.link]">{{link?.title}}</a>
         </li>
+        <li [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+            <a [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">{{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}</a>
+        </li>
     </ul>
-    <!-- <button (click)="searchPokemon()">Search</button> -->
 </nav>

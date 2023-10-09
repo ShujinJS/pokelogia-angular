@@ -10,6 +10,14 @@
     justify-content: center;
     padding-top: $header-height;
 
+    &.light {
+        background-color: $light-color-tx;
+    }
+
+    &.dark {
+        background-color: $dark-color-bg;
+    }
+
     &__form {
         width: 90%;
         height: 25rem;

@@ -2,6 +2,8 @@ import { AuthPageService } from './authPage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn, } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { addToStore, getFromStore, storeConstants } from 'src/app/helper/storage.helper';
 import { FormModel, InputModel, UserModel } from 'src/app/models/auth.model';
 
@@ -17,14 +19,15 @@ export class AuthPageComponent implements OnInit {
         private formBuilder: FormBuilder,
         private authPageService: AuthPageService,
         private router: Router,
+        private store: Store<{theme: boolean}>,
         ) {
+        this.isDark$ = store.select('theme')
     }
 
     classPrefix = 'app-formInputs'
     useForm: FormGroup = new FormGroup({})
     showLogin = false
-    isDark = false;
-    theme: string = this.isDark ? 'dark' : 'light';
+    isDark$: Observable<boolean>;
     signInInput = { title: "Confirm password", type: "password", isRequired: true, formControlName: "passwordConfirm", message: "Passwords must be matched"}
     users: UserModel[] = []
 
@@ -41,6 +44,8 @@ export class AuthPageComponent implements OnInit {
     ]
     
     ngOnInit(): void {
+        localStorage.removeItem(storeConstants.users)
+        localStorage.removeItem(storeConstants.isLoggedIn)
         this.users = getFromStore(storeConstants.users) || []
 
         if(this.users.length) {
@@ -119,7 +124,7 @@ export class AuthPageComponent implements OnInit {
             const users = getFromStore('users')
             const username = this.useForm.get('username')?.value
             const usernameInput = this.formInputs.find((input: InputModel) => input?.title === 'Username')
-            const isTaken = users.find((user: UserModel) =>
+            const isTaken = users?.find((user: UserModel) =>
                 user.username === username
             )
 
@@ -152,7 +157,7 @@ export class AuthPageComponent implements OnInit {
             const passwordInput = this.formInputs.find((input: InputModel) => input?.title === 'Password')
             const users = this.authPageService.getUsers()
             let isLoginValid
-            const isMatched = users.find(usr => usr.username === username && usr.password === password)
+            const isMatched = users?.find(usr => usr.username === username && usr.password === password)
 
             if(!value) {
                 return null;
