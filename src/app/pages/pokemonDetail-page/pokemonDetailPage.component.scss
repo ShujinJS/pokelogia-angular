@@ -5,13 +5,8 @@
 @import '../../scss/app.breakpoints.scss';
 
 .app-pokemonDetail {
-    width: 80%;
+    width: 100%;
     padding-top: $header-height;
-    margin: 0 auto;
-
-    @media only screen and (min-width: $lap) {
-        width: 40rem;
-    }
 
     &.light {
         color: $dark-color-bg-plain;
@@ -23,12 +18,45 @@
         background-color: $dark-color-bg-plain;
     }
 
-    &__ctr {
+    &__ctr-top {
         width: 100%;
-        height: 100%;
+        // height: 9em;
+        height: 13em;
+        border-bottom: 2px solid $dark-color-bg-plain;
+
+        @media only screen and (min-width: $mobile-l) {
+            height: 13em;
+        }
+
+        &.light {
+            background-color: $light-color-bg;
+        }
+    
+        &.dark {
+            color: $light-color-tx;
+        }
+
+        &__img-grp {
+            width: 10em;
+            height: 10em;
+            margin: 0 auto;
+            position: relative;
+            top: 5em;
+            background-color: $light-color-bg-plain;
+            border: 2px solid $dark-color-bg-plain;
+            border-radius: 50%;
+
+            &__img {
+                width: 100%;
+
+                img {
+                    width: inherit;
+                }
+            }
+        }
 
         &__title-grp {
-            padding: 2em;
+            padding: 5px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -297,6 +325,29 @@
                         }
                     }
                 }
+            }
+        }
+    }
+
+    &__ctr-bot {
+        width: 100%;
+        padding: 7em 1em;
+
+        &.light {
+            color: $dark-color-bg-plain;
+            background-color: $light-color-bg-plain;
+        }
+    
+        &.dark {
+            color: $light-color-tx;
+            background-color: $dark-color-bg-plain;
+        }
+
+        &__info-ctr {
+            width: inherit;
+
+            .info-grp {
+                width: inherit;
             }
         }
     }
