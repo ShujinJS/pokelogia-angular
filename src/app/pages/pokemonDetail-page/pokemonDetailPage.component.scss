@@ -28,12 +28,12 @@
 
         &.light {
             background-color: $light-color-bg;
-            border-bottom: 2px solid $dark-color-bg-plain;
+            border-bottom: 1px solid $dark-color-bg-plain;
         }
     
         &.dark {
             color: $light-color-tx;
-            border-bottom: 2px solid $dark-color-border;
+            border-bottom: 1px solid $dark-color-bg;
         }
 
         &__img-grp {
@@ -49,13 +49,16 @@
             }
 
             &.light {
-                border: 2px solid $dark-color-bg-plain;
+                border-left: 2px solid $light-color-bg;
                 background-color: $light-color-bg-plain;
+                box-shadow: $focus-shadow;
             }
         
             &.dark {
-                border: 2px solid $dark-color-border;
+                border-top: 2px solid $dark-color-border;
+                border-left: 2px solid $dark-color-bg;
                 background-color: $dark-color-bg-cover;
+                box-shadow: $dark-shadow;
             }
 
             &__img {
@@ -68,33 +71,23 @@
         }
 
         &__title-grp {
-            padding: 5px;
+            padding: 1em 1em 0 1em;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            font-family: $font-style-primary;
+            font-size: $font-size-xs;
 
             div {
                 font-size: $detail-title-fs;
 
                 .title {
                     margin-right: 8px;
-                    &.light {
-                        color: $dark-color-bg-plain;
-                    }
-                
-                    &.dark {
-                        color: $light-color-tx;
-                    }
+                    color: $light-color-tx;
                 }
 
                 .id {
-                    &.light {
-                        color: $dark-color-bg-plain;
-                    }
-                
-                    &.dark {
-                        color: $outline-color;
-                    }
+                    color: $outline-color;
                 }
             }
         }
@@ -103,7 +96,8 @@
 
     &__ctr-bot {
         width: 100%;
-        padding: 6em 1em 0 1em;
+        min-height: 70vh;
+        padding: 6em 1em 2em 1em;
 
         &.light {
             color: $dark-color-bg-plain;
@@ -115,24 +109,54 @@
             background-color: $dark-color-bg-cover;
         }
 
+        @media only screen and (min-width: $mobile-l) {
+            width: 70%;
+            margin: 0 auto;
+        }
+
         &__info-ctr {
-            width: inherit;
+            width: 100%;
 
             .info-grp {
-                width: inherit;
+                width: 100%;
                 font-size: $font-size-md;
 
-                &__thmbs {
-                    margin-bottom: 1em;
+                div {
+                    width: 100%;
+
                     ul {
-                        width: inherit;
+                        // margin: 0 auto;
+                    }
+                }
+
+                &__thmbs {
+                    padding-bottom: 0.5em;
+                    margin-bottom: 1em;
+                    border-bottom: 1px solid;
+
+                    &.light {
+                        border-color: $light-color-bg;
+                    }
+                
+                    &.dark {
+                        border-color: $dark-color-bg;
+                    }
+
+                    ul {
                         display: flex;
                         justify-content: space-around;
 
                         li {
                             width: 50px;
                             height: 50px;
-                            box-shadow: $light-shadow;
+
+                            &.light {
+                                box-shadow: $light-shadow;
+                            }
+                        
+                            &.dark {
+                                box-shadow: $dark-shadow;
+                            }
 
                             img {
                                 width: inherit;
@@ -143,17 +167,17 @@
                 }
 
                 &__types {
-                    width: inherit;
 
                     ul {
                         display: flex;
                         
                         li {
                             width: 100px;
-                            padding: 8px;
+                            padding: 5px;
                             margin-right: 10px;
                             border-radius: 1em;
                             text-align: center;
+                            color: $light-color-tx;
                         }
                     }
                 }
@@ -235,6 +259,7 @@
         button {
             width: inherit;
             padding: 1em;
+            border: none;
             border-radius: 1em;
 
             &.light {
