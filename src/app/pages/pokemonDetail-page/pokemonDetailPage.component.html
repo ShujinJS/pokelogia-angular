@@ -29,6 +29,23 @@
         <div [ngClass]="[classPrefix + '__ctr-bot' + '__info-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
             <div [ngClass]="['info-grp']">
 
+                <div [ngClass]="['info-grp' + '__thmbs', ( isDark$ | async ) ? 'dark' : 'light']">
+                    <ul>
+                        <li (click)="setThumbnail(pokemon.sprites?.front_default)">
+                            <img src="{{pokemon.sprites?.front_default}}" alt="">
+                        </li>
+                        <li (click)="setThumbnail(pokemon.sprites?.front_shiny)">
+                            <img src="{{pokemon.sprites?.front_shiny}}" alt="">
+                        </li>
+                        <li (click)="setThumbnail(pokemon.sprites?.other?.['official-artwork']?.front_default)">
+                            <img src="{{pokemon.sprites?.other?.['official-artwork']?.front_default}}" alt="">
+                        </li>
+                        <li (click)="setThumbnail(pokemon.sprites?.other?.['official-artwork']?.front_shiny)">
+                            <img src="{{pokemon.sprites?.other?.['official-artwork']?.front_shiny}}" alt="">
+                        </li>
+                    </ul>
+                </div>
+
                 <div [ngClass]="['info-grp' + '__types']">
                     <ul>
                         <li *ngFor="let type of pokemon.types"
@@ -55,6 +72,10 @@
                             <span class="stat-name">
                                 {{stat.stat.name}}:
                             </span>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li *ngFor="let stat of pokemon.stats">
                             <span [ngClass]="['stat-value' + checkStats(stat.base_stat)]">
                                 {{stat.base_stat}}
                             </span>
@@ -76,6 +97,15 @@
             </div>
         </div>
 
+    </div>
+
+    <div [ngClass]="[classPrefix + '__btn-grp', ( isDark$ | async ) ? 'dark' : 'light']">
+        <button 
+            [ngClass]="['add-btn', ( isDark$ | async ) ? 'dark' : 'light']"
+            (click)="addToBelt()"
+        >
+            {{checkIfAddedToBelt() ? 'Already added!' : 'I choose you!'}}
+        </button>
     </div>
 
 
