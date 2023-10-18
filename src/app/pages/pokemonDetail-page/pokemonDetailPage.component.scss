@@ -45,20 +45,20 @@
             border-radius: 50%;
 
             @media only screen and (min-width: $mobile-l) {
-                top: 5em;
+                top: 4em;
             }
 
             &.light {
                 border-left: 2px solid $light-color-bg;
                 background-color: $light-color-bg-plain;
-                box-shadow: $focus-shadow;
+                box-shadow: $light-shadow;
             }
         
             &.dark {
                 border-top: 2px solid $dark-color-border;
                 border-left: 2px solid $dark-color-bg;
                 background-color: $dark-color-bg-cover;
-                box-shadow: $dark-shadow;
+                box-shadow: $focus-shadow;
             }
 
             &__img {
@@ -71,12 +71,22 @@
         }
 
         &__title-grp {
+            width: 100%;
             padding: 1em 1em 0 1em;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             font-family: $font-style-primary;
             font-size: $font-size-xs;
+
+            @media only screen and (min-width: $mobile-l) {
+                font-size: $font-size-md;
+            }
+
+            @media only screen and (min-width: $lap) {
+                width: $app-container;
+                margin: auto;
+            }
 
             div {
                 font-size: $detail-title-fs;
@@ -94,10 +104,21 @@
 
     }
 
+    &__ctr-bg {
+        &.light {
+            background-color: $light-color-bg-plain;
+        }
+    
+        &.dark {
+            background-color: $dark-color-bg-cover;
+        }
+    }
+
     &__ctr-bot {
         width: 100%;
         min-height: 70vh;
         padding: 6em 1em 2em 1em;
+        box-shadow: $focus-shadow;
 
         &.light {
             color: $dark-color-bg-plain;
@@ -114,6 +135,11 @@
             margin: 0 auto;
         }
 
+        @media only screen and (min-width: $lap) {
+            width: 700px;
+            margin: 0 auto;
+        }
+
         &__info-ctr {
             width: 100%;
 
@@ -124,8 +150,8 @@
                 div {
                     width: 100%;
 
-                    ul {
-                        // margin: 0 auto;
+                    span {
+                        width: 30%;
                     }
                 }
 
@@ -167,6 +193,9 @@
                 }
 
                 &__types {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 3em;
 
                     ul {
                         display: flex;
@@ -183,8 +212,8 @@
                 }
 
                 &__abilities {
-                    display: flex;
                     margin-top: 1em;
+                    display: flex;
 
                     span {
                         margin-bottom: 1em;
@@ -198,12 +227,8 @@
                 }
 
                 &__stats {
-                    display: flex;
                     margin-top: 10px;
-
-                    span {
-                        margin-right: 1.5em;
-                    }
+                    display: flex;
 
                     ul, li {
                         .stat {
@@ -229,10 +254,6 @@
                     margin-top: 1em;
                     display: flex;
 
-                    span {
-                        margin-right: 1em;
-                    }
-
                     ul {
                         height: 100%;
                         overflow-y: scroll;
@@ -246,6 +267,16 @@
         width: 100%;
         padding: 1em;
 
+        @media only screen and (min-width: $mobile-l) {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        @media only screen and (min-width: $lap) {
+            width: 700px;
+            margin: 0 auto;
+        }
+
         &.light {
             color: $light-color-tx;
             background-color: $light-color-bg-plain;
@@ -257,7 +288,7 @@
         }
 
         button {
-            width: inherit;
+            width: 100%;
             padding: 1em;
             border: none;
             border-radius: 1em;
