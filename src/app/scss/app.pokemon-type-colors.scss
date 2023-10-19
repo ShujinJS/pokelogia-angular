@@ -4,7 +4,7 @@ $fire-type: red;
 $water-type: blue;
 $poison-type: purple;
 $electric-type: #ffcd32;
-$flying-type: #5f77ae;
+$flying-type: #df9065;
 $bug-type: #00e626;
 $ice-type: cyan;
 $rock-type: brown;
@@ -14,12 +14,12 @@ $dragon-type: #1d429a;
 $psychic-type: magenta;
 $ghost-type: #721d9a;
 $dark-type: #141414;
-$normal-type: #4d4d4d;
+$normal-type: #d5d3d3;
+$fighting-type: #9a3209;
 
 // Stats
 $low-stat: red;
 $high-stat: green;
-
 
 .element {
     padding: 5px;
@@ -51,33 +51,37 @@ $high-stat: green;
     background-color: $flying-type;
 }
 
-.ice-bg{
+.ice-bg {
     background-color: $ice-type;
 }
-.bug-bg{
+.bug-bg {
     background-color: $bug-type;
 }
-.rock-bg{
+.rock-bg {
     background-color: $rock-type;
 }
-.ground-bg{
+.ground-bg {
     background-color: $ground-type;
 }
-.steel-bg{
+.steel-bg {
     background-color: $steel-type;
 }
-.dragon-bg{
+.dragon-bg {
     background-color: $dragon-type;
 }
-.psychic-bg{
+.psychic-bg {
     background-color: $psychic-type;
 }
-.ghost-bg{
+.ghost-bg {
     background-color: $ghost-type;
 }
-.dark-bg{
+.dark-bg {
     background-color: $dark-type;
 }
-.normal-bg{
+.normal-bg {
     background-color: $normal-type;
+}
+
+.fighting-bg {
+    background-color: $fighting-type;
 }

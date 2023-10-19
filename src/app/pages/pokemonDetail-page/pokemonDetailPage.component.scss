@@ -5,13 +5,8 @@
 @import '../../scss/app.breakpoints.scss';
 
 .app-pokemonDetail {
-    width: 80%;
+    width: 100%;
     padding-top: $header-height;
-    margin: 0 auto;
-
-    @media only screen and (min-width: $lap) {
-        width: 40rem;
-    }
 
     &.light {
         color: $dark-color-bg-plain;
@@ -23,280 +18,331 @@
         background-color: $dark-color-bg-plain;
     }
 
-    &__ctr {
+    &__ctr-top {
         width: 100%;
-        height: 100%;
+        height: 9em;
+
+        @media only screen and (min-width: $mobile-l) {
+            height: 13em;
+        }
+
+        &.light {
+            background-color: $light-color-bg;
+            border-bottom: 1px solid $dark-color-bg-plain;
+        }
+    
+        &.dark {
+            color: $light-color-tx;
+            border-bottom: 1px solid $dark-color-bg;
+        }
+
+        &__img-grp {
+            width: 10em;
+            height: 10em;
+            margin: 0 auto;
+            position: relative;
+            top: 1em;
+            border-radius: 50%;
+
+            @media only screen and (min-width: $mobile-l) {
+                top: 4em;
+            }
+
+            &.light {
+                border-left: 2px solid $light-color-bg;
+                background-color: $light-color-bg-plain;
+                box-shadow: $light-shadow;
+            }
+        
+            &.dark {
+                border-top: 2px solid $dark-color-border;
+                border-left: 2px solid $dark-color-bg;
+                background-color: $dark-color-bg-cover;
+                box-shadow: $focus-shadow;
+            }
+
+            &__img {
+                width: 100%;
+
+                img {
+                    width: inherit;
+                }
+            }
+        }
 
         &__title-grp {
-            padding: 2em;
+            width: 100%;
+            padding: 1em 1em 0 1em;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            font-family: $font-style-primary;
+            font-size: $font-size-xs;
+
+            @media only screen and (min-width: $mobile-l) {
+                font-size: $font-size-md;
+            }
+
+            @media only screen and (min-width: $lap) {
+                width: $app-container;
+                margin: auto;
+            }
 
             div {
                 font-size: $detail-title-fs;
 
                 .title {
                     margin-right: 8px;
-                    &.light {
-                        color: $dark-color-bg-plain;
-                    }
-                
-                    &.dark {
-                        color: $light-color-tx;
-                    }
+                    color: $light-color-tx;
                 }
 
                 .id {
-                    &.light {
-                        color: $dark-color-bg-plain;
-                    }
-                
-                    &.dark {
-                        color: $outline-color;
-                    }
+                    color: $outline-color;
                 }
             }
         }
 
-        &__details-ctr {
+    }
+
+    &__ctr-bg {
+        &.light {
+            background-color: $light-color-bg-plain;
+        }
+    
+        &.dark {
+            background-color: $dark-color-bg-cover;
+        }
+    }
+
+    &__ctr-bot {
+        width: 100%;
+        min-height: 70vh;
+        padding: 6em 1em 2em 1em;
+        box-shadow: $focus-shadow;
+
+        &.light {
+            color: $dark-color-bg-plain;
+            background-color: $light-color-bg-plain;
+        }
+    
+        &.dark {
+            color: $light-color-tx;
+            background-color: $dark-color-bg-cover;
+        }
+
+        @media only screen and (min-width: $mobile-l) {
+            width: 70%;
+            margin: 0 auto;
+        }
+
+        @media only screen and (min-width: $lap) {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        &__info-ctr {
             width: 100%;
-            padding: 0 2em 2em 2em;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
 
-            @media only screen and (min-width: $lap) {
-                height: 500px;
-                flex-direction: row;
-            }
-
-            &__thmb-grp {
+            .info-grp {
                 width: 100%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                font-size: $font-size-md;
 
-                @media only screen and (min-width: $lap) {
-                    width: 60%;
-                }
-
-                .thumbnail {
+                div {
                     width: 100%;
-                    box-shadow: $focus-shadow;
-                    margin-bottom: 1rem;
-                }
+                    margin-top: 1em;
 
-                ul {
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-evenly;
-
-                    li {
-                        width: 25%;
-                        box-shadow: $light-shadow;
-                        cursor: pointer;
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
+                    span {
+                        width: 30%;
                     }
                 }
-            }
 
-            &__info-ctr {
-                width: 100%;
-                height: 100%;
-                margin-top: 1rem;
+                &__thmbs {
+                    padding-bottom: 0.5em;
+                    margin-bottom: 1em;
+                    border-bottom: 1px solid;
+
+                    &.light {
+                        border-color: $light-color-bg;
+                    }
                 
-                @media only screen and (min-width: $lap) {
-                    width: 36%;
-                }
+                    &.dark {
+                        border-color: $dark-color-bg;
+                    }
 
-                .info-grp {
-                    width: 100%;
-                    overflow: hidden;
-
-                    .info {
-                        width: inherit;
+                    ul {
                         display: flex;
-                        margin-bottom: 1em;
-                        font-size: $detail-type-fs;
-    
-                        ul {
-                            li {
-                                margin-right: 1em;
+                        justify-content: space-around;
+
+                        li {
+                            width: 50px;
+                            height: 50px;
+
+                            &.light {
+                                box-shadow: $light-shadow;
+                            }
+                        
+                            &.dark {
+                                box-shadow: $dark-shadow;
+                            }
+
+                            img {
+                                width: inherit;
+                                height: inherit;
                             }
                         }
                     }
-    
-                    .types {
+                }
 
-                        @media only screen and (min-width: $mobile-l) {
+                &__types {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 3em;
+
+                    ul {
+                        display: flex;
+                        
+                        li {
+                            width: 100px;
+                            padding: 5px;
+                            margin-right: 10px;
+                            border-radius: 1em;
+                            text-align: center;
                             color: $light-color-tx;
                         }
-
-                        ul {
-                            display: flex;
-    
-                            li {
-                                padding: 4px 15px;
-                                border: 1px solid none;
-                                border-radius: 15px;
-                            }
-                        }
                     }
-    
-                    .abilities {
-                        width: 100%;
-                        height: 55px;
-                        overflow-y: auto;
+                }
 
-                        ul {
-                            margin-left: 1em;
-                        }
-                    }
+                &__abilities {
+                    display: flex;
+                }
+
+                &__stats {
+                    display: flex;
+                    ul {
+                        li {
+                            .stat {
+                                &-name {
+                                    margin-right: 1em;
+                                }
     
-                    .stats {
-                        &_base-stats {
-                            margin-left: 2.5em;
-    
-                            li {
-                                .stat {
-                                    &-name {
-                                        margin-right: 1em;
+                                &-value{
+                                    &__low-stat {
+                                        color: $low-stat;
                                     }
     
-                                    &-value{
-                                        &__low-stat {
-                                            color: $low-stat;
-                                        }
-        
-                                        &__high-stat {
-                                            color: $high-stat;
-                                        }   
-                                    }
+                                    &__high-stat {
+                                        color: $high-stat;
+                                    }   
                                 }
                             }
                         }
                     }
-    
-                    .areas {
-                        height: 7rem;
-                        overflow-y: auto;
+                }
+
+                &__areas {
+                    height: 8em;
+                    display: flex;
+
+                    ul {
+                        width: 60%;
+                        height: 100%;
+                        overflow-y: scroll;
+                        box-shadow: $light-shadow;
+
+                        li {
+                            padding: 2px 0;
+
+                            &.odd {
+                                &.light {
+                                    color: $light-color-tx;
+                                    background-color: $light-color-bg;
+                                }
+                            
+                                &.dark {
+                                    color: $light-color-tx;
+                                    background-color: $dark-color-bg-plain;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &__moves {
+                    height: 12em;
+
+                    .moves-grp{
+                        height: 100%;
+                        display: flex;
 
                         ul {
-                            margin-left: 2em;
+                            width: 60%;
+                            height: inherit;
+                            overflow-y: scroll;
+                            box-shadow: $light-shadow;
+
+                            li {
+                                padding: 2px 0;
+
+                                &.odd {
+                                    &.light {
+                                        color: $light-color-tx;
+                                        background-color: $light-color-bg;
+                                    }
+                                
+                                    &.dark {
+                                        color: $light-color-tx;
+                                        background-color: $dark-color-bg-plain;
+                                    }
+                                }
+                            }
+
+
                         }
                     }
-                }
 
-                .btn-grp {
-                    width: 100%;
-
-                    .add-btn {
-                        width: inherit;
-                        padding: 10px;
-                        border-radius: 15px;
-                        color: $light-color-tx;
-                        cursor: pointer;
-                        box-shadow: $dark-shadow;
-                        border: none;
-                        
-                        &.light {
-                            background-color: $light-btn-bg;
-
-                            &:hover {
-                                background-color: $light-btn-bg-hover;
-                            }
-                        }
-                    
-                        &.dark {
-                            background-color: $dark-btn-bg-secondary;
-
-                            &:hover {
-                                background-color: $dark-btn-bg-secondary-hover;
-                            }
-                        }
-
-                        @media only screen and (min-width: $lap) {
-                            width: 100%;
-                        }
-                    }
                 }
             }
+        }
+    }
 
-            &__seperator {
-                width: 100%;
-                height: 5em;
+    &__btn-grp {
+        width: 100%;
+        padding: 1em;
 
-                &.light {
-                    background: $light-color-bg;
-                }
-            
-                &.dark {
-                    background: $dark-color-bg;
-                }
-            }
+        @media only screen and (min-width: $mobile-l) {
+            width: 70%;
+            margin: 0 auto;
+        }
 
-            &__moves-grp {
-                width: 100%;
-                height: 500px;
+        @media only screen and (min-width: $lap) {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        &.light {
+            color: $light-color-tx;
+            background-color: $light-color-bg-plain;
+        }
+    
+        &.dark {
+            color: $light-color-tx;
+            background-color: $dark-color-bg-cover;
+        }
+
+        button {
+            width: 100%;
+            padding: 1em;
+            border: none;
+            border-radius: 1em;
+
+            &.light {
                 color: $light-color-tx;
-
-                &.light {
-                    background-color: $light-color-bg;
-                }
-            
-                &.dark {
-                    background-color: $dark-color-bg-cover;
-                }
-
-                span {
-                    margin-left: 1em;
-                }
-
-                ul {
-                    width: inherit;
-                    height: inherit;
-                    overflow-y: auto;
-
-                    .move {
-                        padding: 1em;
-
-                        &.light {
-                            background-color: $light-color-bg;
-
-                            &:hover {
-                                background-color: $light-color-bg-hover;
-                            }
-
-                            &.odd {
-                                color: $dark-color-tx;
-                                background-color: $light-color-bg-plain;
-
-                                &:hover {
-                                    background-color: $light-color-bg-plain-hover;
-                                }
-                            }
-                        }
-                    
-                        &.dark {
-                            background-color: $dark-color-bg-cover;
-
-                            &:hover {
-                                background-color: $dark-color-bg-hover;
-                            }
-
-                            &.odd {
-                                background-color: $dark-color-bg-hover;
-                            }
-                        }
-                    }
-                }
+                background-color: $light-color-bg;
+            }
+        
+            &.dark {
+                color: $light-color-tx;
+                background-color: $dark-color-bg;
             }
         }
     }
