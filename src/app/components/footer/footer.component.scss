@@ -8,14 +8,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: 1px solid;
 
     &.light {
         color: $light-color-tx;
         background-color: $light-color-bg;
+        border-color: $dark-color-bg-plain;
     }
 
     &.dark {
         color: $light-color-tx;
-        background-color: $dark-color-bg;
+        background-color: $dark-color-bg-plain;
+        border-color: $dark-color-bg;
     }
 }
