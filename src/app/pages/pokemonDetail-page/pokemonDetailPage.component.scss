@@ -149,6 +149,7 @@
 
                 div {
                     width: 100%;
+                    margin-top: 1em;
 
                     span {
                         width: 30%;
@@ -212,38 +213,27 @@
                 }
 
                 &__abilities {
-                    margin-top: 1em;
                     display: flex;
-
-                    span {
-                        margin-bottom: 1em;
-                    }
-
-                    ul {
-                        li {
-                            margin-right: 10px;
-                        }
-                    }
                 }
 
                 &__stats {
-                    margin-top: 10px;
                     display: flex;
-
-                    ul, li {
-                        .stat {
-                            &-name {
-                                margin-right: 1em;
-                            }
-
-                            &-value{
-                                &__low-stat {
-                                    color: $low-stat;
+                    ul {
+                        li {
+                            .stat {
+                                &-name {
+                                    margin-right: 1em;
                                 }
-
-                                &__high-stat {
-                                    color: $high-stat;
-                                }   
+    
+                                &-value{
+                                    &__low-stat {
+                                        color: $low-stat;
+                                    }
+    
+                                    &__high-stat {
+                                        color: $high-stat;
+                                    }   
+                                }
                             }
                         }
                     }
@@ -251,13 +241,65 @@
 
                 &__areas {
                     height: 8em;
-                    margin-top: 1em;
                     display: flex;
 
                     ul {
+                        width: 60%;
                         height: 100%;
                         overflow-y: scroll;
+                        box-shadow: $light-shadow;
+
+                        li {
+                            padding: 2px 0;
+
+                            &.odd {
+                                &.light {
+                                    color: $light-color-tx;
+                                    background-color: $light-color-bg;
+                                }
+                            
+                                &.dark {
+                                    color: $light-color-tx;
+                                    background-color: $dark-color-bg-plain;
+                                }
+                            }
+                        }
                     }
+                }
+
+                &__moves {
+                    height: 12em;
+
+                    .moves-grp{
+                        height: 100%;
+                        display: flex;
+
+                        ul {
+                            width: 60%;
+                            height: inherit;
+                            overflow-y: scroll;
+                            box-shadow: $light-shadow;
+
+                            li {
+                                padding: 2px 0;
+
+                                &.odd {
+                                    &.light {
+                                        color: $light-color-tx;
+                                        background-color: $light-color-bg;
+                                    }
+                                
+                                    &.dark {
+                                        color: $light-color-tx;
+                                        background-color: $dark-color-bg-plain;
+                                    }
+                                }
+                            }
+
+
+                        }
+                    }
+
                 }
             }
         }

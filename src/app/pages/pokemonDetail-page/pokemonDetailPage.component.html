@@ -88,12 +88,27 @@
                     <div *ngIf="areas.length" [ngClass]="['info-grp' + '__areas']">
                         <span>Areas: </span>
                         <ul>
-                            <li *ngFor="let area of areas">
+                            <li *ngFor="let area of areas; index as i"
+                                [ngClass]="[(i % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
+                            >
                                 <span [ngClass]="['area']">
                                     {{area.location_area.name}}
                                 </span>
                             </li>
                         </ul>
+                    </div>
+
+                    <div [ngClass]="['info-grp' + '__moves', ( isDark$ | async ) ? 'dark' : 'light']">
+                        <div [ngClass]="['moves-grp', ( isDark$ | async ) ? 'dark' : 'light']">
+                            <span>Moves:</span>
+                            <ul>
+                                <li *ngFor="let move of pokemon.moves; index as i"
+                                    [ngClass]="['move', (i % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
+                                >
+                                    {{move.move.name}}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     
                 </div>
@@ -192,17 +207,6 @@
 
         </div>
 
-        <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__moves-grp', ( isDark$ | async ) ? 'dark' : 'light']">
-                <span>Moves</span>
-                <ul>
-                    <li *ngFor="let move of pokemon.moves; index as i"
-                        [ngClass]="['move', (i % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
-                    >
-                        {{move.move.name}}
-                    </li>
-                </ul>
-            </div>
-        </div> -->
+         -->
 
 </section>
