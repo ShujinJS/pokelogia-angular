@@ -11,11 +11,11 @@
     padding-top: $header-height;
 
     &.light {
-        background-color: $light-color-tx;
+        // background-color: $light-color-tx;
     }
 
     &.dark {
-        background-color: $dark-color-bg;
+        background-color: $dark-color-bg-cover;
     }
 
     &__form {
@@ -27,13 +27,14 @@
         align-items: center;
         justify-content: space-between;
         border-radius: $primary-border-radius;
+        box-shadow: $focus-shadow;
         
         &.light {
             background-color: $light-color-bg;
         }
 
         &.dark {
-            background-color: $dark-color-bg;
+            background-color: $dark-color-bg-cover;
         }
 
         @media only screen and (min-width: $mobile-l) {

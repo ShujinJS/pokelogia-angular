@@ -95,7 +95,7 @@
                 }
     
                 &.dark:hover {
-                    background-color: $dark-color-bg-plain;
+                    background-color: $dark-color-bg-cover;
                 }
     
                 a {
@@ -111,7 +111,6 @@
                     text-align: center;
 
                     @media only screen and (min-width: $lap) {
-                        min-width: 50px;
                         display: flex;
                         justify-content: center;
                     }
@@ -130,6 +129,7 @@
                         }
 
                         @media only screen and (min-width: $lap) {
+                            padding: 1em;
                             border: none;
                         }
                     }
