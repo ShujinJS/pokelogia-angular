@@ -27,24 +27,31 @@
     }
 
     &__links-ctr {
-        display: none;
         min-width: $mobile-nav-width;
         height: 100vh;
         position: fixed;
         top: 0;
-        left: 0;
+        left: -$mobile-nav-width;
         z-index: 1;
-
-        &.light {
-            background-color: $light-nav-mini-bg;
-        }
-
-        &.dark {
-            background-color: $dark-color-bg-cover;
-        }
+        transition: 0.3s linear all;
 
         &.show {
-            display: block;
+            left: 0;
+
+            &.light {
+                background-color: $light-nav-mini-bg;
+            }
+    
+            &.dark {
+                background-color: $dark-nav-bg;
+            }
+        }
+
+        @media only screen and (min-width: $lap) {
+            position: unset;
+            display: flex;
+            height: auto;
+            background-color: none;
         }
         
         &__brand-mini {
@@ -62,7 +69,11 @@
             }
     
             &.dark {
-                background-color: $dark-color-bg;
+                border-bottom: 1px solid $dark-color-bg;
+            }
+
+            @media only screen and (min-width: $lap) {
+                display: none;
             }
         }
 
@@ -71,20 +82,6 @@
             display: inherit;
             list-style: none;
             text-decoration: unset;
-    
-    
-            // @media only screen and (min-width: $mobile-l) {
-            //     font-size: $font-size;
-    
-            //     font-size: $font-size-xs;
-            //     display: inherit;
-            //     list-style: none;
-            //     text-decoration: unset;
-            // }
-    
-            // @media only screen and (min-width: $mobile-l) {
-            //     font-size: $font-size;
-            // }
     
             li {
                 height: 100%;
@@ -98,7 +95,7 @@
                 }
     
                 &.dark:hover {
-                    background-color: $dark-color-bg-hover;
+                    background-color: $dark-color-bg-plain;
                 }
     
                 a {
@@ -113,6 +110,12 @@
                 &.theme {
                     text-align: center;
 
+                    @media only screen and (min-width: $lap) {
+                        min-width: 50px;
+                        display: flex;
+                        justify-content: center;
+                    }
+
                     a {
                         padding: 0.2em;
                         border: 1px solid;
@@ -125,6 +128,10 @@
                         &.dark {
                             border-color: $dark-color-bg;
                         }
+
+                        @media only screen and (min-width: $lap) {
+                            border: none;
+                        }
                     }
                 }
             }
@@ -133,6 +140,10 @@
 
     &__btn-ctr {
         height: 100%;
+
+        @media only screen and (min-width: $lap) {
+            display: none;
+        }
 
         button {
             font-size: $font-size-icon;
@@ -144,7 +155,14 @@
             transition: 0.5s linear all;
 
             &:hover {
-                color: $light-color-bg-hover;
+
+                &.light {
+                    color: $light-color-bg-hover;
+                }
+
+                &.dark {
+                    color: $dark-color-bg;
+                }
             }
         }
     }

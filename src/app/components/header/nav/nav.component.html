@@ -26,7 +26,7 @@
     <div [ngClass]="[classPrefix + '__btn-ctr']">
         <button 
             (click)="isToggle = !isToggle"
-            [ngClass]="[classPrefix + '__btn-ctr' + 'toggle-btn']"
+            [ngClass]="[classPrefix + '__btn-ctr', 'toggle-btn', ( isDark$ | async ) ? 'dark' : 'light']"
         >
             {{isToggle ? '✕' : '☰'}}
         </button>
