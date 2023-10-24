@@ -13,6 +13,7 @@ import { changeTheme } from 'src/app/store/theme/theme.actions';
 export class NavComponent implements OnInit {
     classPrefix = 'app-nav'
     isDark$: Observable<boolean>;
+    isToggle: boolean = false;
     authData = this.authPageService.checkLogIn()
     isLoggedIn$: Observable<boolean>
 

@@ -1,15 +1,35 @@
 <nav [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
     <div [ngClass]="[classPrefix + '__brand']"></div>
-    <ul [ngClass]="[classPrefix + '__links']">
-        <li [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
-            <a (click)="changeTheme()">Change Theme</a>
-        </li>
-        <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
-            <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
-            <a [routerLink]="[link?.link]">{{link?.title}}</a>
-        </li>
-        <li [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
-            <a [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">{{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}</a>
-        </li>
-    </ul>
+    <div [ngClass]="[classPrefix + '__links-ctr', isToggle ? 'show' : '', ( isDark$ | async ) ? 'dark' : 'light']">
+
+        <div [ngClass]="[classPrefix + '__links-ctr' + '__brand-mini', ( isDark$ | async ) ? 'dark' : 'light']"></div>
+        <ul [ngClass]="[classPrefix + '__links-ctr' + '__links', ( isDark$ | async ) ? 'dark' : 'light']">
+            <li [ngClass]="[classPrefix + '__link', 'theme', ( isDark$ | async ) ? 'dark' : 'light']">
+                <a 
+                    (click)="changeTheme()"
+                    [ngClass]="[( isDark$ | async ) ? 'dark' : 'light']"
+                >
+                    {{ (isDark$ | async) ? '☼' : '☾'}}
+                </a>
+            </li>
+            <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+                <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
+                <a [routerLink]="[link?.link]">{{link?.title}}</a>
+            </li>
+            <li [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+                <a [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">{{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}</a>
+            </li>
+        </ul>
+        
+    </div>
+
+    <div [ngClass]="[classPrefix + '__btn-ctr']">
+        <button 
+            (click)="isToggle = !isToggle"
+            [ngClass]="[classPrefix + '__btn-ctr', 'toggle-btn', ( isDark$ | async ) ? 'dark' : 'light']"
+        >
+            {{isToggle ? '✕' : '☰'}}
+        </button>
+    </div>
+
 </nav>
