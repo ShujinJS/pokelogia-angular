@@ -1,6 +1,7 @@
 @import "../../../scss/app.colors.scss";
 @import "../../../scss/app.font.scss";
 @import "../../../scss/app.breakpoints.scss";
+@import "../../../scss/app.common.scss";
 
 .app-nav {
     width: 100%;
@@ -25,36 +26,143 @@
         cursor: pointer;
     }
 
-    &__links {
-        font-size: $font-size-xs;
-        display: inherit;
-        list-style: none;
-        text-decoration: unset;
+    &__links-ctr {
+        min-width: $mobile-nav-width;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -$mobile-nav-width;
+        z-index: 1;
+        transition: 0.3s linear all;
 
-        @media only screen and (min-width: $mobile-l) {
-            font-size: $font-size;
+        &.show {
+            left: 0;
+
+            &.light {
+                background-color: $light-nav-mini-bg;
+            }
+    
+            &.dark {
+                background-color: $dark-nav-bg;
+            }
         }
 
-        li {
-            height: inherit;
-            display: inherit;
+        @media only screen and (min-width: $lap) {
+            position: unset;
+            display: flex;
+            height: auto;
+            background-color: none;
+        }
+        
+        &__brand-mini {
+            width: 75%;
+            height: 50px;
+            margin: 0 auto 1em auto;
+            padding-bottom: 4em;
+            background: url('../../../../assets/pokelogia-logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
             cursor: pointer;
 
-            &.light:hover {
-                background-color: $light-color-bg-hover;
+            &.light {
+                border-bottom: 1px solid $light-color-tx;
+            }
+    
+            &.dark {
+                border-bottom: 1px solid $dark-color-bg;
             }
 
-            &.dark:hover {
-                background-color: $dark-color-bg-hover;
+            @media only screen and (min-width: $lap) {
+                display: none;
             }
+        }
 
-            a {
-                height: inherit;
+        &__links {
+            font-size: $font-size-sm;
+            display: inherit;
+            list-style: none;
+            text-decoration: unset;
+    
+            li {
+                height: 100%;
+                padding: 0.5em;
                 display: inherit;
-                align-items: center;
-                padding: 0 10px;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-                color: $light-color-tx;
+                cursor: pointer;
+                transition: 0.5s linear all;
+    
+                &.light:hover {
+                    background-color: $light-color-bg-hover;
+                }
+    
+                &.dark:hover {
+                    background-color: $dark-color-bg-cover;
+                }
+    
+                a {
+                    height: inherit;
+                    display: inherit;
+                    align-items: center;
+                    padding: 0 10px;
+                    font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    color: $light-color-tx;
+                }
+
+                &.theme {
+                    text-align: center;
+
+                    @media only screen and (min-width: $lap) {
+                        display: flex;
+                        justify-content: center;
+                    }
+
+                    a {
+                        padding: 0.2em;
+                        border: 1px solid;
+                        border-radius: 1em;
+
+                        &.light {
+                            border-color: $light-color-tx;
+                        }
+    
+                        &.dark {
+                            border-color: $dark-color-bg;
+                        }
+
+                        @media only screen and (min-width: $lap) {
+                            padding: 1em;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__btn-ctr {
+        height: 100%;
+
+        @media only screen and (min-width: $lap) {
+            display: none;
+        }
+
+        button {
+            font-size: $font-size-icon;
+            height: 100%;
+            background: none;
+            border: none;
+            color: $light-color-tx;
+            cursor: pointer;
+            transition: 0.5s linear all;
+
+            &:hover {
+
+                &.light {
+                    color: $light-color-bg-hover;
+                }
+
+                &.dark {
+                    color: $dark-color-bg;
+                }
             }
         }
     }
