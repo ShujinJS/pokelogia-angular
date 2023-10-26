@@ -6,6 +6,11 @@ export const ShowNotification = createAction(
     props<NotificationModel>()
 );
 
-export const ClearNotification = createAction(
-    '[NotificationComponent] ClearNotification'
+export const DismissNotification = createAction(
+    '[NotificationComponent] DismissNotification',
+    props<{id: string}>()
+);
+
+export const ClearAllNotifications = createAction(
+    '[NotificationComponent] ClearAllNotifications',
 );

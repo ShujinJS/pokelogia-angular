@@ -1,10 +1,21 @@
 import { NotificationModel } from './../../models/store.models';
 import { createReducer, on } from '@ngrx/store';
-import { ShowNotification, ClearNotification, } from './notification.action';
+import { 
+    ShowNotification, 
+    DismissNotification, ClearAllNotifications,
+} from './notification.action';
 
-export const initialState: ReadonlyArray<NotificationModel> = [];
+// export const initialState: ReadonlyArray<NotificationModel> = [];
+// don't have to use the 'Readonly' since we use actions with state seperator to make the state immutable
+export const initialState: NotificationModel[] = []
 
-export const NotificationReducer = createReducer(
+export const notificationReducer = createReducer(
     initialState,
-    on(ShowNotification, (state, {message, isShowing}) => [ ...state, { message, isShowing }])
+
+    on(ShowNotification, ( state, { id, message } ) => [ ...state, { id, message, isShowing: true }]),
+
+    on(DismissNotification, ( state, { id } ) => state.filter( notif => notif.id !== id )),
+
+    on(ClearAllNotifications, ( state ) => state = initialState),
+
 );

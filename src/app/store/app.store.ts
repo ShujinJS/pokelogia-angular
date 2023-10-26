@@ -1,7 +1,11 @@
 import { NotificationModel } from './../models/store.models';
 import { Pokemon } from "../models/pokemon.model";
+import { getFromStore, storeConstants } from '../helper/storage.helper';
 
 export interface AppStore {
-    readonly pokemons: Pokemon[];
-    readonly notification: NotificationModel[];
+
+    theme: boolean;
+    auth: boolean;
+    // pokemons: Pokemon[];
+    notifications: NotificationModel[];
 }

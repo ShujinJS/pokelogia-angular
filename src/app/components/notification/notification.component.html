@@ -1,0 +1,18 @@
+<div [ngClass]="[classPrefix + '-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
+    <div 
+        [ngClass]="[classPrefix + '-ctr-grp']"
+    >
+        <div *ngFor="let notif of notifications$ | async"
+            [ngClass]="[classPrefix + '-ctr-grp' + '__card', (notif.isShowing ? 'show' : ''), ( isDark$ | async ) ? 'dark' : 'light']"
+            (click)="dismissNotification(notif.id)"
+        >
+            <div>
+                <span>{{notif.message}}</span>
+            </div>
+            <div [ngClass]="[classPrefix + '-ctr-grp' + '__duration', ( isDark$ | async ) ? 'dark' : 'light']">
+            </div>
+        </div>
+    </div>
+    
+        <button (click)="showNotification('Charizard has been added to your belt!')">BUTTTTOOOOON</button>
+</div>

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, 
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { idGenerator } from 'src/app/helper/common.helper';
 import { addToStore, getFromStore, storeConstants } from 'src/app/helper/storage.helper';
 import { FormModel, InputModel, UserModel } from 'src/app/models/auth.model';
 
@@ -105,6 +106,7 @@ export class AuthPageComponent implements OnInit {
                 checkbox: ['', []], 
             }
         } else {
+            const randomId = idGenerator();
             formToUse = {
                 ...formToUse,
                 passwordConfirm: ['', [
@@ -112,7 +114,7 @@ export class AuthPageComponent implements OnInit {
                     this.passwordValidator(),
                     Validators.required, 
                 ]],
-                id: [(Math.random() * Math.floor(Math.random() * Date.now())).toString(), []],
+                id: [randomId, []],
             }
         }
         return formToUse;
