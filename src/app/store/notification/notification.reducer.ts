@@ -2,7 +2,9 @@ import { NotificationModel } from './../../models/store.models';
 import { createReducer, on } from '@ngrx/store';
 import { 
     ShowNotification, 
-    DismissNotification, ClearAllNotifications,
+    DismissNotification, 
+    ToggleNotification,
+    ClearAllNotifications,
 } from './notification.action';
 
 // export const initialState: ReadonlyArray<NotificationModel> = [];
@@ -15,6 +17,23 @@ export const notificationReducer = createReducer(
     on(ShowNotification, ( state, { id, message } ) => [ ...state, { id, message, isShowing: true }]),
 
     on(DismissNotification, ( state, { id } ) => state.filter( notif => notif.id !== id )),
+
+    // on(ToggleNotification, ( state, { id } ) => state.filter( notif => {
+    //     if(notif.id === id) notif.isShowing = !notif.isShowing }
+    // )),
+
+    on(ToggleNotification, ( state, { id } ) => 
+        // state.map(notif => {
+        //     if(notif.id === id) notif.isShowing = !notif.isShowing;
+        // })
+        state.filter(notif => {
+            if(notif.id === id) {
+                notif.isShowing = !notif.isShowing
+            } 
+        })
+        // console.log(state)
+        // return state 
+    ),
 
     on(ClearAllNotifications, ( state ) => state = initialState),
 

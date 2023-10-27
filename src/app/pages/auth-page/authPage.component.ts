@@ -1,12 +1,15 @@
+import { NotificationComponentService } from './../../components/notification/notification.service';
+import { NotificationModel } from 'src/app/models/store.models';
 import { AuthPageService } from './authPage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ValidatorFn, } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { idGenerator } from 'src/app/helper/common.helper';
 import { addToStore, getFromStore, storeConstants } from 'src/app/helper/storage.helper';
 import { FormModel, InputModel, UserModel } from 'src/app/models/auth.model';
+import { AppStore } from 'src/app/store/app.store';
 
 @Component({
     selector: 'app-authPage',
@@ -20,15 +23,18 @@ export class AuthPageComponent implements OnInit {
         private formBuilder: FormBuilder,
         private authPageService: AuthPageService,
         private router: Router,
-        private store: Store<{theme: boolean}>,
-        ) {
-        this.isDark$ = store.select('theme')
+        private appStore: Store<AppStore>,
+        private notificationComponentService: NotificationComponentService,
+    ) {
+        this.isDark$ = appStore.select('theme');
+        this.notifications$ = appStore.pipe(select('notifications'))
     }
 
     classPrefix = 'app-formInputs'
     useForm: FormGroup = new FormGroup({})
     showLogin = false
     isDark$: Observable<boolean>;
+    notifications$: Observable<NotificationModel[]>;
     signInInput = { title: "Confirm password", type: "password", isRequired: true, formControlName: "passwordConfirm", message: "Passwords must be matched"}
     users: UserModel[] = []
 
@@ -74,9 +80,11 @@ export class AuthPageComponent implements OnInit {
             const user: UserModel = this.useForm.value;
 
             if(this.showLogin) {
-               this.authPageService.logUserIn(user)
+                this.authPageService.logUserIn(user)
+                this.notificationComponentService.showNotification(user.username + ' logged in.');
             } else {
                 this.authPageService.signUserIn(user)
+                this.notificationComponentService.showNotification(user.username + ' signed in.');
             }
             this.useForm.reset()
             this.router.navigate(['/'])

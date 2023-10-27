@@ -334,15 +334,25 @@
             padding: 1em;
             border: none;
             border-radius: 1em;
+            cursor: pointer;
+            transition: $transition-primary;
 
             &.light {
                 color: $light-color-tx;
                 background-color: $light-color-bg;
+
+                &:hover {
+                    background-color: $light-color-bg-hover;
+                }
             }
         
             &.dark {
                 color: $light-color-tx;
-                background-color: $dark-color-bg;
+                background-color: $dark-btn-bg-secondary;
+
+                &:hover {
+                    background-color: $dark-btn-bg-secondary-hover;
+                }
             }
         }
     }

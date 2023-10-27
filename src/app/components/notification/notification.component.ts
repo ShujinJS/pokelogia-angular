@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { idGenerator } from 'src/app/helper/common.helper';
 import { NotificationModel } from 'src/app/models/store.models';
 import { AppStore } from 'src/app/store/app.store';
-import { ShowNotification, DismissNotification } from 'src/app/store/notification/notification.action';
+import { ShowNotification, DismissNotification, ToggleNotification } from 'src/app/store/notification/notification.action';
 NotificationComponentService
 
 @Component({
@@ -34,6 +34,19 @@ export class NotificationComponent {
     }
 
     dismissNotification(id: string) {
-        this.appStore.dispatch(DismissNotification({ id }))
+        this.appStore.dispatch(DismissNotification({ id }));
+    }
+
+    onMouseEnter(e: Event): void {
+        if(e.target instanceof HTMLElement) {
+            e.target.classList.add('show')
+        }
+        // this.appStore.dispatch(ToggleNotification({ id }));
+    }
+
+    onMouseLeave(e: Event): void {
+        if(e.target instanceof HTMLElement) {
+            e.target.classList.remove('show')
+        }
     }
 }
