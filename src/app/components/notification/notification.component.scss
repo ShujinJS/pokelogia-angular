@@ -1,0 +1,64 @@
+@import '../../scss/app.colors.scss';
+@import '../../scss/app.breakpoints.scss';
+@import '../../scss/app.common.scss';
+
+.app-notification {
+
+    &-ctr {
+        position: fixed;
+        top: 100px;
+        right: 0;
+        transition: 1s linear all;
+
+        &-grp {
+            &__card {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                min-width: $notification-card-width;
+                min-height: 75px;
+                position: relative;
+                // right: -$notification-card-width;
+                right: -200px;
+                margin-bottom: 1em;
+                border-radius: 5px;
+                box-shadow: $focus-shadow;
+                cursor: pointer;
+                transition: $transition-primary;
+    
+                &.show {
+                    right: 10px;
+                }
+            
+                &.light {
+                    background-color: $light-color-bg-plain;
+                }
+            
+                &.dark {
+                    color: $light-color-tx;
+                    background-color: $dark-color-bg;
+                }
+
+                div {
+                    padding: 1em 1em 0 1em;
+                }
+            }
+
+            &__duration {
+                width: 100%;
+                height: 15px;
+                border-radius: 5px;
+
+                &.light {
+                    background-color: $light-color-bg;
+                }
+            
+                &.dark {
+                    color: $light-color-tx;
+                    background-color: $outline-color;
+                }
+            }
+        }
+    }
+
+}

@@ -20,7 +20,6 @@ export class NavComponent implements OnInit {
     constructor(
         private authPageService: AuthPageService,
         private store: Store<{theme: boolean, auth: boolean}>,
-        // private authStore: Store<{auth: boolean}>
     ){
         this.isDark$ = store.select('theme');
         this.isLoggedIn$ = store.select('auth')

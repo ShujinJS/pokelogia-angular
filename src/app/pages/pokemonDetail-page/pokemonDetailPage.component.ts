@@ -1,11 +1,14 @@
+import { NotificationComponentService } from './../../components/notification/notification.service';
 import { RequestHelper } from './../../helper/request.helper';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { addToStore, getFromStore, setStore, storeConstants, storeDefault } from 'src/app/helper/storage.helper';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonLocations } from 'src/app/models/request.model';
+import { NotificationModel } from 'src/app/models/store.models';
+import { AppStore } from 'src/app/store/app.store';
 
 @Component({
     selector: 'app-pokemonDetailPage',
@@ -17,6 +20,7 @@ export class PokemonDetailPageComponent implements OnInit {
     classPrefix = 'app-pokemonDetail'
     ctrClassPrefix = '__ctr__details-ctr'
     isDark$: Observable<boolean>;
+    notifications$: Observable<NotificationModel[]>
     nameParam = this.route.snapshot.params['name']
     pokemon: Pokemon = {
         abilities: [],
@@ -50,9 +54,11 @@ export class PokemonDetailPageComponent implements OnInit {
     constructor(
         private requestHelper: RequestHelper,
         private route: ActivatedRoute,
-        private store: Store<{theme: boolean}>,
+        private appStore: Store<AppStore>,
+        private notificationComponentService: NotificationComponentService,
     ){
-        this.isDark$ = store.select('theme')
+        this.isDark$ = appStore.select('theme');
+        this.notifications$ = appStore.pipe(select('notifications'))
     }
     
     ngOnInit(): void {
@@ -89,17 +95,19 @@ export class PokemonDetailPageComponent implements OnInit {
         })
     }
 
-    addToBelt(): void {
+    addToBelt(message: string): void {
         switch(true) {
             case this.checkIfAddedToBelt():
                 break;
             case this.belt.length >= 1:
                 this.belt.push(this.pokemon)
                 setStore(this.beltConstant, this.belt);
+                this.notificationComponentService.showNotification(message);
                 break;
             default:
                 this.belt.push(this.pokemon)
                 addToStore(this.beltConstant, this.belt);
+                this.notificationComponentService.showNotification(message);
                 break;
         }
     }
