@@ -1,14 +1,18 @@
-import { NotificationComponentService } from './../../components/notification/notification.service';
-import { RequestHelper } from './../../helper/request.helper';
+// Angular
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+// Store
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppStore } from 'src/app/store/app.store';
 import { addToStore, getFromStore, setStore, storeConstants, storeDefault } from 'src/app/helper/storage.helper';
+import { NotificationComponentService } from './../../components/notification/notification.service';
+// Model
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonLocations } from 'src/app/models/request.model';
 import { NotificationModel } from 'src/app/models/store.models';
-import { AppStore } from 'src/app/store/app.store';
+
+import { RequestHelper } from './../../helper/request.helper';
 
 @Component({
     selector: 'app-pokemonDetailPage',

@@ -1,0 +1,16 @@
+@import '../../scss/app.common.scss';
+@import '../../scss/app.colors.scss';
+@import '../../scss/app.font.scss';
+
+.app-inventoryPage {
+    width: 100%;
+    min-height: 100vh;
+
+    &.light {
+        background-color: $light-color-bg-plain;
+    }
+
+    &.dark {
+        background-color: $dark-color-bg-cover;
+    }
+}
