@@ -1,15 +1,18 @@
-import { NotificationModel } from './../../models/store.models';
+// Angular
 import { Injectable, OnInit } from "@angular/core";
+// Store
 import { Store, select } from "@ngrx/store";
 import { Observable, of } from "rxjs";
-import { idGenerator } from 'src/app/helper/common.helper';
 import { AppStore } from 'src/app/store/app.store';
 import { 
     ShowNotification,
     DismissNotification,
     ToggleNotification,
 } from 'src/app/store/notification/notification.action';
-
+// Helper
+import { idGenerator } from 'src/app/helper/common.helper';
+// Model
+import { NotificationModel } from './../../models/store.models';
 
 @Injectable({
     providedIn: 'root',

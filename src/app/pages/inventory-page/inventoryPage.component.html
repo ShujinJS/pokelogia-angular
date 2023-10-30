@@ -1,3 +1,46 @@
 <section [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
+    <div [ngClass]="[classPrefix + '__pokeballs-ctr' ,( isDark$ | async ) ? 'dark' : 'light']">
 
+        <div [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' ,( isDark$ | async ) ? 'dark' : 'light']">
+            
+            <div 
+                [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + ' arrow left' ,( isDark$ | async ) ? 'dark' : 'light']"
+                (click)="slideHandler('left')"
+            >
+                〈
+            </div>
+
+            <div [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + '__pokeballs-grp' ,( isDark$ | async ) ? 'dark' : 'light']">
+                <ul [ngStyle]="{left: draggingPx +'px'}">
+                    <li 
+                        *ngFor="let ball of belt; index as i"
+                        [ngClass]="['pokeball-ball', ( isDark$ | async ) ? 'dark' : 'light']"
+                    >
+                        <img 
+                            [src]="[isOpen ? '../../../assets/open-pokeball.png' : '../../../assets/closed-pokeball.png']"
+                            alt=""
+                            [ngClass]="['pokeball-ball' + (isOpen ? '__open' : '__closed'), ( isDark$ | async ) ? 'dark' : 'light']"
+                            (click)="isOpen = !isOpen"
+                        />
+
+                        <div [ngClass]="['pokeball' +  '-card', ( isDark$ | async ) ? 'dark' : 'light']">
+
+                        </div>
+                        <span [ngClass]="['pokeball', 'title', ( isDark$ | async ) ? 'dark' : 'light']">
+                            {{ball.name}}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div 
+                [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + ' arrow right' ,( isDark$ | async ) ? 'dark' : 'light']"
+                (click)="slideHandler('right')"
+            >
+                〉
+            </div>
+
+        </div>
+
+    </div>
 </section>
