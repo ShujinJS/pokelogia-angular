@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 import { Pokemon } from './../../models/pokemon.model';
 import { AppStore } from 'src/app/store/app.store';
 import { getFromStore, storeConstants, storeDefault } from 'src/app/helper/storage.helper';
+// Helper
+import { typeColorConstants } from './../../helper/constants.helper';
+import { PokemonTypeConstants } from 'src/app/models/constant.helper';
 
 @Component({
     selector: 'app-inventoryPage',
@@ -26,7 +29,6 @@ export class InventoryPageComponent implements OnInit {
     rightSlideLimit = -584
     draggingPx = 118
 
-
     constructor(
         private appStore: Store<AppStore>,
     ) {
@@ -38,11 +40,34 @@ export class InventoryPageComponent implements OnInit {
         beltStore ? this.belt = beltStore : this.belt = []
     }
 
-    slideHandler(direction: string): void {
+    arrowHandler(direction: string): void {
         if(direction === 'left' && (this.draggingPx < this.leftSlideLimit)) {
             this.draggingPx = this.draggingPx + this.ballWidth
         } else if (direction === 'right' && (this.draggingPx > this.rightSlideLimit)) {
             this.draggingPx = this.draggingPx - this.ballWidth
         }
+    }
+
+    clickHandler(e: Event): void {
+        if(e.target instanceof HTMLElement) {
+            const srcUrl = e.target.getAttribute('src');
+            const openUrl = '../../../assets/open-pokeball.png';
+            const closedUrl = '../../../assets/closed-pokeball.png';
+            const card = e.target.parentElement?.children[0]
+            
+            if(srcUrl?.includes('closed')) {
+                e.target.setAttribute('src', openUrl)
+                card?.classList.add('open')
+            } else {
+                e.target.setAttribute('src', closedUrl)
+                card?.classList.remove('open')
+            }
+        }
+
+
+    }
+
+    foilStyleHandler(pokemonType: string) {
+        return typeColorConstants[pokemonType as keyof typeof typeColorConstants]
     }
 }

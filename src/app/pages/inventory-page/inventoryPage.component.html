@@ -5,9 +5,9 @@
             
             <div 
                 [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + ' arrow left' ,( isDark$ | async ) ? 'dark' : 'light']"
-                (click)="slideHandler('left')"
+                (click)="arrowHandler('left')"
             >
-                〈
+                〱
             </div>
 
             <div [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + '__pokeballs-grp' ,( isDark$ | async ) ? 'dark' : 'light']">
@@ -16,18 +16,55 @@
                         *ngFor="let ball of belt; index as i"
                         [ngClass]="['pokeball-ball', ( isDark$ | async ) ? 'dark' : 'light']"
                     >
+                        <div [ngClass]="['pokeball-ball' + '__card', ( isDark$ | async ) ? 'dark' : 'light']">
+                            <div 
+                                [ngClass]="['pokeball-ball' + '__card__title-grp', ( isDark$ | async ) ? 'dark' : 'light']"
+                            >
+                                <p>
+                                    {{ball.name}}
+                                </p>
+                                <p>
+                                    #{{ball.id}}
+                                </p>
+                            </div>
+
+                            <div 
+                                [ngStyle]="{background: 'linear-gradient(30deg,' + (ball.types[1] ? foilStyleHandler(ball.types[1].type.name) : 'white') + ', ' + foilStyleHandler(ball.types[0].type.name) +')'}"
+                                [ngClass]="['pokeball-ball' + '__card__img-grp', ball.types[0].type.name + '-bg', ( isDark$ | async ) ? 'dark' : 'light']"
+                            >
+                            
+                                <img src="{{ball.sprites?.front_default}}" alt="">
+
+                                <div
+                                    [ngClass]="['pokeball-ball' + '__card__type-grp', ( isDark$ | async ) ? 'dark' : 'light']"
+                                >
+                                    <p 
+                                        *ngFor="let type of ball.types"
+                                        [ngClass]="[type.type.name + '-bg']"
+                                    >
+                                        {{type.type.name}}
+                                    </p>
+                                </div>
+
+                                <div 
+                                    [ngClass]="['pokeball-ball' + '__card__moves-grp', ( isDark$ | async ) ? 'dark' : 'light']"
+                                >
+                                    <p> coming soon </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                         <img 
                             [src]="[isOpen ? '../../../assets/open-pokeball.png' : '../../../assets/closed-pokeball.png']"
                             alt=""
-                            [ngClass]="['pokeball-ball' + (isOpen ? '__open' : '__closed'), ( isDark$ | async ) ? 'dark' : 'light']"
-                            (click)="isOpen = !isOpen"
+                            [ngClass]="['pokeball-ball' + '__img', (isOpen ? '__open' : '__closed'), ( isDark$ | async ) ? 'dark' : 'light']"
+                            (click)="clickHandler($event)"
                         />
 
-                        <div [ngClass]="['pokeball' +  '-card', ( isDark$ | async ) ? 'dark' : 'light']">
-
-                        </div>
-                        <span [ngClass]="['pokeball', 'title', ( isDark$ | async ) ? 'dark' : 'light']">
-                            {{ball.name}}
+                        <span [ngClass]="['pokeball' + '__title', ( isDark$ | async ) ? 'dark' : 'light']">
+                            {{ball.name.toUpperCase()}}
                         </span>
                     </li>
                 </ul>
@@ -35,9 +72,9 @@
 
             <div 
                 [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + ' arrow right' ,( isDark$ | async ) ? 'dark' : 'light']"
-                (click)="slideHandler('right')"
+                (click)="arrowHandler('right')"
             >
-                〉
+                〱
             </div>
 
         </div>
