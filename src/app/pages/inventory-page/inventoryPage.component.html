@@ -16,7 +16,10 @@
                         *ngFor="let ball of belt; index as i"
                         [ngClass]="['pokeball-ball', ( isDark$ | async ) ? 'dark' : 'light']"
                     >
-                        <div [ngClass]="['pokeball-ball' + '__card', ( isDark$ | async ) ? 'dark' : 'light']">
+                        <div 
+                            [ngClass]="['pokeball-ball' + '__card', ( isDark$ | async ) ? 'dark' : 'light']"
+                            (click)="getDetailPage(ball.name)"
+                        >
                             <div 
                                 [ngClass]="['pokeball-ball' + '__card__title-grp', ( isDark$ | async ) ? 'dark' : 'light']"
                             >

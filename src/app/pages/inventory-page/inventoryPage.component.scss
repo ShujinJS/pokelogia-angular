@@ -104,6 +104,7 @@
                             justify-content: center;
                             position: relative;
                             object-fit: cover;
+                            cursor: pointer;
 
                             &__card {
                                 width: 120px;
@@ -114,6 +115,7 @@
                                 transform: translatey(0px);
                                 animation: float 6s ease-in-out infinite;
                                 box-shadow: $focus-shadow;
+                                cursor: pointer;
 
                                 &.open {
                                     display: inline;
@@ -124,6 +126,7 @@
                                     padding: 0.5em;
                                     display: flex;
                                     justify-content: space-between;
+                                    font-size: $font-size-xs;
                                 }
 
                                 &__img-grp {
@@ -155,10 +158,11 @@
                                     justify-content: space-between;
                                     position: relative;
                                     top: -30px;
+                                    font-size: $font-size-xs;
                                     color: $light-color-tx;
 
                                     p {
-                                        padding: 2px;
+                                        padding: 5px;
                                         border-radius: 1em;
                                     }
                                 }

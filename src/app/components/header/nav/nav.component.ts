@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
     isToggle: boolean = false;
     authData = this.authPageService.checkLogIn()
     isLoggedIn$: Observable<boolean>
+    showMiniLinks = false
 
     constructor(
         private authPageService: AuthPageService,
@@ -25,7 +26,7 @@ export class NavComponent implements OnInit {
         this.isLoggedIn$ = store.select('auth')
     }
     
-    ngOnInit(): void {
+    ngOnInit() : void {
 
     }
 
@@ -33,8 +34,18 @@ export class NavComponent implements OnInit {
         this.store.dispatch(changeTheme())
     }
 
+    miniLinkHandler (bool: boolean) : void {
+        this.showMiniLinks = bool
+    }
+
     navLinks = [
         {title: "Home", link: "/"},
         {title: "Coming Soon", link: "/"},
+    ]
+
+    miniNavLinks = [
+        {title: 'My Account', link: 'comingsoon'},
+        {title: 'Inventory', link: 'inventory'},
+        {title: 'Log Out', link: ''},
     ]
 }

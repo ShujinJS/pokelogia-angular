@@ -1,5 +1,6 @@
 // Angular
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 // Store
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -31,6 +32,7 @@ export class InventoryPageComponent implements OnInit {
 
     constructor(
         private appStore: Store<AppStore>,
+        private router: Router,
     ) {
         this.isDark$ = appStore.select('theme');
     }
@@ -67,7 +69,11 @@ export class InventoryPageComponent implements OnInit {
 
     }
 
-    foilStyleHandler(pokemonType: string) {
+    foilStyleHandler(pokemonType: string): string {
         return typeColorConstants[pokemonType as keyof typeof typeColorConstants]
+    }
+
+    getDetailPage(name: string): void {
+        this.router.navigate([`pokemon/${name}`])
     }
 }
