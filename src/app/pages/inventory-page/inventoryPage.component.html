@@ -17,6 +17,7 @@
                         [ngClass]="['pokeball-ball', ( isDark$ | async ) ? 'dark' : 'light']"
                     >
                         <div 
+                            [ngStyle]="{background: 'linear-gradient(30deg,' + foilStyleHandler(ball.types[0].type.name) + ', ' + (( isDark$ | async ) ? 'transparent' : 'black') +')'}"
                             [ngClass]="['pokeball-ball' + '__card', ( isDark$ | async ) ? 'dark' : 'light']"
                             (click)="getDetailPage(ball.name)"
                         >

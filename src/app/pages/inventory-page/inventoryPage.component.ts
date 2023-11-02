@@ -26,8 +26,8 @@ export class InventoryPageComponent implements OnInit {
     belt: Pokemon[] = storeDefault.belt || []
     isOpen = false
     ballWidth = 234
-    leftSlideLimit = 586
-    rightSlideLimit = -584
+    leftSlideLimit = 352
+    rightSlideLimit = -350
     draggingPx = 118
 
     constructor(
@@ -65,8 +65,6 @@ export class InventoryPageComponent implements OnInit {
                 card?.classList.remove('open')
             }
         }
-
-
     }
 
     foilStyleHandler(pokemonType: string): string {

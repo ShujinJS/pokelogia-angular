@@ -121,12 +121,42 @@
                                     display: inline;
                                 }
 
+                                &:hover {
+                                    @media only screen and (min-width: $lap) {
+                                        width: 230px;
+                                        height: 360px;
+                                        z-index: 1;
+
+                                        .pokeball-ball__card {
+                                            &__title-grp {
+                                                font-size: $font-size-md;
+                                                padding: 0.5em 1em;
+                                            }
+                                            &__img-grp {
+                                                height: 170px;
+                                            }
+
+                                            &__type-grp {
+                                                padding: 0 1em;
+                                                top: -55px;
+
+                                                p {
+                                                    padding: 1em;
+                                                    font-size: $font-size-sm;
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
                                 &__title-grp {
                                     width: 100%;
                                     padding: 0.5em;
                                     display: flex;
                                     justify-content: space-between;
                                     font-size: $font-size-xs;
+                                    color: $light-color-tx;
                                 }
 
                                 &__img-grp {
@@ -135,8 +165,8 @@
                                     margin: 0 auto;
 
                                     &.light {
-                                        border: 2px solid $light-color-bg;
-                                        color: $dark-color-bg-plain;
+                                        border: 2px solid $dark-color-bg-plain;
+                                        color: $light-color-tx;
                                     }
                         
                                     &.dark {
@@ -174,7 +204,7 @@
                                 }
 
                                 &.light {
-                                    border: 2px solid $light-color-bg;
+                                    border: 2px solid $dark-color-bg-plain;
                                     color: $dark-color-bg-plain;
                                     background-color: $light-color-tx;
                                 }
