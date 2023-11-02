@@ -18,21 +18,12 @@ export const notificationReducer = createReducer(
 
     on(DismissNotification, ( state, { id } ) => state.filter( notif => notif.id !== id )),
 
-    // on(ToggleNotification, ( state, { id } ) => state.filter( notif => {
-    //     if(notif.id === id) notif.isShowing = !notif.isShowing }
-    // )),
-
     on(ToggleNotification, ( state, { id } ) => 
-        // state.map(notif => {
-        //     if(notif.id === id) notif.isShowing = !notif.isShowing;
-        // })
         state.filter(notif => {
             if(notif.id === id) {
                 notif.isShowing = !notif.isShowing
             } 
         })
-        // console.log(state)
-        // return state 
     ),
 
     on(ClearAllNotifications, ( state ) => state = initialState),
