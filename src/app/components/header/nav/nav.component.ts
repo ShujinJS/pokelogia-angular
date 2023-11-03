@@ -2,7 +2,6 @@ import { AuthPageService } from './../../../pages/auth-page/authPage.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { changeTheme } from 'src/app/store/theme/theme.actions';
 
 @Component({
     selector: 'app-nav',
@@ -16,26 +15,32 @@ export class NavComponent implements OnInit {
     isToggle: boolean = false;
     authData = this.authPageService.checkLogIn()
     isLoggedIn$: Observable<boolean>
+    showMiniLinks = false
 
     constructor(
         private authPageService: AuthPageService,
-        private store: Store<{theme: boolean, auth: boolean}>,
-        // private authStore: Store<{auth: boolean}>
+        private appStore: Store<{theme: boolean, auth: boolean}>,
     ){
-        this.isDark$ = store.select('theme');
-        this.isLoggedIn$ = store.select('auth')
+        this.isDark$ = appStore.select('theme');
+        this.isLoggedIn$ = appStore.select('auth')
     }
     
-    ngOnInit(): void {
+    ngOnInit() : void {
 
     }
 
-    changeTheme () : void {
-        this.store.dispatch(changeTheme())
+    miniLinkHandler (bool: boolean) : void {
+        this.showMiniLinks = bool
     }
 
     navLinks = [
         {title: "Home", link: "/"},
         {title: "Coming Soon", link: "/"},
+    ]
+
+    miniNavLinks = [
+        {title: 'My Account', link: 'comingsoon'},
+        {title: 'Inventory', link: 'inventory'},
+        {title: 'Log Out', link: ''},
     ]
 }

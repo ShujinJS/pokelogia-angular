@@ -4,20 +4,31 @@
 
         <div [ngClass]="[classPrefix + '__links-ctr' + '__brand-mini', ( isDark$ | async ) ? 'dark' : 'light']"></div>
         <ul [ngClass]="[classPrefix + '__links-ctr' + '__links', ( isDark$ | async ) ? 'dark' : 'light']">
-            <li [ngClass]="[classPrefix + '__link', 'theme', ( isDark$ | async ) ? 'dark' : 'light']">
-                <a 
-                    (click)="changeTheme()"
-                    [ngClass]="[( isDark$ | async ) ? 'dark' : 'light']"
-                >
-                    {{ (isDark$ | async) ? '☼' : '☾'}}
-                </a>
+            <li [ngClass]="[classPrefix + '__links-ctr' + '__links' +  '__link', 'theme', ( isDark$ | async ) ? 'dark' : 'light']">
+                <app-switch/>
             </li>
-            <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+
+            <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
                 <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
                 <a [routerLink]="[link?.link]">{{link?.title}}</a>
             </li>
-            <li [ngClass]="[classPrefix + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+
+            <li 
+                [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', 'profile',( isDark$ | async ) ? 'dark' : 'light']"
+                (mouseenter)="miniLinkHandler(true)"
+                (mouseleave)="miniLinkHandler(false)"
+            >
                 <a [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">{{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}</a>
+                <ul [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__mini-links', showMiniLinks ? 'show' : '' ,( isDark$ | async ) ? 'dark' : 'light']">
+                    <li 
+                        *ngFor="let link of miniNavLinks"
+                        [ngClass]="['link' ,( isDark$ | async ) ? 'dark' : 'light']"
+                    >
+                        <a [routerLink]="[link.link]">
+                            {{link.title}}
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
         

@@ -1,3 +1,4 @@
+import { SwitchComponent } from './../switch/switch.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header.component';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,7 @@ import { FormsModule } from '@angular/forms'
     declarations: [
       HeaderComponent,
       NavComponent,
+      SwitchComponent,
     ],
     imports: [
       CommonModule,

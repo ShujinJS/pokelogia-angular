@@ -82,13 +82,14 @@
             display: inherit;
             list-style: none;
             text-decoration: unset;
+            position: relative;
     
-            li {
+            &__link {
                 height: 100%;
                 padding: 0.5em;
-                display: inherit;
                 cursor: pointer;
                 transition: 0.5s linear all;
+                display: flex;
     
                 &.light:hover {
                     background-color: $light-color-bg-hover;
@@ -108,7 +109,10 @@
                 }
 
                 &.theme {
-                    text-align: center;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     @media only screen and (min-width: $lap) {
                         display: flex;
@@ -133,6 +137,55 @@
                             border: none;
                         }
                     }
+                }
+                
+                &.profile {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+
+            &__mini-links {
+                padding: 1em 0;
+                display: none;
+
+                @media only screen and (min-width: $lap) {
+                    position: absolute;
+                    right: 0;
+                    margin-top: 45px;
+                    border-top-left-radius: 1em;
+                    border-bottom-left-radius: 1em;
+                    border-bottom-right-radius: 1em;
+                }
+
+                .link {
+                    padding: 5px;
+
+                    &.light:hover {
+                        background-color: $light-color-bg-hover;
+                    }
+        
+                    &.dark:hover {
+                        background-color: $dark-color-bg-cover;
+                    }
+                }
+
+                &.light {
+                    @media only screen and (min-width: $lap) {
+                        background-color: $light-nav-mini-bg;
+                        box-shadow: $light-shadow;
+                    }
+                }
+        
+                &.dark {
+                    @media only screen and (min-width: $lap) {
+                        background-color: $dark-nav-bg;
+                        box-shadow: $focus-shadow;
+                    }
+                }
+
+                &.show {
+                    display: inline;
                 }
             }
         }

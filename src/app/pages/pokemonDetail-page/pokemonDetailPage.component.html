@@ -119,94 +119,10 @@
         <div [ngClass]="[classPrefix + '__btn-grp', ( isDark$ | async ) ? 'dark' : 'light']">
             <button 
                 [ngClass]="['add-btn', ( isDark$ | async ) ? 'dark' : 'light']"
-                (click)="addToBelt()"
+                (click)="addToBelt(pokemon.name + ' has been added to the belt!')"
             >
                 {{checkIfAddedToBelt() ? 'Already added!' : 'I choose you!'}}
             </button>
         </div>
     </div>
-
-
-
-        <!-- <div [ngClass]="[classPrefix + ctrClassPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__thmb-grp', ( isDark$ | async ) ? 'dark' : 'light']">
-                <img 
-                    src="{{thumbnail || pokemon.sprites?.front_default}}" alt="pokemon being displayed"
-                    class="thumbnail"
-                >
-                <ul>
-                    <li (click)="setThumbnail(pokemon.sprites?.front_default)">
-                        <img src="{{pokemon.sprites?.front_default}}" alt="">
-                    </li>
-                    <li (click)="setThumbnail(pokemon.sprites?.front_shiny)">
-                        <img src="{{pokemon.sprites?.front_shiny}}" alt="">
-                    </li>
-                    <li (click)="setThumbnail(pokemon.sprites?.other?.['official-artwork']?.front_default)">
-                        <img src="{{pokemon.sprites?.other?.['official-artwork']?.front_default}}" alt="">
-                    </li>
-                    <li (click)="setThumbnail(pokemon.sprites?.other?.['official-artwork']?.front_shiny)">
-                        <img src="{{pokemon.sprites?.other?.['official-artwork']?.front_shiny}}" alt="">
-                    </li>
-                </ul>
-            </div>
-            <div [ngClass]="[classPrefix + ctrClassPrefix + '__info-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
-                <div [ngClass]="['info-grp']">
-                    <div [ngClass]="['info', 'types']">
-                        <ul>
-                            <li *ngFor="let type of pokemon.types"
-                                [ngClass]="[type.type.name + '-bg']"
-                            >
-                                {{type.type.name}}
-                            </li>
-                        </ul>
-                    </div>
-    
-                    <div [ngClass]="['info', 'abilities']">
-                        <span>Abilities:</span>
-                        <ul>
-                            <li *ngFor="let ability of pokemon.abilities">
-                                {{ability.ability.name}}
-                            </li>
-                        </ul>
-                    </div>
-    
-                    <div [ngClass]="['info', 'stats']">
-                        <span>Stats:</span>
-                        <ul [ngClass]="['stats_base-stats']">
-                            <li *ngFor="let stat of pokemon.stats">
-                                <span class="stat-name">{{stat.stat.name}}:</span>
-                                <span [ngClass]="['stat-value' + checkStats(stat.base_stat)]">{{stat.base_stat}}</span>
-                            </li>
-                        </ul>
-                    </div>
-    
-                    <div [ngClass]="['info', 'areas']">
-                        <span>Areas: </span>
-                        <ul>
-                            <li *ngFor="let area of areas">
-                                <span [ngClass]="['area']">
-                                    {{area.location_area.name}}
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div [ngClass]="['btn-grp', ( isDark$ | async ) ? 'dark' : 'light']">
-                    <button 
-                        [ngClass]="['add-btn', ( isDark$ | async ) ? 'dark' : 'light']"
-                        (click)="addToBelt()"
-                    >
-                        {{checkIfAddedToBelt() ? 'Already added!' : 'I choose you!'}}
-                    </button>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div [ngClass]="[classPrefix + ctrClassPrefix + '__seperator', ( isDark$ | async ) ? 'dark' : 'light']">
-
-        </div>
-
-         -->
-
 </section>

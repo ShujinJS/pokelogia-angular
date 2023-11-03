@@ -1,0 +1,87 @@
+<section [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
+    <div [ngClass]="[classPrefix + '__pokeballs-ctr' ,( isDark$ | async ) ? 'dark' : 'light']">
+
+        <div [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' ,( isDark$ | async ) ? 'dark' : 'light']">
+            
+            <div 
+                [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + ' arrow left' ,( isDark$ | async ) ? 'dark' : 'light']"
+                (click)="arrowHandler('left')"
+            >
+                〱
+            </div>
+
+            <div [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + '__pokeballs-grp' ,( isDark$ | async ) ? 'dark' : 'light']">
+                <ul [ngStyle]="{left: draggingPx +'px'}">
+                    <li 
+                        *ngFor="let ball of belt; index as i"
+                        [ngClass]="['pokeball-ball', ( isDark$ | async ) ? 'dark' : 'light']"
+                    >
+                        <div 
+                            [ngStyle]="{background: 'linear-gradient(30deg,' + foilStyleHandler(ball.types[0].type.name) + ', ' + (( isDark$ | async ) ? 'transparent' : 'black') +')'}"
+                            [ngClass]="['pokeball-ball' + '__card', ( isDark$ | async ) ? 'dark' : 'light']"
+                            (click)="getDetailPage(ball.name)"
+                        >
+                            <div 
+                                [ngClass]="['pokeball-ball' + '__card__title-grp', ( isDark$ | async ) ? 'dark' : 'light']"
+                            >
+                                <p>
+                                    {{ball.name}}
+                                </p>
+                                <p>
+                                    #{{ball.id}}
+                                </p>
+                            </div>
+
+                            <div 
+                                [ngStyle]="{background: 'linear-gradient(30deg,' + (ball.types[1] ? foilStyleHandler(ball.types[1].type.name) : 'white') + ', ' + foilStyleHandler(ball.types[0].type.name) +')'}"
+                                [ngClass]="['pokeball-ball' + '__card__img-grp', ball.types[0].type.name + '-bg', ( isDark$ | async ) ? 'dark' : 'light']"
+                            >
+                            
+                                <img src="{{ball.sprites?.front_default}}" alt="">
+
+                                <div
+                                    [ngClass]="['pokeball-ball' + '__card__type-grp', ( isDark$ | async ) ? 'dark' : 'light']"
+                                >
+                                    <p 
+                                        *ngFor="let type of ball.types"
+                                        [ngClass]="[type.type.name + '-bg']"
+                                    >
+                                        {{type.type.name}}
+                                    </p>
+                                </div>
+
+                                <div 
+                                    [ngClass]="['pokeball-ball' + '__card__moves-grp', ( isDark$ | async ) ? 'dark' : 'light']"
+                                >
+                                    <p> coming soon </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <img 
+                            [src]="[isOpen ? '../../../assets/open-pokeball.png' : '../../../assets/closed-pokeball.png']"
+                            alt=""
+                            [ngClass]="['pokeball-ball' + '__img', (isOpen ? '__open' : '__closed'), ( isDark$ | async ) ? 'dark' : 'light']"
+                            (click)="clickHandler($event)"
+                        />
+
+                        <span [ngClass]="['pokeball' + '__title', ( isDark$ | async ) ? 'dark' : 'light']">
+                            {{ball.name.toUpperCase()}}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div 
+                [ngClass]="[classPrefix + '__pokeballs-ctr' + '__field' + ' arrow right' ,( isDark$ | async ) ? 'dark' : 'light']"
+                (click)="arrowHandler('right')"
+            >
+                〱
+            </div>
+
+        </div>
+
+    </div>
+</section>
