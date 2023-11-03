@@ -29,6 +29,7 @@ export class InventoryPageComponent implements OnInit {
     leftSlideLimit = 352
     rightSlideLimit = -350
     draggingPx = 118
+    bannerImage = '../../../assets/pikachu_greeting-crp.png'
 
     constructor(
         private appStore: Store<AppStore>,

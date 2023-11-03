@@ -41,6 +41,7 @@
             justify-content: space-between;
             align-items: center;
             text-align: center;
+            box-shadow: $focus-shadow;
 
             @media only screen and (min-width: $desk-s) {
                 width: 960px;
@@ -251,6 +252,89 @@
                     }
                 }
             }
+        }
+    }
+
+    &__items-ctr {
+        width: inherit;
+        min-height: 20vh;
+
+        &.light {
+            background-color: $light-color-bg-plain;
+        }
+    
+        &.dark {
+            background-color: $dark-color-bg-cover;
+        }
+            
+        &__badges {
+            width: inherit;
+            min-height: 20vh;
+
+            &.light {
+                box-shadow: $light-shadow;
+            }
+        
+            &.dark {
+                box-shadow: $focus-shadow;
+            }
+        }
+
+        &__banner {
+            width: inherit;
+            min-height: 30vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            box-shadow: $light-shadow;
+            background-color: $outline-color;
+
+            &-title {
+                margin-left: 4em;
+                display: flex;
+                flex-direction: column;
+                color: $light-color-tx;
+
+                span {
+                    font-size: $font-size-xxl;
+
+                    &:nth-child(1) {
+                        font-size: $font-size-md;
+                        letter-spacing: 5.5px;
+                        color: $dark-color-bg-plain;
+                    }
+                }
+            }
+
+            img {
+                position: absolute;
+                right: 0;
+                top: -4em;
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+            }
+        }
+
+        &__items {
+            width: inherit;
+            min-height: 30vh;
+
+            &.light {
+                box-shadow: $light-shadow;
+            }
+        
+            &.dark {
+                box-shadow: $focus-shadow;
+            }
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: $font-size-xxl;
+            color: $light-color-tx;
         }
     }
 
