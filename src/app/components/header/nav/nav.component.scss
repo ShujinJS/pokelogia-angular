@@ -87,9 +87,9 @@
             &__link {
                 height: 100%;
                 padding: 0.5em;
-                display: inherit;
                 cursor: pointer;
                 transition: 0.5s linear all;
+                display: flex;
     
                 &.light:hover {
                     background-color: $light-color-bg-hover;
@@ -109,7 +109,10 @@
                 }
 
                 &.theme {
-                    text-align: center;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
                     @media only screen and (min-width: $lap) {
                         display: flex;
