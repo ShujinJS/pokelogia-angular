@@ -67,9 +67,6 @@
                     color: $light-color-tx;
                 }
 
-                &.left {
-                }
-
                 &.right {
                     transform: rotate(180deg);
                 }
@@ -256,8 +253,11 @@
     }
 
     &__items-ctr {
-        width: inherit;
+        width: 100%;
         min-height: 20vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 
         &.light {
             background-color: $light-color-bg-plain;
@@ -271,47 +271,86 @@
             width: inherit;
             min-height: 20vh;
 
-            &.light {
-                box-shadow: $light-shadow;
-            }
+            // &.light {
+            //     box-shadow: $light-shadow;
+            // }
         
-            &.dark {
-                box-shadow: $focus-shadow;
-            }
+            // &.dark {
+            //     box-shadow: $focus-shadow;
+            // }
         }
 
         &__banner {
-            width: inherit;
-            min-height: 30vh;
+            width: 100%;
+            min-height: 210px;
             display: flex;
+            justify-content: center;
             align-items: center;
             position: relative;
             box-shadow: $light-shadow;
             background-color: $outline-color;
 
-            &-title {
-                margin-left: 4em;
-                display: flex;
+            @media only screen and (min-width: $desk-s) {
                 flex-direction: column;
-                color: $light-color-tx;
+            }
 
-                span {
-                    font-size: $font-size-xxl;
+            &__content-ctr {
+                width: 80%;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
 
-                    &:nth-child(1) {
-                        font-size: $font-size-md;
-                        letter-spacing: 5.5px;
-                        color: $dark-color-bg-plain;
+                @media only screen and (min-width: $desk-s) {
+                    width: 960px;
+                    display: block;
+                }
+
+                &-title {
+                    width: 200px;
+                    display: flex;
+                    flex-direction: column;
+                    color: $light-color-tx;
+                    position: relative;
+                    top: -75px;
+
+                    @media only screen and (min-width: $desk-s) {
+                        position: unset;
+                        top: unset;
+                    }
+    
+                    span {
+                        font-size: $font-size-xxl;
+    
+                        &:nth-child(1) {
+                            font-size: $banner-size-md;
+                            letter-spacing: 17.5px;
+                            color: $dark-color-bg-plain;
+                        }
+    
+                        &:nth-child(2) {
+                            font-size: $banner-size-lg;
+                        }
                     }
                 }
             }
 
             img {
-                position: absolute;
-                right: 0;
-                top: -4em;
+                position: relative;
                 -webkit-transform: scaleX(-1);
                 transform: scaleX(-1);
+                top: -140px;
+
+                @media only screen and (min-width: $desk-s) {
+                    position: absolute;
+                    top: -4em;
+                    right: 0;
+          
+                }
+
+                @media only screen and (min-width: $desk) {
+                    margin-left: 42em;
+                    right: unset; 
+                }
             }
         }
 
@@ -319,13 +358,13 @@
             width: inherit;
             min-height: 30vh;
 
-            &.light {
-                box-shadow: $light-shadow;
-            }
+            // &.light {
+            //     box-shadow: $light-shadow;
+            // }
         
-            &.dark {
-                box-shadow: $focus-shadow;
-            }
+            // &.dark {
+            //     box-shadow: $focus-shadow;
+            // }
         }
 
         .title {
@@ -334,7 +373,14 @@
             justify-content: center;
             align-items: center;
             font-size: $font-size-xxl;
-            color: $light-color-tx;
+
+            &.light {
+                color: $dark-color-bg-cover;
+            }
+        
+            &.dark {
+                color: $light-color-tx;
+            }
         }
     }
 

@@ -87,22 +87,29 @@
 
     <div [ngClass]="[classPrefix + '__items-ctr', ( isDark$ | async ) ? 'dark' : 'light']">
 
-        <div [ngClass]="[classPrefix + '__items-ctr' + '__items', 'title', ( isDark$ | async ) ? 'dark' : 'light']">
-            <p>ITEMS</p>
-            <p>Coming Soon</p>
-        </div>
+            <div [ngClass]="[classPrefix + '__items-ctr' + '__banner', ( isDark$ | async ) ? 'dark' : 'light']">
+                
+                <div [ngClass]="classPrefix + '__items-ctr' + '__banner' + '__content-ctr'">
+                    
+                    <div [ngClass]="[classPrefix + '__items-ctr' + '__banner' + '__content-ctr' + '-title', ( isDark$ | async ) ? 'dark' : 'light']">
+                        <span>Coming</span>
+                        <span>Soon!</span>
+                    </div>
+                    <img src="{{bannerImage}}" alt=""/>
 
-        <div [ngClass]="[classPrefix + '__items-ctr' + '__banner', ( isDark$ | async ) ? 'dark' : 'light']">
-            <div [ngClass]="[classPrefix + '__items-ctr' + '__banner' + '-title', ( isDark$ | async ) ? 'dark' : 'light']">
-                <span>Coming</span>
-                <span>Soon!</span>
+                </div>
+
             </div>
-            <img src="{{bannerImage}}" alt="">
-        </div>
+    
+            <div [ngClass]="[classPrefix + '__items-ctr' + '__items', 'title', ( isDark$ | async ) ? 'dark' : 'light']">
+                <p>ITEMS</p>
+                <p>Coming Soon</p>
+            </div>
+    
+            <div [ngClass]="[classPrefix + '__items-ctr' + '__badges', 'title', ( isDark$ | async ) ? 'dark' : 'light']">
+                <p>BADGES</p>
+                <p>Coming Soon</p>
+            </div>
 
-        <div [ngClass]="[classPrefix + '__items-ctr' + '__badges', 'title', ( isDark$ | async ) ? 'dark' : 'light']">
-            <p>BADGES</p>
-            <p>Coming Soon</p>
-        </div>
     </div>
 </section>
