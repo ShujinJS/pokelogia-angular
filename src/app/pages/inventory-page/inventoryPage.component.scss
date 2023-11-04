@@ -270,14 +270,6 @@
         &__badges {
             width: inherit;
             min-height: 20vh;
-
-            // &.light {
-            //     box-shadow: $light-shadow;
-            // }
-        
-            // &.dark {
-            //     box-shadow: $focus-shadow;
-            // }
         }
 
         &__banner {
@@ -335,12 +327,14 @@
             }
 
             img {
+                width: 250px;
                 position: relative;
                 -webkit-transform: scaleX(-1);
                 transform: scaleX(-1);
-                top: -140px;
+                top: -70px;
 
                 @media only screen and (min-width: $desk-s) {
+                    width: 390px;
                     position: absolute;
                     top: -4em;
                     right: 0;
@@ -357,14 +351,6 @@
         &__items {
             width: inherit;
             min-height: 30vh;
-
-            // &.light {
-            //     box-shadow: $light-shadow;
-            // }
-        
-            // &.dark {
-            //     box-shadow: $focus-shadow;
-            // }
         }
 
         .title {

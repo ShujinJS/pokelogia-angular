@@ -26,8 +26,8 @@ export class InventoryPageComponent implements OnInit {
     belt: Pokemon[] = storeDefault.belt || []
     isOpen = false
     ballWidth = 234
-    leftSlideLimit = 352
-    rightSlideLimit = -350
+    leftSlideLimit = 580
+    rightSlideLimit = -580
     draggingPx = 118
     bannerImage = '../../../assets/pikachu_greeting-crp.png'
 
