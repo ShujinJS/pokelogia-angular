@@ -103,14 +103,9 @@ export class PokemonDetailPageComponent implements OnInit {
         switch(true) {
             case this.checkIfAddedToBelt():
                 break;
-            case this.belt.length >= 1:
+            case this.belt.length >= 0 && this.belt.length < 6:
                 this.belt.push(this.pokemon)
                 setStore(this.beltConstant, this.belt);
-                this.notificationComponentService.showNotification(message);
-                break;
-            default:
-                this.belt.push(this.pokemon)
-                addToStore(this.beltConstant, this.belt);
                 this.notificationComponentService.showNotification(message);
                 break;
         }
@@ -118,5 +113,16 @@ export class PokemonDetailPageComponent implements OnInit {
 
     checkIfAddedToBelt(): boolean {
         return this.belt.some(ball => ball.id === this.pokemon.id);
+    }
+
+    buttonTextHandler(): string {
+        switch(true) {
+            case this.checkIfAddedToBelt():
+                return `Already added to the belt!`;
+            case this.belt.length === 6:
+                return 'Pokemon limit reached!';
+            default:
+                return 'I choose you!'
+        }
     }
 }

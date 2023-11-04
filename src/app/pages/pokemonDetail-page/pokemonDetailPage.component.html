@@ -121,7 +121,7 @@
                 [ngClass]="['add-btn', ( isDark$ | async ) ? 'dark' : 'light']"
                 (click)="addToBelt(pokemon.name + ' has been added to the belt!')"
             >
-                {{checkIfAddedToBelt() ? 'Already added!' : 'I choose you!'}}
+                {{buttonTextHandler()}}
             </button>
         </div>
     </div>
