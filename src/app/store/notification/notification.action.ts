@@ -1,5 +1,5 @@
-import { NotificationModel } from './../../models/store.models';
 import { createAction, props } from "@ngrx/store";
+import { NotificationModel } from './../../models/store.models';
 
 export const ShowNotification = createAction(
     '[NotificationComponent] ShowNotification',

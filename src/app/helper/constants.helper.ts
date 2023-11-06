@@ -23,3 +23,9 @@ export const typeColorConstants = {
     normal: '#d5d3d3',
     fighting: '#9a3209',
 }
+
+export const appStoreConstants = {
+    theme: 'theme',
+    auth: 'auth',
+    notifications: 'notifications',
+}

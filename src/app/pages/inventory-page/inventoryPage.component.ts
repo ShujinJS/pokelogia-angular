@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // Store
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 // Model
 import { Pokemon } from './../../models/pokemon.model';
@@ -10,7 +10,6 @@ import { AppStore } from 'src/app/store/app.store';
 import { getFromStore, storeConstants, storeDefault } from 'src/app/helper/storage.helper';
 // Helper
 import { typeColorConstants } from './../../helper/constants.helper';
-import { PokemonTypeConstants } from 'src/app/models/constant.helper';
 
 @Component({
     selector: 'app-inventoryPage',
