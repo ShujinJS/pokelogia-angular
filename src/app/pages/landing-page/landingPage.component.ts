@@ -1,9 +1,14 @@
-import { Router } from '@angular/router';
-import { GetPokemonsModel, Result } from './../../models/request.model';
-import { RequestHelper } from './../../helper/request.helper';
+// Angular
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+// NgRx
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppStore } from 'src/app/store/app.store';
+// Model
+import { GetPokemonsModel, Result } from './../../models/request.model';
+// Helper
+import { RequestHelper } from './../../helper/request.helper';
 
 @Component({
     selector: 'app-landingPage',
@@ -33,19 +38,14 @@ export class LandingPageComponent implements OnInit {
     constructor(
         private requestHelper: RequestHelper,
         private router: Router,
-        private store: Store<{theme: boolean}>
+        private appStore: Store<AppStore>
     ){
-        this.isDark$ = store.select('theme')
+        this.isDark$ = appStore.select('theme')
     }
 
     ngOnInit(): void {
         this.requestPokemons();
     }
-
-    // getMorePokemons(many: number): void {
-    //     this.showPokemons += many;
-    //     this.requestPokemons();
-    // }
 
     getDetailPage(name: string): void {
         this.router.navigate([`pokemon/${name}`])
@@ -60,7 +60,7 @@ export class LandingPageComponent implements OnInit {
 
     onKeyUp(key: string) {
         this.filteredPokemons = this.pokemons.results.filter( pokemon => {
-            return pokemon.name.includes(key)
+            return pokemon.name.includes(key.toLowerCase())
         })
     }
 }

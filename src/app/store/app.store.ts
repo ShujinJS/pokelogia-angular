@@ -1,11 +1,10 @@
-import { NotificationModel } from './../models/store.models';
-import { Pokemon } from "../models/pokemon.model";
+import { InventoryModel, NotificationModel } from './../models/store.models';
 import { getFromStore, storeConstants } from '../helper/storage.helper';
+import { appStoreConstants } from '../helper/constants.helper';
 
 export interface AppStore {
-
     theme: boolean;
     auth: boolean;
-    // pokemons: Pokemon[];
+    inventory: InventoryModel;
     notifications: NotificationModel[];
 }
