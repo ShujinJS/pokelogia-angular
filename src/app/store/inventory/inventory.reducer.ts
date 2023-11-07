@@ -20,7 +20,8 @@ export const inventoryReducer = createReducer(
     // Effect is going to handle with triggering the AddPokemonSuccess action
     on(AddPokemon, state => state),
 
-    on(AddPokemonSuccess, (state, pokemon) => state = { ...state, belt: [ pokemon ]}),
+    on(AddPokemonSuccess, (state, pokemon) => ({ ...state, belt: [ ...state.belt, pokemon ]})
+    ),
 
     on(AddPokemonFailure, (state, { error }) => {
         throw(error + ' occured.');

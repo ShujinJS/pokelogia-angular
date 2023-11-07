@@ -17,7 +17,6 @@ NotificationComponentService
 export class NotificationComponent {
 
     constructor(
-        // private store: Store<{ theme: boolean}>,
         private appStore: Store<AppStore>,
         private notificationComponentService: NotificationComponentService,
     ) {
@@ -41,7 +40,6 @@ export class NotificationComponent {
         if(e.target instanceof HTMLElement) {
             e.target.classList.add('show')
         }
-        // this.appStore.dispatch(ToggleNotification({ id }));
     }
 
     onMouseLeave(e: Event): void {

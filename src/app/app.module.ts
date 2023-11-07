@@ -39,7 +39,6 @@ import { InventoryEffects } from './store/inventory/inventory.effects';
     InventoryPageModule,
     FooterComponentModule,
     NotificationModule,
-    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot<AppStore>({ 
       theme: themeReducer, 
       auth: authReducer,
@@ -49,6 +48,7 @@ import { InventoryEffects } from './store/inventory/inventory.effects';
     EffectsModule.forRoot([
       InventoryEffects,
     ]),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent]
