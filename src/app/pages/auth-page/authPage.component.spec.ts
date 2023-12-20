@@ -5,10 +5,10 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 describe('AuthPageComponent', () => {
-    let fixture: ComponentFixture<AuthPageComponent>;
-    let component: AuthPageComponent;
-    let service: AuthPageService;
-    let serviceSpy: jasmine.Spy;
+    let fixture: ComponentFixture<AuthPageComponent>,
+        component: AuthPageComponent,
+        service: AuthPageService,
+        serviceSpy: jasmine.Spy;
 
     beforeEach( waitForAsync( () => {
         TestBed.configureTestingModule({

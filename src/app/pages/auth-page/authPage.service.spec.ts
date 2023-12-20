@@ -1,10 +1,11 @@
 import { TestBed, waitForAsync } from "@angular/core/testing";
 import { provideMockStore } from '@ngrx/store/testing';
 import { AuthPageService } from './authPage.service';
+import { Store } from "@ngrx/store";
 
 describe('AuthPageService', () => {
-    let service: AuthPageService;
-    let serviceSpy: jasmine.Spy;
+    let service: AuthPageService,
+        serviceSpy: any;
 
     beforeEach( waitForAsync( () => {
         TestBed.configureTestingModule({
@@ -12,9 +13,13 @@ describe('AuthPageService', () => {
         }).compileComponents();
 
         service = TestBed.inject(AuthPageService);
-        serviceSpy = spyOn(service, 'signUserIn');
-        // serviceSpy = jasmine.createSpyObj(service, ['signUserIn', 'logUserIn'])
-        // service = TestBed.inject(AuthPageService);
+        serviceSpy = jasmine.createSpyObj('AuthPageService', ['getUsers', 'signUserIn', 'logUserIn'])
+        // const spyUsers = spyOn(service, 'getUsers').and.returnValue([
+        //     {username: 'testUser', password: '1234'},
+        // ])
+        // Alternative way
+        // serviceSpy = spyOn(service, 'signUserIn');
+        // serviceSpy = jasmine.createSpyObj('AuthPageService', ['getUsers', 'signUserIn', 'logUserIn'])
 
         // TestBed.configureTestingModule({
         //     // Services should be called by the 'providers' not declarations (components)
@@ -26,16 +31,20 @@ describe('AuthPageService', () => {
         // }).compileComponents();
     }));
 
-    it('should be created', () => {
+    it('should be created', () => { 
         expect(service).toBeTruthy();
     });
 
-    it('should sign user in', () => {
-        // expect(service.signUserIn).toHaveBeenCalled();
-    })
-
     it('should get users', () => {
-        expect(service.getUsers().length).toBeGreaterThanOrEqual(0);
+        const spyUsers = spyOn(service, 'getUsers').and.returnValue([
+            {username: 'testUser', password: '1234'},
+        ])
+        expect(service.getUsers().length).toBeGreaterThanOrEqual(1, 'users array have no length');        
+        // expect(serviceSpy.getUsers.length).toBeGreaterThanOrEqual(1)
     });
 
-})
+    it('should sign user in', () => {
+        pending();
+        // expect(service.signUserIn).toHaveBeenCalled();
+    });
+});
