@@ -1,7 +1,7 @@
 import { GetPokemonsModel, PokemonLocations } from './../models/request.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { requestConstants } from './constants.helper';
 import { Pokemon } from '../models/pokemon.model';
 
@@ -16,7 +16,6 @@ export class RequestHelper {
 
     constructor(
         private http: HttpClient,
-
     ){
 
     }
@@ -26,6 +25,11 @@ export class RequestHelper {
         if(offset || limit) requestUrl = `${this.baseUrl}?limit=${limit}&offset=${offset}`
         
         return this.http.get<GetPokemonsModel>(requestUrl)
+            .pipe(
+                map(res => { 
+                     return res
+                })
+            );
     }
 
     getPokemonDetail(name: string): Observable<Pokemon> {

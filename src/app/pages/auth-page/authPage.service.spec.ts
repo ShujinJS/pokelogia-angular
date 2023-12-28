@@ -3,17 +3,25 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { AuthPageService } from './authPage.service';
 import { Store } from "@ngrx/store";
 
+// by adding 'x' before the 'describe' : you can skip this suite or individual 'it' units with the same pattern.
+// by adding 'f' before the 'describe' : you can focus and only test this particular suite or unit with the same pattern.
 describe('AuthPageService', () => {
     let service: AuthPageService,
-        serviceSpy: any;
-
+        serviceSpy: jasmine.SpyObj<AuthPageService>;
+    const stubUsersValue = [{username: 'testUser', password: '1234'}];
+    const stubAuthValue = { isLoggedIn: true, username: 'testUser', isRemember: false }
     beforeEach( waitForAsync( () => {
+
+        serviceSpy = jasmine.createSpyObj('AuthPageService', ['getUsers', 'signUserIn', 'logUserIn'])
+
         TestBed.configureTestingModule({
-            providers: [ AuthPageService, provideMockStore({})]
+            providers: [ 
+                { provide: service, useValue: serviceSpy }, 
+                provideMockStore({})
+            ]
         }).compileComponents();
 
-        service = TestBed.inject(AuthPageService);
-        serviceSpy = jasmine.createSpyObj('AuthPageService', ['getUsers', 'signUserIn', 'logUserIn'])
+        service = TestBed.inject(AuthPageService) as jasmine.SpyObj<AuthPageService>;
         // const spyUsers = spyOn(service, 'getUsers').and.returnValue([
         //     {username: 'testUser', password: '1234'},
         // ])
@@ -36,15 +44,26 @@ describe('AuthPageService', () => {
     });
 
     it('should get users', () => {
-        const spyUsers = spyOn(service, 'getUsers').and.returnValue([
-            {username: 'testUser', password: '1234'},
-        ])
-        expect(service.getUsers().length).toBeGreaterThanOrEqual(1, 'users array have no length');        
-        // expect(serviceSpy.getUsers.length).toBeGreaterThanOrEqual(1)
+        serviceSpy.getUsers.and.returnValue(stubUsersValue);
+
+        expect(service.getUsers())
+            .withContext('no user found!')
+            .toEqual(stubUsersValue);
+
+        expect(serviceSpy.getUsers())
+            .withContext('spy getUsers called once')
+            .toHaveBeenCalledTimes(1);
+
+        expect(serviceSpy.getUsers.calls.mostRecent().returnValue).toEqual(stubUsersValue)
     });
 
     it('should sign user in', () => {
         pending();
         // expect(service.signUserIn).toHaveBeenCalled();
+    });
+
+    it('should log user in', () => {
+
+
     });
 });
