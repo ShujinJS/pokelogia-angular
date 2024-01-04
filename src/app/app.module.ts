@@ -48,7 +48,7 @@ import { InventoryEffects } from './store/inventory/inventory.effects';
     EffectsModule.forRoot([
       InventoryEffects,
     ]),
-    StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument({connectInZone: true}),
   ],
   providers: [],
   bootstrap: [AppComponent]

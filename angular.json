@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pokelogia-angular:build:production"
+              "buildTarget": "pokelogia-angular:build:production"
             },
             "development": {
-              "browserTarget": "pokelogia-angular:build:development"
+              "buildTarget": "pokelogia-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pokelogia-angular:build"
+            "buildTarget": "pokelogia-angular:build"
           }
         },
         "test": {

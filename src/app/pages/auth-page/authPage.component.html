@@ -5,20 +5,22 @@
         (ngSubmit)="onSubmit()"
     >
         <div [ngClass]="[classPrefix + '__input-ctr']">
-            <div 
-                [ngClass]="[classPrefix + '__input-grp', ( isDark$ | async ) ? 'dark' : 'light']" 
-                *ngFor="let input of formInputs"
-            >
-                <label>{{input?.title}}</label>
-                <input 
-                    type={{input?.type}} 
-                    formControlName="{{input?.formControlName}}" 
-                    required={{input?.isRequired}}
+            @for (input of formInputs; track $index) {
+                <div 
+                    [ngClass]="[classPrefix + '__input-grp', ( isDark$ | async ) ? 'dark' : 'light']" 
                 >
-                <span *ngIf="useForm.get(input.formControlName)?.invalid">
-                    *{{input?.message}}
-                </span>
-            </div>
+                    <label>{{input?.title}}</label>
+                    <input 
+                        type={{input?.type}} 
+                        formControlName="{{input?.formControlName}}" 
+                        required={{input?.isRequired}}
+                    >
+                    <span *ngIf="useForm.get(input.formControlName)?.invalid">
+                        *{{input?.message}}
+                    </span>
+                </div>
+            }
+
             <div *ngIf="showLogin" ngClass="inp-check">
                 <label for="input">
                     Remember me?

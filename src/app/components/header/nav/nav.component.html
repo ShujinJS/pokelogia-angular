@@ -8,26 +8,38 @@
                 <app-switch/>
             </li>
 
-            <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
-                <!-- <a routerLink={{link?.link}}>{{link?.title}}</a> -->
+            @for (link of navLinks; track $index) {
+                <li [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+                    <a [routerLink]="[link?.link]">{{link?.title}}</a>
+                </li>
+            }
+
+            <!-- <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+                <a routerLink={{link?.link}}>{{link?.title}}</a>
                 <a [routerLink]="[link?.link]">{{link?.title}}</a>
-            </li>
+            </li> -->
 
             <li 
                 [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', 'profile',( isDark$ | async ) ? 'dark' : 'light']"
                 (mouseenter)="miniLinkHandler(true)"
                 (mouseleave)="miniLinkHandler(false)"
             >
-                <a [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">{{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}</a>
+                <a 
+                    [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">  
+                        {{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}
+                </a>
                 <ul [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__mini-links', showMiniLinks ? 'show' : '' ,( isDark$ | async ) ? 'dark' : 'light']">
-                    <li 
-                        *ngFor="let link of miniNavLinks"
-                        [ngClass]="['link' ,( isDark$ | async ) ? 'dark' : 'light']"
-                    >
-                        <a [routerLink]="[link.link]">
-                            {{link.title}}
-                        </a>
-                    </li>
+
+                    @for (link of miniNavLinks; track $index) {
+                        <li 
+                            [ngClass]="['link' ,( isDark$ | async ) ? 'dark' : 'light']"
+                        >
+                            <a [routerLink]="[link?.link]">
+                                {{link?.title}}
+                            </a>
+                        </li>
+                    }
+
                 </ul>
             </li>
         </ul>
