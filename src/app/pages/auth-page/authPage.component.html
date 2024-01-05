@@ -15,18 +15,22 @@
                         formControlName="{{input?.formControlName}}" 
                         required={{input?.isRequired}}
                     >
-                    <span *ngIf="useForm.get(input.formControlName)?.invalid">
-                        *{{input?.message}}
-                    </span>
+                    @if(input.formControlName) {
+                        <span>
+                            *{{input?.message}}
+                        </span>
+                    }
                 </div>
             }
 
-            <div *ngIf="showLogin" ngClass="inp-check">
-                <label for="input">
-                    Remember me?
-                </label>
-                <input type="checkbox" formControlName="checkbox">
-            </div>
+            @if(showLogin){
+                <div ngClass="inp-check">
+                    <label for="input">
+                        Remember me?
+                    </label>
+                    <input type="checkbox" formControlName="checkbox">
+                </div>
+            }
         </div>
 
         <div [ngClass]="[classPrefix + '__btn-ctr']">

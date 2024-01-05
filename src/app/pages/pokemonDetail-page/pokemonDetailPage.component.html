@@ -76,7 +76,6 @@
                     <div [ngClass]="['info-grp' + '__stats']">
                         <span>Stats:</span>
                         <ul [ngClass]="['stats_base-stats']">
-
                             @for (stat of pokemon.stats; track $index) {
                                 <li>
                                     <span class="stat-name">
@@ -84,37 +83,42 @@
                                     </span>
                                 </li>
                             }
-
                         </ul>
                         <ul>
-
                             @for (stat of pokemon.stats; track $index) {
-                            <li>
-                                <span [ngClass]="['stat-value' + checkStats(stat.base_stat)]">
-                                    {{stat.base_stat}}
-                                </span>
-                            </li>
+                                <li>
+                                    <span [ngClass]="['stat-value' + checkStats(stat.base_stat)]">
+                                        {{stat.base_stat}}
+                                    </span>
+                                </li>
                             } 
-
                         </ul>
                     </div>
     
-                    <div *ngIf="areas.length" [ngClass]="['info-grp' + '__areas']">
-                        <span>Areas: </span>
-                        <ul>
+                    @if(areas.length) {
+                        <!-- old syntax -->
+                        <!-- <div *ngIf="areas.length" [ngClass]="['info-grp' + '__areas']"> -->
+                        <div [ngClass]="['info-grp' + '__areas']">
+                            <span>Areas: </span>
+                            <ul>
+                                @for (area of areas; track $index) {
+                                    <li 
+                                        [ngClass]="[( isDark$ | async ) ? 'dark' : 'light']"
+                                        [class.odd]="$odd"
+                                        [class.even]="$even"
+                                    >
+                                        <span [ngClass]="['area']">
+                                            {{area.location_area.name}}
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
 
-                            @for (area of areas; track $index) {
-                                <li 
-                                    [ngClass]="[($index % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
-                                >
-                                    <span [ngClass]="['area']">
-                                        {{area.location_area.name}}
-                                    </span>
-                                </li>
-                            }
-
-                        </ul>
-                    </div>
+                    @else {
+                        <div>No areas to be found at</div>
+                    }
 
                     <div [ngClass]="['info-grp' + '__moves', ( isDark$ | async ) ? 'dark' : 'light']">
                         <div [ngClass]="['moves-grp', ( isDark$ | async ) ? 'dark' : 'light']">
@@ -122,8 +126,12 @@
                             <ul>
 
                                 @for (move of pokemon.moves; track $index) {
+                                    <!-- instead of ($index % 2 == 1) ? 'odd' : '', we can use [class.odd or even] -->
                                     <li
-                                        [ngClass]="['move', ($index % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
+                                        [ngClass]="['move',  ( isDark$ | async ) ? 'dark' : 'light']"
+                                        [class.odd]="$odd"
+                                        [class.even]="$even"
+                                        
                                     >
                                         {{move.move.name}}
                                     </li>

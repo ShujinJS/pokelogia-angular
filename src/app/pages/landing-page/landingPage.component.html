@@ -40,11 +40,11 @@
                             >
                                 {{pokemon?.name}}
                             </li>
-                            <!-- <button 
-                                (click)="getMorePokemons(20)"
-                                [ngClass]="[classPrefix + '__search-results__more', theme]"
-                            >
-                            Show More</button> -->
+
+                        }
+
+                        @empty {
+                            <li>Loading...</li>
                         }
                     </ul>
                 </div>
