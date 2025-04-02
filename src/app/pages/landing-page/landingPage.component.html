@@ -33,17 +33,19 @@
                 </div>
                 <div [ngClass]="[classPrefix + '__search-results', ( isDark$ | async ) ? 'dark' : 'light']">
                     <ul>
-                        <li *ngFor="let pokemon of filteredPokemons; index as i"
-                            (click)="getDetailPage(pokemon.name)"
-                            [ngClass]="[classPrefix + '__search-results__item', ( isDark$ | async ) ? 'dark' : 'light']"
-                        >
-                            {{pokemon?.name}}
-                        </li>
-                        <!-- <button 
-                            (click)="getMorePokemons(20)"
-                            [ngClass]="[classPrefix + '__search-results__more', theme]"
-                        >
-                        Show More</button> -->
+                        @for (pokemon of filteredPokemons; track $index) {
+                            <li
+                                (click)="getDetailPage(pokemon.name)"
+                                [ngClass]="[classPrefix + '__search-results__item', ( isDark$ | async ) ? 'dark' : 'light']"
+                            >
+                                {{pokemon?.name}}
+                            </li>
+
+                        }
+
+                        @empty {
+                            <li>Loading...</li>
+                        }
                     </ul>
                 </div>
             </div>

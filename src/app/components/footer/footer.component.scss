@@ -1,24 +1,23 @@
-@import '../../scss/app.colors.scss';
-@import '../../scss/app.common.scss';
-@import '../../scss/app.breakpoints.scss';
+@import "../../scss/app.colors.scss";
+@import "../../scss/app.common.scss";
+@import "../../scss/app.breakpoints.scss";
 
 .app-footer {
-    width: 100%;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: 1px solid;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid;
 
-    &.light {
-        color: $light-color-tx;
-        background-color: $light-color-bg;
-        border-color: $dark-color-bg-plain;
-    }
+  &.light {
+    color: $light-color-tx;
+    background-color: $light-color-bg;
+  }
 
-    &.dark {
-        color: $light-color-tx;
-        background-color: $dark-color-bg-plain;
-        border-color: $dark-color-bg;
-    }
+  &.dark {
+    color: $light-color-tx;
+    background-color: $dark-color-bg-plain;
+    border-color: $dark-color-bg;
+  }
 }

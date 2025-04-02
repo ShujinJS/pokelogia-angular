@@ -50,63 +50,93 @@
     
                     <div [ngClass]="['info-grp' + '__types']">
                         <ul>
-                            <li *ngFor="let type of pokemon.types"
-                                [ngClass]="[type.type.name + '-bg']"
-                            >
-                                {{type.type.name}}
-                            </li>
+
+                            @for (type of pokemon.types; track $index) {
+                                <li [ngClass]="[type.type.name + '-bg']">
+                                    {{type.type.name}}
+                                </li>
+                            }
+
                         </ul>
                     </div>
     
                     <div [ngClass]="['info-grp' + '__abilities']">
                         <span>Abilities:</span>
                         <ul>
-                            <li *ngFor="let ability of pokemon.abilities">
-                                {{ability.ability.name}}
-                            </li>
+
+                            @for (ability of pokemon.abilities; track $index) {
+                                <li>
+                                    {{ability.ability.name}}
+                                </li>
+                            }
+                            
                         </ul>
                     </div>
     
                     <div [ngClass]="['info-grp' + '__stats']">
                         <span>Stats:</span>
                         <ul [ngClass]="['stats_base-stats']">
-                            <li *ngFor="let stat of pokemon.stats">
-                                <span class="stat-name">
-                                    {{stat.stat.name}}:
-                                </span>
-                            </li>
+                            @for (stat of pokemon.stats; track $index) {
+                                <li>
+                                    <span class="stat-name">
+                                        {{stat.stat.name}}:
+                                    </span>
+                                </li>
+                            }
                         </ul>
                         <ul>
-                            <li *ngFor="let stat of pokemon.stats">
-                                <span [ngClass]="['stat-value' + checkStats(stat.base_stat)]">
-                                    {{stat.base_stat}}
-                                </span>
-                            </li>
+                            @for (stat of pokemon.stats; track $index) {
+                                <li>
+                                    <span [ngClass]="['stat-value' + checkStats(stat.base_stat)]">
+                                        {{stat.base_stat}}
+                                    </span>
+                                </li>
+                            } 
                         </ul>
                     </div>
     
-                    <div *ngIf="areas.length" [ngClass]="['info-grp' + '__areas']">
-                        <span>Areas: </span>
-                        <ul>
-                            <li *ngFor="let area of areas; index as i"
-                                [ngClass]="[(i % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
-                            >
-                                <span [ngClass]="['area']">
-                                    {{area.location_area.name}}
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+                    @if(areas.length) {
+                        <!-- old syntax -->
+                        <!-- <div *ngIf="areas.length" [ngClass]="['info-grp' + '__areas']"> -->
+                        <div [ngClass]="['info-grp' + '__areas']">
+                            <span>Areas: </span>
+                            <ul>
+                                @for (area of areas; track $index) {
+                                    <li 
+                                        [ngClass]="[( isDark$ | async ) ? 'dark' : 'light']"
+                                        [class.odd]="$odd"
+                                        [class.even]="$even"
+                                    >
+                                        <span [ngClass]="['area']">
+                                            {{area.location_area.name}}
+                                        </span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+                    @else {
+                        <div>No areas to be found at</div>
+                    }
 
                     <div [ngClass]="['info-grp' + '__moves', ( isDark$ | async ) ? 'dark' : 'light']">
                         <div [ngClass]="['moves-grp', ( isDark$ | async ) ? 'dark' : 'light']">
                             <span>Moves:</span>
                             <ul>
-                                <li *ngFor="let move of pokemon.moves; index as i"
-                                    [ngClass]="['move', (i % 2 == 1) ? 'odd' : '', ( isDark$ | async ) ? 'dark' : 'light']"
-                                >
-                                    {{move.move.name}}
-                                </li>
+
+                                @for (move of pokemon.moves; track $index) {
+                                    <!-- instead of ($index % 2 == 1) ? 'odd' : '', we can use [class.odd or even] -->
+                                    <li
+                                        [ngClass]="['move',  ( isDark$ | async ) ? 'dark' : 'light']"
+                                        [class.odd]="$odd"
+                                        [class.even]="$even"
+                                        
+                                    >
+                                        {{move.move.name}}
+                                    </li>
+                                }
+
                             </ul>
                         </div>
                     </div>

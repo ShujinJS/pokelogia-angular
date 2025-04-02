@@ -31,7 +31,6 @@ export class NotificationComponentService {
     showNotification(message: string) {
         const id = idGenerator();
         this.appStore.dispatch(ShowNotification({ id, message, isShowing: true }))
-        // setTimeout(()=> this.dismissNotification(id), 5000)
     }
 
     dismissNotification(id: string) {
