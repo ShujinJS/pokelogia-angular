@@ -1,140 +1,145 @@
-@import '../../scss/app.colors.scss';
+@import "../../scss/app.colors.scss";
 
 :root {
-	--hue: 223;
-	--bg: hsl(var(--hue),10%,90%);
-	--fg: hsl(var(--hue),10%,10%);
-	--primary: hsl(var(--hue),90%,50%);
-	--trans-dur: 0.3s;
-	--trans-timing: cubic-bezier(0.76,0.05,0.24,0.95);
-	--trans-timing-in: cubic-bezier(0.76,0.05,0.86,0.06);
-	--trans-timing-out: cubic-bezier(0.05,0.76,0.06,0.86);
-	font-size: calc(40px + (80 - 40) * (100vw - 320px) / (2560 - 320));
+  --hue: 223;
+  --bg: hsl(var(--hue), 10%, 90%);
+  --fg: hsl(var(--hue), 10%, 10%);
+  --primary: hsl(var(--hue), 90%, 50%);
+  --trans-dur: 0.3s;
+  --trans-timing: cubic-bezier(0.76, 0.05, 0.24, 0.95);
+  --trans-timing-in: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+  --trans-timing-out: cubic-bezier(0.05, 0.76, 0.06, 0.86);
+  font-size: calc(40px + (80 - 40) * (100vw - 320px) / (2560 - 320));
 }
 
 .switch {
-	margin: auto;
-	position: relative;
+  margin: auto;
+  position: relative;
 }
 .switch__icon,
 .switch__input {
-	display: block;
-	cursor: pointer;
+  display: block;
+  cursor: pointer;
 }
 .switch__icon {
-	position: absolute;
-	top: 0.375em;
-	right: 0.375em;
-	width: 0.75em;
-	height: 0.75em;
-	transition:
-		opacity calc(var(--trans-dur) / 2),
-		transform calc(var(--trans-dur) / 2);
+  position: absolute;
+  top: 0.375em;
+  right: 0.375em;
+  width: 0.75em;
+  height: 0.75em;
+  transition: opacity calc(var(--trans-dur) / 2),
+    transform calc(var(--trans-dur) / 2);
 }
 .switch__icon polyline {
-	transition: stroke-dashoffset calc(var(--trans-dur) / 2);
+  transition: stroke-dashoffset calc(var(--trans-dur) / 2);
 }
 .switch__icon--light,
 .switch__icon--light polyline {
-	transition-delay: calc(var(--trans-dur) / 2);
-	transition-timing-function: var(--trans-timing-out);
-	transition: 0.5s linear all;
+  transition-delay: calc(var(--trans-dur) / 2);
+  transition-timing-function: var(--trans-timing-out);
+  transition: 0.5s linear all;
 }
 .switch__icon--dark {
-	opacity: 0;
-	transform: translateX(-0.75em) rotate(30deg) scale(0.75);
-	transition-timing-function: var(--trans-timing-in);
-	transition: 0.5s linear all;
-	left: 2em;
+  opacity: 0;
+  transform: translateX(-0.75em) rotate(30deg) scale(0.75);
+  transition-timing-function: var(--trans-timing-in);
+  transition: 0.5s linear all;
+  left: 2em;
 }
 .switch__input {
-	background-color: $light-color-bg;
-	border-radius: 0.75em;
-	box-shadow:
-		0 0 0 0.125em hsla(var(--hue),90%,50%,0),
-		0.125em 0.125em 0.25em hsla(var(--hue),90%,10%,0.2);
-	outline: transparent;
-	position: relative;
-	width: 7em;
-	height: 1.5em;
-	-webkit-appearance: none;
-	appearance: none;
-	-webkit-tap-highlight-color: transparent;
-	transition:
-		background-color var(--trans-dur) var(--trans-timing),
-		box-shadow 0.15s linear;
-	transition: 0.5s linear all;
+  background-color: $light-color-bg;
+  border-radius: 0.75em;
+  box-shadow: 0 0 0 0.125em hsla(var(--hue), 90%, 50%, 0),
+    0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
+  outline: transparent;
+  position: relative;
+  width: 7em;
+  height: 1.5em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    box-shadow 0.15s linear;
+  transition: 0.5s linear all;
 }
 .switch__input:focus-visible {
-	box-shadow:
-		0 0 0 0.125em hsl(var(--hue),90%,50%),
-		0.125em 0.125em 0.25em hsla(var(--hue),90%,10%,0.2);
+  box-shadow: 0 0 0 0.125em hsl(var(--hue), 90%, 50%),
+    0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
 }
 .switch__input:before,
 .switch__input:after {
-	content: "";
-	display: block;
-	position: absolute;
+  content: "";
+  display: block;
+  position: absolute;
 }
 .switch__input:before {
-	background-color: hsl(50,90%,50%);
-	border-radius: inherit;
-	mask-image: linear-gradient(120deg,hsl(0,0%,0%) 20%,hsla(0,0%,0%,0) 80%);
-	-webkit-mask-image: linear-gradient(120deg,hsl(0,0%,0%) 20%,hsla(0,0%,0%,0) 80%);
-	inset: 0;
-	transition: background-color var(--trans-dur) var(--trans-timing);
-	transition: 0.5s linear all;
+  background-color: hsl(50, 90%, 50%);
+  border-radius: inherit;
+  -webkit-mask-image: linear-gradient(
+    120deg,
+    hsl(0, 0%, 0%) 20%,
+    hsla(0, 0%, 0%, 0) 80%
+  );
+  mask-image: linear-gradient(
+    120deg,
+    hsl(0, 0%, 0%) 20%,
+    hsla(0, 0%, 0%, 0) 80%
+  );
+
+  inset: 0;
+  transition: background-color var(--trans-dur) var(--trans-timing);
+  transition: 0.5s linear all;
 }
 .switch__input:after {
-	background-color: hsl(0,0%,100%);
-	border-radius: 50%;
-	box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue),90%,10%,0.1);
-	top: 0.125em;
-	left: 0.125em;
-	width: 1.25em;
-	height: 1.25em;
-	transition:
-		background-color var(--trans-dur) var(--trans-timing),
-		transform var(--trans-dur) var(--trans-timing);
-	z-index: 1;
-	transition: 0.5s linear all;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 50%;
+  box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue), 90%, 10%, 0.1);
+  top: 0.125em;
+  left: 0.125em;
+  width: 1.25em;
+  height: 1.25em;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    transform var(--trans-dur) var(--trans-timing);
+  z-index: 1;
+  transition: 0.5s linear all;
 }
 .switch__input:checked {
-	background-color: hsl(50,90%,50%);
+  background-color: hsl(50, 90%, 50%);
 }
 .switch__input:checked:before {
-	background-color: $dark-color-bg;
-	transition: 0.5s linear all;
+  background-color: $dark-color-bg;
+  transition: 0.5s linear all;
 }
 .switch__input:checked:after {
-	background-color: $dark-color-bg-cover;
-	transform: translateX(5.5em);
+  background-color: $dark-color-bg-cover;
+  transform: translateX(5.5em);
 }
 .switch__input:checked ~ .switch__icon--light,
 .switch__input:checked ~ .switch__icon--light polyline {
-	transition-delay: 0s;
-	transition-timing-function: var(--trans-timing-in);
-	transition: 0.5s linear all;
+  transition-delay: 0s;
+  transition-timing-function: var(--trans-timing-in);
+  transition: 0.5s linear all;
 }
 .switch__input:checked ~ .switch__icon--light {
-	opacity: 0;
-	transform: translateX(-0.75em) rotate(-30deg) scale(0.75);
-	transition: 0.5s linear all;
+  opacity: 0;
+  transform: translateX(-0.75em) rotate(-30deg) scale(0.75);
+  transition: 0.5s linear all;
 }
 .switch__input:checked ~ .switch__icon--light polyline {
-	stroke-dashoffset: 1.5;
-	transition: 0.5s linear all;
+  stroke-dashoffset: 1.5;
+  transition: 0.5s linear all;
 }
 .switch__input:checked ~ .switch__icon--dark {
-	opacity: 1;
-	transform: translateX(-1.5em);
-	transition-delay: calc(var(--trans-dur) / 2);
-	transition-timing-function: var(--trans-timing-out);
-	transition: 0.5s linear all;
+  opacity: 1;
+  transform: translateX(-1.5em);
+  transition-delay: calc(var(--trans-dur) / 2);
+  transition-timing-function: var(--trans-timing-out);
+  transition: 0.5s linear all;
 }
 .switch__sr {
-	overflow: hidden;
-	position: absolute;
-	width: 1px;
-	height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
 }

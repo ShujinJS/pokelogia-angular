@@ -9,58 +9,60 @@ import { AppStore } from 'src/app/store/app.store';
 import { GetPokemonsModel, Result } from './../../models/request.model';
 // Helper
 import { RequestHelper } from './../../helper/request.helper';
-
 @Component({
-    selector: 'app-landingPage',
-    templateUrl: './landingPage.component.html',
-    styleUrls: ['./landingPage.component.scss'],
+  selector: 'app-landingPage',
+  templateUrl: './landingPage.component.html',
+  styleUrls: ['./landingPage.component.scss'],
 })
-
 export class LandingPageComponent implements OnInit {
-    classPrefix = 'app-landing';
-    isPlaying = true;
-    isDark$: Observable<boolean>;
-    transition = this.isPlaying ? 'playing' : 'paused';
-    landingHeader = 'Welcome fellow trainers!';
-    landingInfo = 'You can search for your favourite Pokémons and train their abilities now! Pick your 6 Pokémons and become the very best!';
-    landingNews = 'Version 1.0 includes searching your Pokémons and studying them.';
-    landingUpcoming = 'Coming Soon: Pick your Pokémons.';
-    showPokemons = 20
-    pokemons: GetPokemonsModel = {
-        count: 0,
-        next: '',
-        previous: '',
-        results: []
-    }
-    inputValue: string = '';
-    filteredPokemons: Result[] = []
+  classPrefix = 'app-landing';
+  isPlaying = true;
+  isDark$: Observable<boolean>;
+  transition = this.isPlaying ? 'playing' : 'paused';
+  landingHeader = 'Welcome fellow trainers!';
+  landingInfo =
+    'You can search for your favourite Pokémons and train their abilities now! Pick your 6 Pokémons and become the very best!';
+  landingNews =
+    'Version 1.0 includes searching your Pokémons and studying them.';
+  landingUpcoming = 'Coming Soon: Pick your Pokémons.';
+  showPokemons = 20;
+  pokemons: GetPokemonsModel = {
+    count: 0,
+    next: '',
+    previous: '',
+    results: [],
+  };
+  inputValue: string = '';
+  filteredPokemons: Result[] = [];
 
-    constructor(
-        private requestHelper: RequestHelper,
-        private router: Router,
-        private appStore: Store<AppStore>
-    ){
-        this.isDark$ = appStore.select('theme')
-    }
+  constructor(
+    private requestHelper: RequestHelper,
+    private router: Router,
+    private appStore: Store<AppStore>
+  ) {
+    this.isDark$ = appStore.select('theme');
+  }
 
-    ngOnInit(): void {
-        this.requestPokemons();
-    }
+  ngOnInit(): void {
+    this.requestPokemons();
 
-    getDetailPage(name: string): void {
-        this.router.navigate([`pokemon/${name}`])
-    }
+    console.log('deployment test');
+  }
 
-    requestPokemons(): void {
-        this.requestHelper.getPokemons().subscribe( pokemons => {
-            this.pokemons = pokemons
-            this.filteredPokemons = pokemons.results
-        })
-    }
+  getDetailPage(name: string): void {
+    this.router.navigate([`pokemon/${name}`]);
+  }
 
-    onKeyUp(key: string) {
-        this.filteredPokemons = this.pokemons.results.filter( pokemon => {
-            return pokemon.name.includes(key.toLowerCase())
-        })
-    }
+  requestPokemons(): void {
+    this.requestHelper.getPokemons().subscribe((pokemons) => {
+      this.pokemons = pokemons;
+      this.filteredPokemons = pokemons.results;
+    });
+  }
+
+  onKeyUp(key: string) {
+    this.filteredPokemons = this.pokemons.results.filter((pokemon) => {
+      return pokemon.name.includes(key.toLowerCase());
+    });
+  }
 }

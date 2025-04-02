@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prefixscss": "postcss -u autoprefixer --autoprefixer.browsers 'last 2 versions' -r src/**/*.scss"
   },
   "private": true,
   "dependencies": {
@@ -21,7 +22,9 @@
     "@ngrx/effects": "^17.0.1",
     "@ngrx/store": "^17.0.1",
     "@ngrx/store-devtools": "^17.0.1",
+    "modernizr": "^3.13.1",
     "normalize.css": "^8.0.1",
+    "postcss-cli": "^11.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
@@ -31,12 +34,17 @@
     "@angular/cli": "~17.0.9",
     "@angular/compiler-cli": "^17.0.8",
     "@types/jasmine": "~4.3.0",
+    "@types/modernizr": "^3.5.6",
+    "autoprefixer": "^10.4.21",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "npm": "^11.2.0",
+    "postcss": "^8.5.3",
+    "postcss-scss": "^4.0.9",
     "typescript": "~5.2.2"
   }
 }
