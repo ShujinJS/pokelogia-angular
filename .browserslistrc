@@ -12,6 +12,10 @@
 
 # npx browserslist
 
+> 0.2%
+
+last 2 versions
+not dead
 Chrome >=99
 Firefox >=99
 Safari>=13

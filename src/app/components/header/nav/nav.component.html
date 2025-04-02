@@ -1,58 +1,91 @@
-<nav [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
-    <div [ngClass]="[classPrefix + '__brand']"></div>
-    <div [ngClass]="[classPrefix + '__links-ctr', isToggle ? 'show' : '', ( isDark$ | async ) ? 'dark' : 'light']">
+<nav [ngClass]="[classPrefix, (isDark$ | async) ? 'dark' : 'light']">
+  <div [ngClass]="[classPrefix + '__brand']"></div>
+  <div
+    [ngClass]="[
+      classPrefix + '__links-ctr',
+      isToggle ? 'show' : '',
+      (isDark$ | async) ? 'dark' : 'light'
+    ]"
+  >
+    <div
+      [ngClass]="[
+        classPrefix + '__links-ctr' + '__brand-mini',
+        (isDark$ | async) ? 'dark' : 'light'
+      ]"
+    ></div>
+    <ul
+      [ngClass]="[
+        classPrefix + '__links-ctr' + '__links',
+        (isDark$ | async) ? 'dark' : 'light'
+      ]"
+    >
+      <li
+        [ngClass]="[
+          classPrefix + '__links-ctr' + '__links' + '__link',
+          'theme',
+          (isDark$ | async) ? 'dark' : 'light'
+        ]"
+      >
+        <app-switch />
+      </li>
 
-        <div [ngClass]="[classPrefix + '__links-ctr' + '__brand-mini', ( isDark$ | async ) ? 'dark' : 'light']"></div>
-        <ul [ngClass]="[classPrefix + '__links-ctr' + '__links', ( isDark$ | async ) ? 'dark' : 'light']">
-            <li [ngClass]="[classPrefix + '__links-ctr' + '__links' +  '__link', 'theme', ( isDark$ | async ) ? 'dark' : 'light']">
-                <app-switch/>
-            </li>
+      @for (link of navLinks; track $index) {
+      <li
+        [ngClass]="[
+          classPrefix + '__links-ctr' + '__links' + '__link',
+          (isDark$ | async) ? 'dark' : 'light'
+        ]"
+      >
+        <a [routerLink]="[link?.link]">{{ link?.title }}</a>
+      </li>
+      }
 
-            @for (link of navLinks; track $index) {
-                <li [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
-                    <a [routerLink]="[link?.link]">{{link?.title}}</a>
-                </li>
-            }
-
-            <!-- <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
+      <!-- <li *ngFor="let link of navLinks" [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', ( isDark$ | async ) ? 'dark' : 'light']">
                 <a routerLink={{link?.link}}>{{link?.title}}</a>
                 <a [routerLink]="[link?.link]">{{link?.title}}</a>
             </li> -->
 
-            <li 
-                [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__link', 'profile',( isDark$ | async ) ? 'dark' : 'light']"
-                (mouseenter)="miniLinkHandler(true)"
-                (mouseleave)="miniLinkHandler(false)"
-            >
-                <a 
-                    [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">  
-                        {{(isLoggedIn$ | async) ? 'Profile' : 'Sign in'}}
-                </a>
-                <ul [ngClass]="[classPrefix + '__links-ctr' + '__links' + '__mini-links', showMiniLinks ? 'show' : '' ,( isDark$ | async ) ? 'dark' : 'light']">
-
-                    @for (link of miniNavLinks; track $index) {
-                        <li 
-                            [ngClass]="['link' ,( isDark$ | async ) ? 'dark' : 'light']"
-                        >
-                            <a [routerLink]="[link?.link]">
-                                {{link?.title}}
-                            </a>
-                        </li>
-                    }
-
-                </ul>
-            </li>
-        </ul>
-        
-    </div>
-
-    <div [ngClass]="[classPrefix + '__btn-ctr']">
-        <button 
-            (click)="isToggle = !isToggle"
-            [ngClass]="[classPrefix + '__btn-ctr', 'toggle-btn', ( isDark$ | async ) ? 'dark' : 'light']"
+      <li
+        [ngClass]="[
+          classPrefix + '__links-ctr' + '__links' + '__link',
+          'profile',
+          (isDark$ | async) ? 'dark' : 'light'
+        ]"
+        (mouseenter)="miniLinkHandler(true)"
+        (mouseleave)="miniLinkHandler(false)"
+      >
+        <a [routerLink]="[(isLoggedIn$ | async) ? '/' : '/auth']">
+          {{ (isLoggedIn$ | async) ? "Profile" : "Sign in" }}
+        </a>
+        <ul
+          [ngClass]="[
+            classPrefix + '__links-ctr' + '__links' + '__mini-links',
+            showMiniLinks ? 'show' : '',
+            (isDark$ | async) ? 'dark' : 'light'
+          ]"
         >
-            {{isToggle ? '✕' : '☰'}}
-        </button>
-    </div>
+          @for (link of miniNavLinks; track $index) {
+          <li [ngClass]="['link', (isDark$ | async) ? 'dark' : 'light']">
+            <a [routerLink]="[link?.link]">
+              {{ link?.title }}
+            </a>
+          </li>
+          }
+        </ul>
+      </li>
+    </ul>
+  </div>
 
+  <div [ngClass]="[classPrefix + '__btn-ctr']">
+    <button
+      (click)="isToggle = !isToggle"
+      [ngClass]="[
+        classPrefix + '__btn-ctr',
+        'toggle-btn',
+        (isDark$ | async) ? 'dark' : 'light'
+      ]"
+    >
+      {{ isToggle ? "✕" : "☰" }}
+    </button>
+  </div>
 </nav>

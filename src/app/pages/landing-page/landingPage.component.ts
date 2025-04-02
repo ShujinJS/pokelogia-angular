@@ -45,8 +45,6 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.requestPokemons();
-
-    console.log('deployment test');
   }
 
   getDetailPage(name: string): void {
