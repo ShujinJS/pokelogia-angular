@@ -1,48 +1,43 @@
-<div [ngClass]="[classPrefix, ( isDark$ | async ) ? 'dark' : 'light']">
-    <form 
-        [formGroup]="useForm" 
-        [ngClass]="[classPrefix + '__form', ( isDark$ | async ) ? 'dark' : 'light']"
-        (ngSubmit)="onSubmit()"
-    >
-        <div [ngClass]="[classPrefix + '__input-ctr']">
-            @for (input of formInputs; track $index) {
-                <div 
-                    [ngClass]="[classPrefix + '__input-grp', ( isDark$ | async ) ? 'dark' : 'light']" 
-                >
-                    <label>{{input?.title}}</label>
-                    <input 
-                        type={{input?.type}} 
-                        formControlName="{{input?.formControlName}}" 
-                        required={{input?.isRequired}}
-                    >
-                    @if(input.formControlName) {
-                        <span>
-                            *{{input?.message}}
-                        </span>
-                    }
-                </div>
-            }
+<div [ngClass]="[classPrefix, (isDark$ | async) ? 'dark' : 'light']">
+  <form
+    [formGroup]="useForm"
+    [ngClass]="[classPrefix + '__form', (isDark$ | async) ? 'dark' : 'light']"
+    (ngSubmit)="onSubmit()"
+  >
+    <div [ngClass]="[classPrefix + '__input-ctr']">
+      @for (input of formInputs; track $index) {
+      <div
+        [ngClass]="[
+          classPrefix + '__input-grp',
+          (isDark$ | async) ? 'dark' : 'light'
+        ]"
+      >
+        <label>{{ input?.title }}</label>
+        <input
+          id="{{ input?.id }}"
+          type="{{ input?.type }}"
+          formControlName="{{ input?.formControlName }}"
+          required="{{ input?.isRequired }}"
+        />
+        @if(input.formControlName) {
+        <span> *{{ input?.message }} </span>
+        }
+      </div>
+      } @if(showLogin){
+      <div ngClass="inp-check">
+        <label for="input"> Remember me? </label>
+        <input type="checkbox" formControlName="checkbox" />
+      </div>
+      }
+    </div>
 
-            @if(showLogin){
-                <div ngClass="inp-check">
-                    <label for="input">
-                        Remember me?
-                    </label>
-                    <input type="checkbox" formControlName="checkbox">
-                </div>
-            }
-        </div>
-
-        <div [ngClass]="[classPrefix + '__btn-ctr']">
-            <button 
-                type="submit"
-                [disabled]="useForm.invalid"
-            >
-                {{showLogin ? 'LOG-IN' : 'SIGN-IN'}}
-            </button>
-            <span (click)="showLogin = !showLogin">
-                {{showLogin ? 'Signin' : 'Login'}}
-            </span>
-        </div>
-    </form>
+    <div [ngClass]="[classPrefix + '__btn-ctr']">
+      <button id="submitBtn" type="submit" [disabled]="useForm.invalid">
+        {{ showLogin ? "LOG-IN" : "SIGN-IN" }}
+      </button>
+      <span (click)="showLogin = !showLogin">
+        {{ showLogin ? "Signin" : "Login" }}
+      </span>
+    </div>
+  </form>
 </div>

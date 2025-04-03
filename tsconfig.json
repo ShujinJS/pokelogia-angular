@@ -20,12 +20,19 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "types": ["@types/modernizr"]
+    "types": ["@types/modernizr", "jasmine"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
+  },
+  "architect": {
+    "build": {
+      "options": {
+        "target": "es5"
+      }
+    }
   }
 }
