@@ -84,6 +84,8 @@ export class AuthPageComponent implements OnInit {
     localStorage.removeItem(storeConstants.users);
     localStorage.removeItem(storeConstants.isLoggedIn);
     this.users = getFromStore(storeConstants.users) || [];
+    const isFtp = this.authPageService.isFtpSupported();
+    console.log(isFtp);
 
     if (this.users.length) {
       return;
